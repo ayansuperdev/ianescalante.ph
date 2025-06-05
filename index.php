@@ -1,0 +1,1258 @@
+<?php
+// Portfolio for Ian Escalante
+$fullName = "IAN ESCALANTE";
+$jobTitle = "Frontend Developer";
+$tagline = "Creating elegant digital solutions for modern businesses";
+$contactEmail = "ianfreelancer102@gmail.com";
+$phone = "+1 (555) 123-4567";
+$location = "San Francisco, CA";
+
+// Skills with proficiency levels
+$skills = [
+    "PHP" => 95,
+    "JavaScript" => 90,
+    "CSS/SCSS" => 92,
+    "HTML5" => 98,
+//    "React" => 85,
+    "MySQL" => 88,
+//    "Laravel" => 90,
+//    "Git" => 87
+];
+
+// Projects data
+$projects = [
+    [
+        "title" => "Raviv Casuals",
+        "description" => "Full-featured online store with payment integration and inventory management",
+        "tech" => ["CustomPlugin", "PHP", "MySQL", "JavaScript", "AI specialist"],
+        "link" => "https://ravivcasuals.com/",
+        "image" => "https://ravivcasuals.com/wp-content/uploads/2025/06/Project-ICON.png"
+    ],
+    [
+        "title" => "IconElect",
+        "description" => "Data visualization and analytics dashboard for enterprise clients",
+        "tech" => ["WordPress", "PHP", "MySQL", "API"],
+        "link" => "https://iconelect.org",
+        "image" => "https://iconelect.org/wp-content/uploads/2025/06/Project-ICON-iconelect.png"
+    ],
+    [
+        "title" => "LLHarrell",
+        "description" => "Custom content management system for creative professionals",
+        "tech" => ["PHP", "MySQL", "WordPress", "IDxbroker"],
+        "link" => "https://llharrell.com/",
+        "image" => "https://llharrell.com/wp-content/uploads/2025/06/Project-ICON-llharrell.png"
+    ],
+    [
+        "title" => "Harrell Melts",
+        "description" => "Collaborative project management tool with real-time updates",
+        "tech" => ["WordPress", "PHP", "API", "MySQL"],
+        "link" => "https://harrellmelts.com/",
+        "image" => "https://harrellmelts.com/wp-content/uploads/2025/06/Project-ICON-harrellmelts.png"
+    ]
+];
+
+// Experience data
+$experience = [
+    [
+        "company" => "TAXHAUS BUSINESS GROUP LLC",
+        "position" => "Senior Web Developer",
+        "period" => "2025 - Present",
+        "description" => "Lead development team building enterprise web applications. My responsibilities include plugin configuration, theme customization, and the development of custom plugins."
+    ],
+    [
+        "company" => "Color Rich",
+        "position" => "Web Developer",
+        "period" => "2021 - 2022",
+        "description" => "My role here solving bugs and maintaining a WordPress website fix bugs. I used elementor as well to a page builder to build certain pages."
+    ],
+    [
+        "company" => "Tadbeer Quality 2 UAQ",
+        "position" => "Computer Programmer",
+        "period" => "2020 - 2021",
+        "description" => "Developed a multi-website platform using WordPress builder and plugins, incorporating responsive web design, multimedia content, and effective search engine optimization (SEO)"
+    ]
+];
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $fullName; ?> | Web Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --accent: #f43f5e;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --dark: #0f172a;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 40px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.05);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+        
+        .hero h1 span {
+            color: var(--primary);
+        }
+        
+        .hero-btns {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .hero-img {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            max-width: 600px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(-50%) translateX(0);
+            }
+            50% {
+                transform: translateY(-53%) translateX(10px);
+            }
+            100% {
+                transform: translateY(-50%) translateX(0);
+            }
+        }
+        
+        /* About Section */
+        .about {
+            background: white;
+        }
+        
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .about-img:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            opacity: 0.1;
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-content h2 {
+            margin-bottom: 30px;
+        }
+        
+        .about-content p {
+            margin-bottom: 25px;
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-box i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .stat-box h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        /* Skills Section */
+        .skills {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .skills-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .skill-bars {
+            margin-top: 30px;
+        }
+        
+        .skill-bar {
+            margin-bottom: 30px;
+        }
+        
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .skill-name {
+            font-weight: 600;
+        }
+        
+        .skill-percent {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 5px;
+            position: relative;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .progress:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shine 2s infinite;
+        }
+        
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        .skills-img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .skills-img img {
+            max-width: 100%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            background: white;
+        }
+        
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .portfolio-header h2 {
+            display: inline-block;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            background: white;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .portfolio-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+                .portfolio-overlay h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+                .portfolio-overlay p {
+            color: #e2e8f0;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .portfolio-link {
+            display: inline-block;
+            padding: 10px 25px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+                .portfolio-link:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .portfolio-overlay a {
+            color: white;
+            font-size: 2rem;
+            margin: 0 15px;
+            transition: var(--transition);
+        }
+        
+        .portfolio-overlay a:hover {
+            transform: translateY(-5px);
+        }
+        
+        .portfolio-content {
+            padding: 25px;
+        }
+        
+        .portfolio-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-content p {
+            margin-bottom: 20px;
+        }
+        
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .portfolio-tag {
+            background: #e0f2fe;
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        /* Experience Section */
+        .experience {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-end;
+            padding-right: 50px;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-left: 50px;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            width: calc(50% - 30px);
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content:before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content:before {
+            right: -60px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content:before {
+            left: -60px;
+        }
+        
+        .timeline-period {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-company {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-position {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: #e0f2fe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .contact-icon i {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .contact-details h3 {
+            margin-bottom: 5px;
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-about h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 25px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .about-container,
+            .skills-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-img {
+                display: none;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                padding-left: 80px;
+                padding-right: 0;
+                justify-content: flex-start !important;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content:before,
+            .timeline-item:nth-child(even) .timeline-content:before {
+                left: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">Ian<span>Dev</span></a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Hi, I'm <span><?php echo $fullName; ?></span></h1>
+                <h3><?php echo $jobTitle; ?></h3>
+                <p><?php echo $tagline; ?></p>
+                <div class="hero-btns">
+                    <a href="#portfolio" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-img">
+            <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#0ea5e9" d="M56.8,-60.8C73.9,-45.7,87.8,-22.9,88.8,1.5C89.8,25.9,77.8,51.8,60.7,66.8C43.6,81.8,21.8,85.8,-0.7,86.5C-23.2,87.2,-46.4,84.6,-61.8,69.6C-77.1,54.6,-84.5,27.3,-83.5,1.1C-82.6,-25.1,-73.3,-50.2,-57.9,-65.3C-42.6,-80.4,-21.3,-85.6,0.7,-86.3C22.6,-87,45.3,-83.3,56.8,-60.8Z" transform="translate(250 250)" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="fade-in">About Me</h2>
+            <div class="about-container">
+                <div class="about-img fade-in">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#0ea5e9" d="M48.5,-59.7C60.9,-50.1,68,-33.4,71.1,-16.1C74.1,1.2,73.1,19.1,64.7,32.6C56.2,46.1,40.3,55.2,24.2,61.6C8.1,68.1,-8.1,71.8,-22.4,68.1C-36.8,64.4,-49.3,53.3,-57.4,39.3C-65.5,25.3,-69.2,8.3,-67.9,-8.8C-66.6,-26,-60.3,-43.4,-49.3,-53.1C-38.3,-62.8,-22.7,-64.9,-5.4,-64.1C12,-63.3,24,-59.6,48.5,-59.7Z" transform="translate(100 100)" />
+                    </svg>
+                </div>
+                <div class="about-content fade-in">
+                    <p>I'm a passionate web developer with over 7 years of experience creating robust, user-friendly web applications. My expertise spans both front-end and back-end development, with a focus on PHP-based solutions.</p>
+                    <p>I specialize in building responsive, high-performance websites and applications that deliver exceptional user experiences. My approach combines technical excellence with creative problem-solving to deliver solutions that meet business objectives.</p>
+                <!--    <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or mentoring aspiring developers in the tech community.</p> -->
+                    <div class="about-stats">
+                        <div class="stat-box">
+                            <i class="fas fa-code"></i>
+                            <h3>6+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-project-diagram"></i>
+                            <h3>33+</h3>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-users"></i>
+                            <h3>23+</h3>
+                            <p>Happy Clients</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="fade-in">My Skills</h2>
+            <div class="skills-container">
+                <div class="skills-content">
+                    <div class="skill-bars">
+                        <?php foreach ($skills as $skill => $percent): ?>
+                        <div class="skill-bar fade-in">
+                            <div class="skill-info">
+                                <span class="skill-name"><?php echo $skill; ?></span>
+                                <span class="skill-percent"><?php echo $percent; ?>%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: <?php echo $percent; ?>%;"></div>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <div class="skills-img fade-in">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#0ea5e9" d="M33.9,-56.1C43.9,-44.9,52.1,-35.3,58.8,-23.9C65.5,-12.5,70.6,0.7,70.9,14.5C71.1,28.3,66.5,42.8,57.6,53.9C48.7,65,35.6,72.7,21.5,74.5C7.4,76.3,-7.7,72.1,-21.4,66.3C-35.1,60.5,-47.4,53,-56.1,42.6C-64.8,32.1,-69.9,18.7,-71.1,4.8C-72.4,-9.2,-69.8,-23.7,-63.3,-36.2C-56.8,-48.7,-46.4,-59.2,-35,-70.1C-23.6,-81,-11.8,-92.2,0.6,-93.1C13,-94.1,26,-84.8,33.9,-56.1Z" transform="translate(100 100)" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="portfolio-header fade-in">
+                <h2>My Portfolio</h2>
+                <p>Here are some of my most recent projects</p>
+            </div>
+            <div class="portfolio-grid">
+                <?php foreach ($projects as $project): ?>
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-img">
+                        <img src="<?php echo $project['image']; ?>" alt="<?php echo $project['title']; ?>">
+                        <div class="portfolio-overlay">
+                            <h3><?php echo $project['title']; ?></h3>
+                            <p><?php echo $project['description']; ?></p>
+                            <a href="<?php echo $project['link']; ?>" target="_blank" class="portfolio-link">Visit Website</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3><?php echo $project['title']; ?></h3>
+                        <div class="portfolio-tags">
+                            <?php foreach ($project['tech'] as $tech): ?>
+                            <span class="portfolio-tag"><?php echo $tech; ?></span>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <h2 class="fade-in">Work Experience</h2>
+            <div class="timeline">
+                <?php foreach ($experience as $exp): ?>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-period"><?php echo $exp['period']; ?></div>
+                        <h3 class="timeline-company"><?php echo $exp['company']; ?></h3>
+                        <div class="timeline-position"><?php echo $exp['position']; ?></div>
+                        <p><?php echo $exp['description']; ?></p>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="fade-in">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p><?php echo $contactEmail; ?></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p><?php echo $phone; ?></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p><?php echo $location; ?></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <h3><?php echo $fullName; ?></h3>
+                    <p>Professional web developer specializing in PHP development, creating modern web applications with clean code and exceptional user experiences.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <?php echo date('Y'); ?> <?php echo $fullName; ?>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    
+                    // Animate progress bars
+                    if (entry.target.classList.contains('skill-bar')) {
+                        const progress = entry.target.querySelector('.progress');
+                        const width = progress.style.width;
+                        progress.style.width = '0';
+                        setTimeout(() => {
+                            progress.style.width = width;
+                        }, 300);
+                    }
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+        
+        fadeElements.forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const nav = document.querySelector('nav ul');
+        
+        mobileMenu.addEventListener('click', function() {
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
