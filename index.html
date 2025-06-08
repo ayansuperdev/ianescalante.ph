@@ -444,7 +444,7 @@
         
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 30px;
         }
         
@@ -500,41 +500,43 @@
             opacity: 1;
         }
         
-                .portfolio-overlay h3 {
+        .portfolio-overlay h3 {
             color: white;
             margin-bottom: 15px;
             font-size: 1.5rem;
         }
 
-                .portfolio-overlay p {
+        .portfolio-overlay p {
             color: #e2e8f0;
             margin-bottom: 20px;
             font-size: 0.95rem;
         }
         
-        .portfolio-link {
-            display: inline-block;
-            padding: 10px 25px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-                .portfolio-link:hover {
+.portfolio-link {
+    display: inline-block;
+    padding: 0px 6px;
+    background: var(--primary);
+    color: white;
+    border-radius: 90px;
+    text-decoration: none;
+    font-weight: 400;
+    transition: var(--transition);
+    font-size: 0.9rem;
+}
+        
+        .portfolio-link:hover {
             background: white;
             color: var(--primary);
             transform: translateY(-3px);
         }
 
-        .portfolio-overlay a {
-            color: white;
-            font-size: 2rem;
-            margin: 0 15px;
-            transition: var(--transition);
-        }
+.portfolio-overlay a {
+    color: white;
+    font-size: 2rem;
+    margin: 9px 50px;
+    transition: var(--transition);
+    font-size: large;
+}
         
         .portfolio-overlay a:hover {
             transform: translateY(-5px);
@@ -655,75 +657,133 @@
             color: var(--secondary);
         }
         
-        /* Contact Section */
+        /* NEW Contact Section */
         .contact {
             background: white;
         }
         
         .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-        
-        .contact-info {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
         
-        .contact-item {
-            display: flex;
-            margin-bottom: 30px;
-            align-items: flex-start;
+        .contact-header {
+            max-width: 700px;
+            margin-bottom: 60px;
+        }
+        
+        .contact-header p {
+            font-size: 1.1rem;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+        
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 900px;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.07);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+        
+        .contact-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary);
+            z-index: -1;
+            transition: height 0.4s ease;
+        }
+        
+        .contact-card:hover:before {
+            height: 100%;
         }
         
         .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: #e0f2fe;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: rgba(37, 99, 235, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 20px;
-            flex-shrink: 0;
-        }
-        
-        .contact-icon i {
-            color: var(--primary);
-            font-size: 1.5rem;
-        }
-        
-        .contact-details h3 {
-            margin-bottom: 5px;
-        }
-        
-        .contact-form .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
             transition: var(--transition);
         }
         
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        .contact-card:hover .contact-icon {
+            background: rgba(255, 255, 255, 0.2);
         }
         
-        .contact-form textarea {
-            height: 150px;
-            resize: vertical;
+        .contact-icon i {
+            font-size: 2.2rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .contact-card:hover .contact-icon i {
+            color: white;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+        
+        .contact-card:hover h3 {
+            color: white;
+        }
+        
+        .contact-card p {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            transition: var(--transition);
+        }
+        
+        .contact-card:hover p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .contact-action {
+            margin-top: 25px;
+        }
+        
+        .contact-card .btn {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .contact-card:hover .btn {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        
+        .contact-card .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
         
         /* Footer */
@@ -812,8 +872,7 @@
             }
             
             .about-container,
-            .skills-container,
-            .contact-container {
+            .skills-container {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
@@ -1172,53 +1231,48 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="fade-in">Get In Touch</h2>
             <div class="contact-container">
-                <div class="contact-info fade-in">
-                    <div class="contact-item">
+                <div class="contact-header fade-in">
+                    <h2>Get In Touch</h2>
+                    <p>Feel free to reach out to me through any of these channels. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+                </div>
+                
+                <div class="contact-cards">
+                    <!-- Email Card -->
+                    <div class="contact-card fade-in">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p>ianfreelancer102@gmail.com</p>
+                        <h3>Email</h3>
+                        <p>ianfreelancer102@gmail.com</p>
+                        <div class="contact-action">
+                            <a href="mailto:ianfreelancer102@gmail.com" class="btn">Send Email</a>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    
+                    <!-- Phone Card -->
+                    <div class="contact-card fade-in">
                         <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+                            <i class="fas fa-phone-alt"></i>
                         </div>
-                        <div class="contact-details">
-                            <h3>Phone</h3>
-                            <p>+1 (555) 123-4567</p>
+                        <h3>Phone</h3>
+                        <p>+1 (555) 123-4567</p>
+                        <div class="contact-action">
+                            <a href="tel:+15551234567" class="btn">Call Now</a>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    
+                    <!-- Location Card -->
+                    <div class="contact-card fade-in">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <div class="contact-details">
-                            <h3>Location</h3>
-                            <p>San Francisco, CA</p>
+                        <h3>Location</h3>
+                        <p>San Francisco, CA</p>
+                        <div class="contact-action">
+                            <a href="https://maps.google.com/?q=San+Francisco,+CA" target="_blank" class="btn">View Map</a>
                         </div>
                     </div>
-                </div>
-                <div class="contact-form fade-in">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Subject">
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -1315,14 +1369,6 @@
         
         mobileMenu.addEventListener('click', function() {
             nav.classList.toggle('active');
-        });
-        
-        // Contact form handling
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            contactForm.reset();
         });
     </script>
 </body>
