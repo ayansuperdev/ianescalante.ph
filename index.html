@@ -8,13 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #0f172a;
-            --accent: #f43f5e;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --dark: #0f172a;
+            --primary: #10B981;
+            --primary-dark: #059669;
+            --secondary: #1F2937;
+            --accent: #F59E0B;
+            --light: #F9FAFB;
+            --gray: #6B7280;
+            --dark: #1F2937;
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
@@ -26,7 +26,7 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f8fafc;
+            background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
             overflow-x: hidden;
@@ -102,7 +102,7 @@
             background: transparent;
             color: var(--primary);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
         }
         
         .btn-outline {
@@ -123,7 +123,7 @@
             width: 100%;
             z-index: 1000;
             padding: 25px 0;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(249, 250, 251, 0.95);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             backdrop-filter: blur(10px);
             transition: var(--transition);
@@ -195,64 +195,334 @@
             cursor: pointer;
         }
         
-        /* Hero Section */
-        .hero {
+        /* Hero Slider Section */
+        .hero-slider {
             min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .slides-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
-            padding-top: 80px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 1s ease;
+            padding: 0 20px;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        
+        .slide-content {
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .slide h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .slide h1 span {
+            color: var(--primary);
+        }
+        
+        .slide p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .slide-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        /* Slide 1 - Welcome */
+        .slide-1 {
+            background: linear-gradient(135deg, #ECFDF5 0%, #F0FDFA 100%);
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .shape-1 {
+            width: 200px;
+            height: 200px;
+            background: var(--primary);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            background: var(--accent);
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .shape-3 {
+            width: 100px;
+            height: 100px;
+            background: var(--primary-dark);
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(180deg);
+            }
+        }
+        
+        /* Slide 2 - Skills */
+        .slide-2 {
+            background: linear-gradient(135deg, #FEF7CD 0%, #FEF3C7 100%);
+        }
+        
+        .skill-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .skill-icon {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
         
-        .hero:before {
+        .skill-icon:before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 700px;
-            height: 700px;
-            border-radius: 50%;
-            background: rgba(37, 99, 235, 0.05);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary);
+            transition: height 0.4s ease;
         }
         
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 600px;
+        .skill-icon:hover {
+            transform: translateY(-10px);
         }
         
-        .hero h1 span {
+        .skill-icon:hover:before {
+            height: 100%;
+        }
+        
+        .skill-icon i {
+            font-size: 2.5rem;
             color: var(--primary);
+            z-index: 1;
+            transition: var(--transition);
         }
         
-        .hero-btns {
-            margin-top: 40px;
-            display: flex;
-            gap: 20px;
+        .skill-icon:hover i {
+            color: white;
         }
         
-        .hero-img {
+        .skill-icon span {
             position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 45%;
-            max-width: 600px;
-            animation: float 6s ease-in-out infinite;
+            bottom: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--dark);
+            z-index: 1;
+            transition: var(--transition);
         }
         
-        @keyframes float {
+        .skill-icon:hover span {
+            color: white;
+        }
+        
+        .rotating-gear {
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            font-size: 8rem;
+            color: var(--primary);
+            opacity: 0.1;
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
             0% {
-                transform: translateY(-50%) translateX(0);
-            }
-            50% {
-                transform: translateY(-53%) translateX(10px);
+                transform: rotate(0deg);
             }
             100% {
-                transform: translateY(-50%) translateX(0);
+                transform: rotate(360deg);
             }
+        }
+        
+        /* Slide 3 - Experience Summary */
+        .slide-3 {
+            background: linear-gradient(135deg, #E0F2FE 0%, #F0F9FF 100%);
+        }
+        
+        .exp-summary {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .exp-highlights {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .exp-highlight {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            width: 180px;
+        }
+        
+        .exp-highlight:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .exp-highlight i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .exp-highlight h4 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .exp-highlight p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        .bouncing-code {
+            position: absolute;
+            bottom: 10%;
+            left: 10%;
+            font-size: 5rem;
+            color: var(--accent);
+            opacity: 0.2;
+            animation: bounce 3s infinite ease-in-out;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        /* Slider Navigation */
+        .slider-nav {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 10;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .slider-dot.active {
+            background: var(--primary);
+            transform: scale(1.3);
+        }
+        
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10;
+        }
+        
+        .slider-arrow:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .slider-arrow.prev {
+            left: 30px;
+        }
+        
+        .slider-arrow.next {
+            right: 30px;
         }
         
         /* About Section */
@@ -332,105 +602,9 @@
             margin-bottom: 5px;
         }
         
-        /* Skills Section */
-        .skills {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        }
-        
-        .skills-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-        
-        .skills-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .skill-bars {
-            margin-top: 30px;
-        }
-        
-        .skill-bar {
-            margin-bottom: 30px;
-        }
-        
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-        
-        .skill-name {
-            font-weight: 600;
-        }
-        
-        .skill-percent {
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        .progress-bar {
-            height: 10px;
-            background: #e2e8f0;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .progress {
-            height: 100%;
-            background: var(--primary);
-            border-radius: 5px;
-            position: relative;
-            width: 0;
-            transition: width 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        
-        .progress:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            animation: shine 2s infinite;
-        }
-        
-        @keyframes shine {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(100%);
-            }
-        }
-        
-        .skills-img {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .skills-img img {
-            max-width: 100%;
-            animation: pulse 4s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-        
         /* Portfolio Section */
         .portfolio {
-            background: white;
+            background: var(--light);
         }
         
         .portfolio-header {
@@ -484,7 +658,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(31, 41, 55, 0.9);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -512,34 +686,22 @@
             font-size: 0.95rem;
         }
         
-.portfolio-link {
-    display: inline-block;
-    padding: 0px 6px;
-    background: var(--primary);
-    color: white;
-    border-radius: 90px;
-    text-decoration: none;
-    font-weight: 400;
-    transition: var(--transition);
-    font-size: 0.9rem;
-}
+        .portfolio-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
         
         .portfolio-link:hover {
             background: white;
             color: var(--primary);
             transform: translateY(-3px);
-        }
-
-.portfolio-overlay a {
-    color: white;
-    font-size: 2rem;
-    margin: 9px 50px;
-    transition: var(--transition);
-    font-size: large;
-}
-        
-        .portfolio-overlay a:hover {
-            transform: translateY(-5px);
         }
         
         .portfolio-content {
@@ -561,7 +723,7 @@
         }
         
         .portfolio-tag {
-            background: #e0f2fe;
+            background: rgba(16, 185, 129, 0.1);
             color: var(--primary);
             padding: 5px 15px;
             border-radius: 50px;
@@ -571,7 +733,7 @@
         
         /* Experience Section */
         .experience {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            background: white;
         }
         
         .timeline {
@@ -657,9 +819,9 @@
             color: var(--secondary);
         }
         
-        /* NEW Contact Section */
+        /* Contact Section */
         .contact {
-            background: white;
+            background: var(--light);
         }
         
         .contact-container {
@@ -724,7 +886,7 @@
             width: 80px;
             height: 80px;
             margin: 0 auto 25px;
-            background: rgba(37, 99, 235, 0.1);
+            background: rgba(16, 185, 129, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -871,23 +1033,21 @@
                 font-size: 2rem;
             }
             
-            .about-container,
-            .skills-container {
+            .slide h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-container {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
             
-            .hero-img {
+            .slider-arrow {
                 display: none;
             }
             
-            .hero-content {
-                max-width: 100%;
-                text-align: center;
-            }
-            
-            .hero-btns {
-                justify-content: center;
+            .exp-highlights {
+                flex-wrap: wrap;
             }
             
             .timeline:before {
@@ -913,7 +1073,7 @@
         @media (max-width: 768px) {
             nav ul {
                 display: none;
-            position: absolute;
+                position: absolute;
                 top: 80px;
                 left: 0;
                 width: 100%;
@@ -944,13 +1104,25 @@
                 grid-template-columns: 1fr;
             }
             
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
-            }
-            
             .about-stats {
                 grid-template-columns: 1fr;
+            }
+            
+            .skill-icons {
+                gap: 15px;
+            }
+            
+            .skill-icon {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .skill-icon i {
+                font-size: 2rem;
+            }
+            
+            .shape-1, .shape-2, .shape-3 {
+                display: none;
             }
         }
         
@@ -988,23 +1160,114 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content fade-in">
-                <h1>Hi, I'm <span>IAN ESCALANTE</span></h1>
-                <h3>Front-end Developer</h3>
-                <p>Creating elegant digital solutions for modern businesses</p>
-                <div class="hero-btns">
-                    <a href="#portfolio" class="btn">View My Work</a>
-                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+    <!-- Hero Slider Section -->
+    <section class="hero-slider" id="home">
+        <div class="slides-container">
+            <!-- Slide 1 - Welcome -->
+            <div class="slide slide-1 active">
+                <div class="slide-content fade-in">
+                    <h1>Hi, I'm <span>IAN ESCALANTE</span></h1>
+                    <h3>Front-end Developer</h3>
+                    <p>Creating elegant digital solutions for modern businesses</p>
+                    <div class="hero-btns">
+                        <a href="#portfolio" class="btn">View My Work</a>
+                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    </div>
+                </div>
+                <div class="slide-animation">
+                    <div class="floating-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                        <div class="shape shape-3"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2 - Skills -->
+            <div class="slide slide-2">
+                <div class="slide-content fade-in">
+                    <h1>My <span>Skills</span></h1>
+                    <p>Specializing in modern web technologies and frameworks</p>
+                    <div class="skill-icons">
+                        <div class="skill-icon">
+                            <i class="fab fa-php"></i>
+                            <span>PHP</span>
+                        </div>
+                        <div class="skill-icon">
+                            <i class="fab fa-js-square"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-icon">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-icon">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="skill-icon">
+                            <i class="fas fa-database"></i>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-icon">
+                            <i class="fab fa-wordpress"></i>
+                            <span>WordPress</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-animation">
+                    <div class="rotating-gear">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3 - Experience Summary -->
+            <div class="slide slide-3">
+                <div class="slide-content fade-in">
+                    <h1>Work <span>Experience</span></h1>
+                    <p>Over 6 years of professional experience in web development</p>
+                    <div class="exp-summary">
+                        <div class="exp-highlights">
+                            <div class="exp-highlight">
+                                <i class="fas fa-briefcase"></i>
+                                <h4>3 Companies</h4>
+                                <p>Worked with diverse organizations</p>
+                            </div>
+                            <div class="exp-highlight">
+                                <i class="fas fa-code"></i>
+                                <h4>33+ Projects</h4>
+                                <p>Successfully delivered</p>
+                            </div>
+                            <div class="exp-highlight">
+                                <i class="fas fa-users"></i>
+                                <h4>23+ Clients</h4>
+                                <p>Satisfied with my work</p>
+                            </div>
+                        </div>
+                        <a href="#experience" class="btn">View Full Experience</a>
+                    </div>
+                </div>
+                <div class="slide-animation">
+                    <div class="bouncing-code">
+                        <i class="fas fa-code"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="hero-img">
-            <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#0ea5e9" d="M56.8,-60.8C73.9,-45.7,87.8,-22.9,88.8,1.5C89.8,25.9,77.8,51.8,60.7,66.8C43.6,81.8,21.8,85.8,-0.7,86.5C-23.2,87.2,-46.4,84.6,-61.8,69.6C-77.1,54.6,-84.5,27.3,-83.5,1.1C-82.6,-25.1,-73.3,-50.2,-57.9,-65.3C-42.6,-80.4,-21.3,-85.6,0.7,-86.3C22.6,-87,45.3,-83.3,56.8,-60.8Z" transform="translate(250 250)" />
-            </svg>
+        
+        <!-- Slider Navigation -->
+        <div class="slider-arrow prev">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="slider-arrow next">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        
+        <div class="slider-nav">
+            <div class="slider-dot active" data-slide="0"></div>
+            <div class="slider-dot" data-slide="1"></div>
+            <div class="slider-dot" data-slide="2"></div>
         </div>
     </section>
 
@@ -1015,7 +1278,7 @@
             <div class="about-container">
                 <div class="about-img fade-in">
                     <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#0ea5e9" d="M48.5,-59.7C60.9,-50.1,68,-33.4,71.1,-16.1C74.1,1.2,73.1,19.1,64.7,32.6C56.2,46.1,40.3,55.2,24.2,61.6C8.1,68.1,-8.1,71.8,-22.4,68.1C-36.8,64.4,-49.3,53.3,-57.4,39.3C-65.5,25.3,-69.2,8.3,-67.9,-8.8C-66.6,-26,-60.3,-43.4,-49.3,-53.1C-38.3,-62.8,-22.7,-64.9,-5.4,-64.1C12,-63.3,24,-59.6,48.5,-59.7Z" transform="translate(100 100)" />
+                        <path fill="#10B981" d="M48.5,-59.7C60.9,-50.1,68,-33.4,71.1,-16.1C74.1,1.2,73.1,19.1,64.7,32.6C56.2,46.1,40.3,55.2,24.2,61.6C8.1,68.1,-8.1,71.8,-22.4,68.1C-36.8,64.4,-49.3,53.3,-57.4,39.3C-65.5,25.3,-69.2,8.3,-67.9,-8.8C-66.6,-26,-60.3,-43.4,-49.3,-53.1C-38.3,-62.8,-22.7,-64.9,-5.4,-64.1C12,-63.3,24,-59.6,48.5,-59.7Z" transform="translate(100 100)" />
                     </svg>
                 </div>
                 <div class="about-content fade-in">
@@ -1038,96 +1301,6 @@
                             <p>Happy Clients</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-        <div class="container">
-            <h2 class="fade-in">My Skills</h2>
-            <div class="skills-container">
-                <div class="skills-content">
-                    <div class="skill-bars">
-                        <div class="skill-bar fade-in">
-                            <div class="skill-info">
-                                <span class="skill-name">PHP</span>
-                                <span class="skill-percent">95%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 95%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar fade-in">
-                            <div class="skill-info">
-                                <span class="skill-name">JavaScript</span>
-                                <span class="skill-percent">90%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 90%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar fade-in">
-                            <div class="skill-info">
-                                <span class="skill-name">CSS/SCSS</span>
-                                <span class="skill-percent">92%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 92%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar fade-in">
-                            <div class="skill-info">
-                                <span class="skill-name">HTML5</span>
-                                <span class="skill-percent">98%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 98%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar fade-in">
-                            <div class="skill-info">
-                                <span class="skill-name">MySQL</span>
-                                <span class="skill-percent">88%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 88%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar fade-in">
-                            <div class="skill-info">
-                                <span class="skill-name">SEO</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar fade-in">
-                            <div class="skill-info">
-                                <span class="skill-name">WordPress</span>
-                                <span class="skill-percent">95%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 95%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar fade-in">
-                            <div class="skill-info">
-                                <span class="skill-name">Elementor</span>
-                                <span class="skill-percent">95%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 95%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skills-img fade-in">
-                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#0ea5e9" d="M33.9,-56.1C43.9,-44.9,52.1,-35.3,58.8,-23.9C65.5,-12.5,70.6,0.7,70.9,14.5C71.1,28.3,66.5,42.8,57.6,53.9C48.7,65,35.6,72.7,21.5,74.5C7.4,76.3,-7.7,72.1,-21.4,66.3C-35.1,60.5,-47.4,53,-56.1,42.6C-64.8,32.1,-69.9,18.7,-71.1,4.8C-72.4,-9.2,-69.8,-23.7,-63.3,-36.2C-56.8,-48.7,-46.4,-59.2,-35,-70.1C-23.6,-81,-11.8,-92.2,0.6,-93.1C13,-94.1,26,-84.8,33.9,-56.1Z" transform="translate(100 100)" />
-                    </svg>
                 </div>
             </div>
         </div>
@@ -1287,7 +1460,7 @@
                         <h3>Phone</h3>
                         <p>+63 (962) 120-0452</p>
                         <div class="contact-action">
-                            <a href="tel:+15551234567" class="btn">Call Now</a>
+                            <a href="tel:+639621200452" class="btn">Call Now</a>
                         </div>
                     </div>
                     
@@ -1350,6 +1523,78 @@
             }
         });
         
+        // Slider functionality
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        const prevBtn = document.querySelector('.slider-arrow.prev');
+        const nextBtn = document.querySelector('.slider-arrow.next');
+        let currentSlide = 0;
+        let slideInterval;
+        
+        function showSlide(n) {
+            // Reset all slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Set current slide
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            
+            // Reset animation for fade-in elements
+            const fadeElements = slides[currentSlide].querySelectorAll('.fade-in');
+            fadeElements.forEach(el => {
+                el.classList.remove('appear');
+                setTimeout(() => {
+                    el.classList.add('appear');
+                }, 300);
+            });
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+        
+        function startSlideShow() {
+            slideInterval = setInterval(nextSlide, 6000);
+        }
+        
+        function stopSlideShow() {
+            clearInterval(slideInterval);
+        }
+        
+        // Event listeners
+        prevBtn.addEventListener('click', () => {
+            stopSlideShow();
+            prevSlide();
+            startSlideShow();
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            stopSlideShow();
+            nextSlide();
+            startSlideShow();
+        });
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                stopSlideShow();
+                showSlide(index);
+                startSlideShow();
+            });
+        });
+        
+        // Start slideshow
+        startSlideShow();
+        
         // Scroll animations
         const fadeElements = document.querySelectorAll('.fade-in');
         
@@ -1357,16 +1602,6 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('appear');
-                    
-                    // Animate progress bars
-                    if (entry.target.classList.contains('skill-bar')) {
-                        const progress = entry.target.querySelector('.progress');
-                        const width = progress.style.width;
-                        progress.style.width = '0';
-                        setTimeout(() => {
-                            progress.style.width = width;
-                        }, 300);
-                    }
                 }
             });
         }, {
@@ -1402,4 +1637,3 @@
     </script>
 </body>
 </html>
-
