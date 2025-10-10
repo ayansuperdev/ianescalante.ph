@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* All your existing CSS styles remain the same */
         :root {
             --primary: #2563EB;
             --primary-dark: #1D4ED8;
@@ -471,10 +472,11 @@
         
         .skill-progress-bar {
             height: 100%;
-            background: var(--primary);
             border-radius: 4px;
             width: 0;
             transition: width 1.5s ease-in-out;
+            /* Default gradient - will be overridden by JavaScript */
+            background: linear-gradient(90deg, #ff4d4d, #ffa500, #4CAF50);
         }
         
         .skill-icons {
@@ -1253,7 +1255,7 @@
                     <div class="about-stats">
                         <div class="stat-box">
                             <i class="fas fa-code"></i>
-                            <h3>6+</h3>
+                            <h3>7+</h3>
                             <p>Years Experience</p>
                         </div>
                         <div class="stat-box">
@@ -1654,6 +1656,23 @@
                         const width = progressBar.getAttribute('data-width');
                         setTimeout(() => {
                             progressBar.style.width = width + '%';
+                            
+                            // Set gradient based on percentage
+                            const percentage = parseInt(width);
+                            let gradient;
+                            
+                            if (percentage < 50) {
+                                // Red to Orange gradient for low percentages
+                                gradient = 'linear-gradient(90deg, #ff4d4d, #ff8533, #ffa500)';
+                            } else if (percentage < 80) {
+                                // Orange to Yellow gradient for medium percentages
+                                gradient = 'linear-gradient(90deg, #ffa500, #ffcc00, #ffff00)';
+                            } else {
+                                // Yellow to Green gradient for high percentages
+                                gradient = 'linear-gradient(90deg, #ffff00, #aaff00, #4CAF50)';
+                            }
+                            
+                            progressBar.style.background = gradient;
                         }, 300);
                     }
                 }
@@ -1715,6 +1734,36 @@
         }
         
         createParticles();
+        
+        // Fix for back to top button
+        document.getElementById('backToTop').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Set initial gradient for skill bars
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillBars = document.querySelectorAll('.skill-bar');
+            skillBars.forEach(skillBar => {
+                const progressBar = skillBar.querySelector('.skill-progress-bar');
+                const width = progressBar.getAttribute('data-width');
+                const percentage = parseInt(width);
+                let gradient;
+                
+                if (percentage < 50) {
+                    gradient = 'linear-gradient(90deg, #ff4d4d, #ff8533, #ffa500)';
+                } else if (percentage < 80) {
+                    gradient = 'linear-gradient(90deg, #ffa500, #ffcc00, #ffff00)';
+                } else {
+                    gradient = 'linear-gradient(90deg, #ffff00, #aaff00, #4CAF50)';
+                }
+                
+                progressBar.style.background = gradient;
+            });
+        });
     </script>
 </body>
 </html>
