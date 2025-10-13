@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* All your existing CSS styles remain the same */
         :root {
             --primary: #2563EB;
             --primary-dark: #1D4ED8;
@@ -475,7 +474,6 @@
             border-radius: 4px;
             width: 0;
             transition: width 1.5s ease-in-out;
-            /* Default gradient - will be overridden by JavaScript */
             background: linear-gradient(90deg, #ff4d4d, #ffa500, #4CAF50);
         }
         
@@ -529,6 +527,41 @@
         .portfolio-header p {
             max-width: 600px;
             margin: 0 auto;
+        }
+        
+        /* Portfolio Filter Styles */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: var(--glass);
+            color: var(--light);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-btn:hover {
+            background: var(--primary-light);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
         }
         
         .portfolio-grid {
@@ -1167,6 +1200,282 @@
                 opacity: 0;
             }
         }
+
+        /* Project Detail Modal */
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .project-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-modal-content {
+            background: var(--dark);
+            width: 90%;
+            max-width: 1200px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            padding: 40px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .close-modal:hover {
+            background: var(--primary-dark);
+            transform: rotate(90deg);
+        }
+
+        .project-header {
+            margin-bottom: 40px;
+        }
+
+        .project-header h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .project-header p {
+            color: var(--gray);
+            font-size: 1.2rem;
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .project-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .project-gallery {
+            position: relative;
+        }
+
+        .project-main-image {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .project-main-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+
+        .project-main-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-thumbnails {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .project-thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .project-thumbnail.active {
+            opacity: 1;
+            border: 2px solid var(--primary);
+        }
+
+        .project-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .project-description h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .project-description p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .project-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .project-detail-item h4 {
+            color: white;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .project-detail-item p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .project-share {
+            margin-top: 20px;
+        }
+
+        .project-share h4 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .share-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .share-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .share-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Image Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .lightbox-prev, .lightbox-next {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox-prev:hover, .lightbox-next:hover {
+            background: var(--primary);
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 1.1rem;
+        }
     </style>
 </head>
 <body>
@@ -1368,8 +1677,21 @@
                 <h2>My Portfolio</h2>
                 <p>Here are some of my most recent projects that demonstrate my expertise in web development and problem-solving.</p>
             </div>
+            
+            <!-- Portfolio Filter Buttons -->
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Show All</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+                <button class="filter-btn" data-filter="ecommerce">eCommerce</button>
+                <button class="filter-btn" data-filter="print">Print</button>
+                <button class="filter-btn" data-filter="ux">UX</button>
+                <button class="filter-btn" data-filter="web-design">Web Design</button>
+                <button class="filter-btn" data-filter="wordpress">WordPress</button>
+            </div>
+            
             <div class="portfolio-grid">
-                <div class="portfolio-item fade-in">
+                <!-- Project 1 - Raviv Casuals -->
+                <div class="portfolio-item fade-in" data-category="ecommerce wordpress web-design">
                     <div class="portfolio-img">
                         <img src="https://ravivcasuals.com/wp-content/uploads/2025/06/Project-ICON.png" alt="Raviv Casuals">
                         <div class="portfolio-overlay">
@@ -1394,7 +1716,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="portfolio-item fade-in">
+                
+                <!-- Project 2 - IconElect -->
+                <div class="portfolio-item fade-in" data-category="web-design wordpress">
                     <div class="portfolio-img">
                         <img src="https://iconelect.org/wp-content/uploads/2025/06/Project-ICON-iconelect.png" alt="IconElect">
                         <div class="portfolio-overlay">
@@ -1417,7 +1741,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="portfolio-item fade-in">
+                
+                <!-- Project 3 - LLHarrell -->
+                <div class="portfolio-item fade-in" data-category="web-design wordpress">
                     <div class="portfolio-img">
                         <img src="https://llharrell.com/wp-content/uploads/2025/06/Project-ICON-llharrell.png" alt="LLHarrell">
                         <div class="portfolio-overlay">
@@ -1440,7 +1766,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="portfolio-item fade-in">
+                
+                <!-- Project 4 - Harrell Melts -->
+                <div class="portfolio-item fade-in" data-category="ecommerce wordpress web-design">
                     <div class="portfolio-img">
                         <img src="https://harrellmelts.com/wp-content/uploads/2025/06/Project-ICON-harrellmelts.png" alt="Harrell Melts">
                         <div class="portfolio-overlay">
@@ -1461,6 +1789,53 @@
                             <span class="portfolio-tag">API</span>
                             <span class="portfolio-tag">MySQL</span>
                             <span class="portfolio-tag">SEO</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional sample projects to demonstrate filtering -->
+                <div class="portfolio-item fade-in" data-category="branding print">
+                    <div class="portfolio-img">
+                        <img src="https://harrellmelts.com/wp-content/uploads/2024/02/image-6-scaled.jpg" alt="Branding Project">
+                        <div class="portfolio-overlay">
+                            <h3>A Good Biscuit</h3>
+                            <p>Crafted a complete visual identity and packaging system for 'A Good Biscuit,'.</p>
+                            <a href="#" class="portfolio-link view-details" data-project="corporate-identity">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>A Good Biscuit</h3>
+                        <p>Transformed the brand vision into a tangible identity for Harrell's ButterCream Biscuits. </p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Brand Guidelines</span>
+                            <span class="portfolio-tag">Print Design</span>
+                            <span class="portfolio-tag">Logo Design</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in" data-category="ux wordpress">
+                    <div class="portfolio-img">
+                        <img src="./UX Design/Login User.png" alt="UX Project">
+                        <div class="portfolio-overlay">
+                            <h3>Custom PHP Framework</h3>
+                            <p>A lightweight, plugin-based PHP framework with WordPress-inspired architecture.</p>
+                            <a href="#" class="portfolio-link view-details" data-project="mobile-app-ux">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Custom PHP Framework</h3>
+                        <p>PHP-based framework with modular plugin architecture, role-based access control, and dynamic asset loading.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Web Application</span>
+                            <span class="portfolio-tag">Wireframing</span>
+                            <span class="portfolio-tag">Prototyping</span>
                         </div>
                     </div>
                 </div>
@@ -1623,6 +1998,89 @@
         <i class="fas fa-arrow-up"></i>
     </a>
 
+    <!-- Project Detail Modal -->
+    <div class="project-modal" id="projectModal">
+        <div class="project-modal-content">
+            <div class="close-modal" id="closeModal">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="project-header">
+                <h2 id="projectTitle">Project Title</h2>
+                <p id="projectSubtitle">Project Subtitle</p>
+            </div>
+            <div class="project-content">
+                <div class="project-gallery">
+                    <div class="project-main-image" id="mainImage">
+                        <img src="" alt="Project Image" id="modalMainImage">
+                    </div>
+                    <div class="project-thumbnails" id="projectThumbnails">
+                        <!-- Thumbnails will be dynamically added here -->
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-description">
+                        <h3>Project Description</h3>
+                        <p id="projectDescription">Project description goes here...</p>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-detail-item">
+                            <h4>Client</h4>
+                            <p id="projectClient">Client Name</p>
+                        </div>
+                        <div class="project-detail-item">
+                            <h4>Platform</h4>
+                            <p id="projectPlatform">Web, Mobile</p>
+                        </div>
+                        <div class="project-detail-item">
+                            <h4>Category</h4>
+                            <p id="projectCategory">Branding</p>
+                        </div>
+                        <div class="project-detail-item">
+                            <h4>Date</h4>
+                            <p id="projectDate">January 2023</p>
+                        </div>
+                    </div>
+                    <div class="project-share">
+                        <h4>Share this project</h4>
+                        <div class="share-links">
+                            <a href="#" class="share-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="share-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="share-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="share-link">
+                                <i class="fas fa-link"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" id="lightboxClose">
+                <i class="fas fa-times"></i>
+            </span>
+            <img class="lightbox-img" id="lightboxImage" src="" alt="Project Image">
+            <div class="lightbox-nav">
+                <div class="lightbox-prev" id="lightboxPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="lightbox-next" id="lightboxNext">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="lightbox-counter" id="lightboxCounter">1 / 3</div>
+        </div>
+    </div>
+
     <script>
         // Header scroll effect
         window.addEventListener('scroll', function() {
@@ -1763,6 +2221,231 @@
                 
                 progressBar.style.background = gradient;
             });
+        });
+
+        // Portfolio Filter Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    portfolioItems.forEach(item => {
+                        if (filterValue === 'all') {
+                            item.style.display = 'block';
+                            // Add slight delay for staggered animation
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 100);
+                        } else {
+                            const categories = item.getAttribute('data-category').split(' ');
+                            
+                            if (categories.includes(filterValue)) {
+                                item.style.display = 'block';
+                                // Add slight delay for staggered animation
+                                setTimeout(() => {
+                                    item.style.opacity = '1';
+                                    item.style.transform = 'scale(1)';
+                                }, 100);
+                            } else {
+                                item.style.opacity = '0';
+                                item.style.transform = 'scale(0.8)';
+                                setTimeout(() => {
+                                    item.style.display = 'none';
+                                }, 300);
+                            }
+                        }
+                    });
+                });
+            });
+        });
+
+        // Project Detail Modal
+        const projectModal = document.getElementById('projectModal');
+        const closeModal = document.getElementById('closeModal');
+        const viewDetailsBtns = document.querySelectorAll('.view-details');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        const lightboxCounter = document.getElementById('lightboxCounter');
+
+        // Project data
+        const projects = {
+            'corporate-identity': {
+                title: 'A Good Biscuit',
+                subtitle: 'Biscuit Must Be Smooth And Tasty',
+                description: 'Crafted a complete visual identity and packaging system for "A Good Biscuit," a brand dedicated to classic, homemade taste. The design leverages a warm, nostalgic color palette and elegant typography to evoke comfort and quality, directly appealing to customers seeking a premium, effortless baking experience.',
+                client: 'Harrell Melts',
+                platform: 'WordPress, WooCommerce',
+                category: 'Branding, Web Design',
+                date: 'January 30 2024',
+                images: [
+                    'https://harrellmelts.com/wp-content/uploads/2025/10/Harrell-s-ButterCream-Biscuits-10-13-2025_11_14_PM-scaled.png',
+                    'https://harrellmelts.com/wp-content/uploads/2025/10/Biscuits-24-Count-Frozen-Orig-ButterCream-Biscuits-10-13-2025_11_19_PM.png',
+                    'https://harrellmelts.com/wp-content/uploads/2025/10/ICE-Cream-scaled.png'
+                ]
+            },
+            'mobile-app-ux': {
+                title: 'Custom PHP Framework',
+                subtitle: 'Building Scalable Web Applications with Modular Architecture',
+                description: 'A robust custom PHP framework designed with a WordPress-inspired plugin system, enabling rapid development of extensible web applications. Features a comprehensive user management system with role-based access control, dynamic admin and user dashboards, and a powerful hook system for seamless extensibility. Built with security and scalability in mind, the framework supports automatic asset loading, database abstraction, and real-time plugin management through an intuitive administrative interface.',
+                client: 'LandWays',
+                platform: 'PHP, WordPress',
+                category: 'UX, WordPress',
+                date: 'January 2023',
+                images: [
+                    './UX Design/Admin-Dashboard.png',
+                    './UX Design/Active plugin.png',
+                    './UX Design/Login User.png',
+                    './UX Design/User Management.png'
+                ]
+            }
+        };
+
+        let currentProject = null;
+        let currentImageIndex = 0;
+
+        // Open project modal
+        viewDetailsBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const projectId = this.getAttribute('data-project');
+                openProjectModal(projectId);
+            });
+        });
+
+        // Close project modal
+        closeModal.addEventListener('click', function() {
+            projectModal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        projectModal.addEventListener('click', function(e) {
+            if (e.target === projectModal) {
+                projectModal.classList.remove('active');
+            }
+        });
+
+        // Open project modal function
+        function openProjectModal(projectId) {
+            const project = projects[projectId];
+            if (!project) return;
+
+            currentProject = projectId;
+
+            // Set modal content
+            document.getElementById('projectTitle').textContent = project.title;
+            document.getElementById('projectSubtitle').textContent = project.subtitle;
+            document.getElementById('projectDescription').textContent = project.description;
+            document.getElementById('projectClient').textContent = project.client;
+            document.getElementById('projectPlatform').textContent = project.platform;
+            document.getElementById('projectCategory').textContent = project.category;
+            document.getElementById('projectDate').textContent = project.date;
+
+            // Set main image
+            const modalMainImage = document.getElementById('modalMainImage');
+            modalMainImage.src = project.images[0];
+            modalMainImage.alt = project.title;
+
+            // Create thumbnails
+            const thumbnailsContainer = document.getElementById('projectThumbnails');
+            thumbnailsContainer.innerHTML = '';
+
+            project.images.forEach((image, index) => {
+                const thumbnail = document.createElement('div');
+                thumbnail.className = 'project-thumbnail' + (index === 0 ? ' active' : '');
+                thumbnail.innerHTML = `<img src="${image}" alt="${project.title} - Image ${index + 1}">`;
+                
+                thumbnail.addEventListener('click', function() {
+                    // Update main image
+                    modalMainImage.src = image;
+                    
+                    // Update active thumbnail
+                    document.querySelectorAll('.project-thumbnail').forEach(thumb => {
+                        thumb.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Update current image index for lightbox
+                    currentImageIndex = index;
+                });
+                
+                thumbnailsContainer.appendChild(thumbnail);
+            });
+
+            // Show modal
+            projectModal.classList.add('active');
+        }
+
+        // Lightbox functionality
+        const mainImage = document.getElementById('mainImage');
+        mainImage.addEventListener('click', function() {
+            if (!currentProject) return;
+            
+            const project = projects[currentProject];
+            openLightbox(project.images, currentImageIndex);
+        });
+
+        function openLightbox(images, startIndex) {
+            currentImageIndex = startIndex;
+            updateLightboxImage(images, currentImageIndex);
+            lightbox.classList.add('active');
+        }
+
+        function updateLightboxImage(images, index) {
+            lightboxImage.src = images[index];
+            lightboxCounter.textContent = `${index + 1} / ${images.length}`;
+        }
+
+        lightboxClose.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+        });
+
+        lightboxPrev.addEventListener('click', function() {
+            if (!currentProject) return;
+            
+            const project = projects[currentProject];
+            currentImageIndex = (currentImageIndex - 1 + project.images.length) % project.images.length;
+            updateLightboxImage(project.images, currentImageIndex);
+        });
+
+        lightboxNext.addEventListener('click', function() {
+            if (!currentProject) return;
+            
+            const project = projects[currentProject];
+            currentImageIndex = (currentImageIndex + 1) % project.images.length;
+            updateLightboxImage(project.images, currentImageIndex);
+        });
+
+        // Close lightbox when clicking outside
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', function(e) {
+            if (!lightbox.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+            } else if (e.key === 'ArrowLeft') {
+                lightboxPrev.click();
+            } else if (e.key === 'ArrowRight') {
+                lightboxNext.click();
+            }
         });
     </script>
 </body>
