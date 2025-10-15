@@ -195,6 +195,7 @@
         
         nav li {
             margin-left: 40px;
+            position: relative;
         }
         
         nav a {
@@ -204,6 +205,9 @@
             position: relative;
             padding: 5px 0;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         
         nav a:after {
@@ -223,6 +227,46 @@
         
         nav a:hover:after {
             width: 100%;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(15, 23, 42, 0.95);
+            min-width: 200px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu li {
+            margin: 0;
+        }
+        
+        .dropdown-menu a {
+            padding: 12px 20px;
+            display: block;
+            color: var(--light);
+            transition: var(--transition);
+        }
+        
+        .dropdown-menu a:hover {
+            background: rgba(37, 99, 235, 0.2);
+            color: var(--primary);
         }
         
         .mobile-menu {
@@ -417,7 +461,7 @@
         
         /* Skills Section */
         .skills {
-            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
         }
         
         .skills-container {
@@ -511,7 +555,7 @@
         
         /* Portfolio Section */
         .portfolio {
-            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
         }
         
         .portfolio-header {
@@ -686,7 +730,7 @@
         
         /* Experience Section */
         .experience {
-            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
         }
         
         .experience-header {
@@ -1110,6 +1154,21 @@
                 margin: 10px 0;
             }
             
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: transparent;
+                box-shadow: none;
+                padding: 0;
+                margin-top: 10px;
+            }
+            
+            .dropdown-menu li {
+                margin: 5px 0;
+            }
+            
             .mobile-menu {
                 display: block;
             }
@@ -1496,6 +1555,13 @@
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
+                    <li class="dropdown">
+                        <a href="design.html">Design <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="design.html#logo-design">Logo Design</a></li>
+                            <li><a href="design.html#web-design">Web Design</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#experience">Experience</a></li>
@@ -1816,6 +1882,30 @@
                         </div>
                     </div>
                 </div>
+
+                                <!-- Additional sample projects to demonstrate filtering -->
+                <div class="portfolio-item fade-in" data-category="branding print">
+                    <div class="portfolio-img">
+                        <img src="./UX Design/Bag-ravivcasuals-11.jpg" alt="Branding Project">
+                        <div class="portfolio-overlay">
+                            <h3>Premium Leather</h3>
+                            <p>Custom Color Combinations for your personal style.</p>
+                            <a href="#" class="portfolio-link view-details" data-project="premium-leather">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Premium Leather</h3>
+                        <p>At Raviv Casuals, we are dedicated to reviving the ancient concept of footwear through a modern lens.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Brand Guidelines</span>
+                            <span class="portfolio-tag">Print Design</span>
+                            <span class="portfolio-tag">Logo Design</span>
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="portfolio-item fade-in" data-category="ux wordpress">
                     <div class="portfolio-img">
@@ -1979,6 +2069,8 @@
                     <h4>Services</h4>
                     <ul>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Web Development</a></li>
+                        <li><a href="design.html#logo-design"><i class="fas fa-chevron-right"></i> Logo Design</a></li>
+                        <li><a href="design.html#web-design"><i class="fas fa-chevron-right"></i> Web Design</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> WordPress Solutions</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> E-commerce</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> API Integration</a></li>
@@ -2294,6 +2386,22 @@
                     'https://harrellmelts.com/wp-content/uploads/2025/10/Harrell-s-ButterCream-Biscuits-10-13-2025_11_14_PM-scaled.png',
                     'https://harrellmelts.com/wp-content/uploads/2025/10/Biscuits-24-Count-Frozen-Orig-ButterCream-Biscuits-10-13-2025_11_19_PM.png',
                     'https://harrellmelts.com/wp-content/uploads/2025/10/ICE-Cream-scaled.png'
+                ]
+            },
+                'premium-leather': {
+                title: 'Premium Leather',
+                subtitle: 'Footwear with a Mission. Style with a Covenant.',
+                description: 'This project involved crafting the complete narrative for a line of premium leather slides. The challenge was to unite a message of faith, unparalleled quality, and modern versatility into a cohesive brand story. The copy positions the product not just as an accessory, but as a testament to craftsmanship and belief, using authentic customer testimonials to highlight comfort, style, and durability. The goal was to create a page that resonates with a values-driven community seeking products built to last a lifetime.',
+                client: 'Raviv Casuals',
+                platform: 'WordPress, WooCommerce',
+                category: 'Branding, Web Design',
+                date: 'February 30 2024',
+                images: [
+                    './UX Design/Premium Leather Slides ravivcasuals.png',
+                    './UX Design/Tote-Bag-https-ravivcasuals-com--10-14-2025_09_22_PM.png',
+                    './UX Design/RavivGrip.png',
+                    './UX Design/Box-of-Tote-bag.jpg',
+                    './UX Design/dust-bag-for-tote-bag.jpg'
                 ]
             },
             'mobile-app-ux': {
