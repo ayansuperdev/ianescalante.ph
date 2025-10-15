@@ -1,0 +1,2024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Services | IAN ESCALANTE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* All the CSS from the main page goes here */
+        /* For brevity, I'm including the same CSS as the main page */
+        /* In a real implementation, you would use a shared CSS file */
+        
+        :root {
+            --primary: #2563EB;
+            --primary-dark: #1D4ED8;
+            --primary-light: #3B82F6;
+            --secondary: #0F172A;
+            --accent: #F59E0B;
+            --light: #F8FAFC;
+            --gray: #64748B;
+            --dark: #1E293B;
+            --success: #10B981;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .btn:hover:before {
+            width: 100%;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            background: rgba(15, 23, 42, 0.8);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo span {
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 40px;
+            position: relative;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(15, 23, 42, 0.95);
+            min-width: 200px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu li {
+            margin: 0;
+        }
+        
+        .dropdown-menu a {
+            padding: 12px 20px;
+            display: block;
+            color: var(--light);
+            transition: var(--transition);
+        }
+        
+        .dropdown-menu a:hover {
+            background: rgba(37, 99, 235, 0.2);
+            color: var(--primary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #fff 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #cbd5e1;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Web Design Section */
+        div#web-design {
+            margin-top: 60px;
+        }
+        /* Design Section */
+        .design {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+        }
+        
+        .design-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .design-header h2 {
+            display: inline-block;
+            color: white;
+        }
+        
+        .design-header p {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .design-category {
+            background: var(--glass);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .design-category:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .design-category i {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .design-category h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .design-category p {
+            margin-bottom: 25px;
+        }
+        
+        .design-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .design-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .design-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .design-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .design-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .design-item:hover .design-img img {
+            transform: scale(1.1);
+        }
+        
+        .design-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .design-item:hover .design-overlay {
+            opacity: 1;
+        }
+        
+        .design-overlay h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .design-overlay p {
+            color: #e2e8f0;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .design-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .design-link:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .design-content {
+            padding: 25px;
+        }
+        
+        .design-content h3 {
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .design-content p {
+            margin-bottom: 20px;
+        }
+        
+        .design-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .design-tag {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-about h3 {
+            color: white;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 25px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 25px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 4rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 23, 42, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                backdrop-filter: blur(10px);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav li {
+                margin: 10px 0;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: transparent;
+                box-shadow: none;
+                padding: 0;
+                margin-top: 10px;
+            }
+            
+            .dropdown-menu li {
+                margin: 5px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .design-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Particle Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(37, 99, 235, 0.3);
+            border-radius: 50%;
+            animation: floatParticle 15s infinite linear;
+        }
+        
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Project Detail Modal */
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .project-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-modal-content {
+            background: var(--dark);
+            width: 90%;
+            max-width: 1200px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            padding: 40px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .close-modal:hover {
+            background: var(--primary-dark);
+            transform: rotate(90deg);
+        }
+
+        .project-header {
+            margin-bottom: 40px;
+        }
+
+        .project-header h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .project-header p {
+            color: var(--gray);
+            font-size: 1.2rem;
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .project-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .project-gallery {
+            position: relative;
+        }
+
+        .project-main-image {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .project-main-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+
+        .project-main-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-thumbnails {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .project-thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .project-thumbnail.active {
+            opacity: 1;
+            border: 2px solid var(--primary);
+        }
+
+        .project-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .project-description h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .project-description p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .project-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .project-detail-item h4 {
+            color: white;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .project-detail-item p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .project-share {
+            margin-top: 20px;
+        }
+
+        .project-share h4 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .share-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .share-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .share-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Image Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .lightbox-prev, .lightbox-next {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox-prev:hover, .lightbox-next:hover {
+            background: var(--primary);
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+    /* Insights Section Styles */
+    .insights {
+        background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+        padding: 100px 0;
+    }
+
+    .insights-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .insights-header h2 {
+        display: inline-block;
+        color: white;
+    }
+
+    .insights-header p {
+        max-width: 700px;
+        margin: 20px auto 0;
+        font-size: 1.2rem;
+    }
+
+    .insights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+    }
+
+    .insight-card {
+        background: var(--glass);
+        border-radius: 15px;
+        padding: 40px 30px;
+        text-align: center;
+        transition: var(--transition);
+        border: 1px solid var(--glass-border);
+        backdrop-filter: blur(10px);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .insight-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .insight-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 25px;
+        background: rgba(37, 99, 235, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+    }
+
+    .insight-card:hover .insight-icon {
+        background: var(--primary);
+    }
+
+    .insight-icon i {
+        font-size: 2.5rem;
+        color: var(--primary);
+        transition: var(--transition);
+    }
+
+    .insight-card:hover .insight-icon i {
+        color: white;
+    }
+
+    .insight-card h3 {
+        color: white;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+    }
+
+    .insight-card > p {
+        margin-bottom: 25px;
+        color: var(--gray);
+    }
+
+    .insight-content {
+        text-align: left;
+        margin-top: auto;
+    }
+
+    .insight-content h4 {
+        color: white;
+        margin: 25px 0 15px;
+        font-size: 1.2rem;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .insight-content h4:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: var(--primary);
+    }
+
+    .insight-content ul {
+        list-style: none;
+        margin-bottom: 25px;
+    }
+
+    .insight-content li {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .insight-content li i {
+        color: var(--primary);
+        margin-top: 3px;
+        flex-shrink: 0;
+    }
+
+    .insight-content li:last-child {
+        margin-bottom: 0;
+    }
+
+    .insight-btn {
+        width: 100%;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    /* Screen Sizes Styles */
+    .screen-sizes {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .screen-size {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        transition: var(--transition);
+    }
+
+    .screen-size:hover {
+        background: rgba(37, 99, 235, 0.1);
+    }
+
+    .device-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(37, 99, 235, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .device-icon i {
+        font-size: 1.5rem;
+        color: var(--primary);
+    }
+
+    .device-info h5 {
+        color: white;
+        margin-bottom: 5px;
+    }
+
+    .device-info p {
+        margin: 0;
+        color: var(--gray);
+        font-size: 0.9rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .insights-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-code"></i>
+                Ian<span>Dev</span>
+            </a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li class="dropdown">
+                        <a href="design.html">Design <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#logo-design">Logo Design</a></li>
+                            <li><a href="#web-design">Web Design</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#portfolio">Portfolio</a></li>
+                    <li><a href="index.html#experience">Experience</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Design Hero Section -->
+    <section class="hero" id="design-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Creative Design Solutions</h1>
+                <p>Transforming ideas into compelling visual identities and user-centered digital experiences. From branding your business to designing intuitive web interfaces, I craft designs that communicate and connect.</p>
+                <div class="hero-btns">
+                    <a href="#logo-design" class="btn">
+                        <i class="fas fa-pen-nib"></i>
+                        Logo Design
+                    </a>
+                    <a href="#web-design" class="btn btn-outline">
+                        <i class="fas fa-laptop"></i>
+                        Web Design
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Insights Section -->
+<section class="insights" id="insights">
+    <div class="container">
+        <div class="insights-header">
+            <h2>Design Insights</h2>
+            <p>Explore the principles and processes behind creating effective digital experiences and memorable brand identities.</p>
+        </div>
+
+        <div class="insights-grid">
+            <!-- Web Design Insight -->
+            <div class="insight-card fade-in">
+                <div class="insight-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Crafting Digital Experiences</h3>
+                <p>My approach to web design combines aesthetics with functionality to create engaging user journeys.</p>
+                
+                <div class="insight-content">
+                    <h4>Web Design Services</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Responsive Website Design</li>
+                        <li><i class="fas fa-check"></i> User Interface (UI) Design</li>
+                        <li><i class="fas fa-check"></i> User Experience (UX) Design</li>
+                        <li><i class="fas fa-check"></i> E-commerce Solutions</li>
+                        <li><i class="fas fa-check"></i> Landing Page Design</li>
+                        <li><i class="fas fa-check"></i> Website Redesign</li>
+                    </ul>
+                    
+                    <h4>Benefits of Professional Web Design</h4>
+                    <ul>
+                        <li><i class="fas fa-star"></i> Enhanced User Experience</li>
+                        <li><i class="fas fa-star"></i> Improved Conversion Rates</li>
+                        <li><i class="fas fa-star"></i> Mobile-First Responsiveness</li>
+                        <li><i class="fas fa-star"></i> SEO-Optimized Structure</li>
+                        <li><i class="fas fa-star"></i> Brand Consistency</li>
+                        <li><i class="fas fa-star"></i> Faster Loading Times</li>
+                    </ul>
+                    
+                    <a href="#web-design" class="btn insight-btn">
+                        <i class="fas fa-arrow-right"></i>
+                        Explore Web Design
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Logo Design Insight -->
+            <div class="insight-card fade-in">
+                <div class="insight-icon">
+                    <i class="fas fa-pen-nib"></i>
+                </div>
+                <h3>Creating Lasting Impressions</h3>
+                <p>A great logo is more than just an image - it's the visual cornerstone of your brand identity.</p>
+                
+                <div class="insight-content">
+                    <h4>Logo Design Services</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Brand Identity Design</li>
+                        <li><i class="fas fa-check"></i> Logo Conceptualization</li>
+                        <li><i class="fas fa-check"></i> Custom Typography</li>
+                        <li><i class="fas fa-check"></i> Icon Design</li>
+                        <li><i class="fas fa-check"></i> Brand Style Guides</li>
+                        <li><i class="fas fa-check"></i> Logo Redesign</li>
+                    </ul>
+                    
+                    <h4>Advantages of Professional Logo Design</h4>
+                    <ul>
+                        <li><i class="fas fa-star"></i> Instant Brand Recognition</li>
+                        <li><i class="fas fa-star"></i> Professional Credibility</li>
+                        <li><i class="fas fa-star"></i> Emotional Connection</li>
+                        <li><i class="fas fa-star"></i> Versatile Application</li>
+                        <li><i class="fas fa-star"></i> Timeless Design</li>
+                        <li><i class="fas fa-star"></i> Competitive Differentiation</li>
+                    </ul>
+                    
+                    <a href="#logo-design" class="btn insight-btn">
+                        <i class="fas fa-arrow-right"></i>
+                        Explore Logo Design
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Responsive Design Insight -->
+            <div class="insight-card fade-in">
+                <div class="insight-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Responsive Design Principles</h3>
+                <p>Creating websites that adapt seamlessly across all devices and screen sizes.</p>
+                
+                <div class="insight-content">
+                    <h4>Ideal Screen Sizes for Responsive Design</h4>
+                    
+                    <div class="screen-sizes">
+                        <div class="screen-size">
+                            <div class="device-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="device-info">
+                                <h5>Mobile</h5>
+                                <p>320px - 767px</p>
+                            </div>
+                        </div>
+                        
+                        <div class="screen-size">
+                            <div class="device-icon">
+                                <i class="fas fa-tablet-alt"></i>
+                            </div>
+                            <div class="device-info">
+                                <h5>Tablet</h5>
+                                <p>768px - 1024px</p>
+                            </div>
+                        </div>
+                        
+                        <div class="screen-size">
+                            <div class="device-icon">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <div class="device-info">
+                                <h5>Laptop</h5>
+                                <p>1025px - 1440px</p>
+                            </div>
+                        </div>
+                        
+                        <div class="screen-size">
+                            <div class="device-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <div class="device-info">
+                                <h5>Desktop</h5>
+                                <p>1441px+</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Responsive Design Benefits</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Consistent User Experience</li>
+                        <li><i class="fas fa-check-circle"></i> Improved SEO Performance</li>
+                        <li><i class="fas fa-check-circle"></i> Reduced Bounce Rates</li>
+                        <li><i class="fas fa-check-circle"></i> Future-Proof Design</li>
+                        <li><i class="fas fa-check-circle"></i> Cost-Effective Maintenance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Design Categories -->
+    <section class="design" id="design">
+        <div class="container">
+            <!-- Logo Design Projects -->
+            <div class="design-header" id="logo-design">
+                <h2>Logo Design Projects</h2>
+                <p>A selection of brand identity projects showcasing different styles and industries.</p>
+            </div>
+            
+            <div class="design-grid">
+                <!-- Logo Design Project 1 -->
+                <div class="design-item fade-in" >
+                    <div class="design-img">
+                        <img src="./All logo/LLHarrell.png" alt="LLHarrell">
+                        <div class="design-overlay">
+                            <h3>LLHarrell</h3>
+                            <p>Modern logo design for a technology startup focusing on innovation and simplicity</p>
+                            <a href="#" class="design-link view-details" data-project="tech-logo">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- Logo Design Project 2 -->
+                <div class="design-item fade-in">
+                    <div class="design-img">
+                        <img src="./All logo/TBL.png" alt="Taxhaus Business Logics">
+                        <div class="design-overlay">
+                            <h3>Taxhaus Business Logics</h3>
+                            <p>Complete branding package for a fine dining restaurant including logo and visual identity</p>
+                            <a href="#" class="design-link view-details" data-project="restaurant-logo">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- Logo Design Project 3 -->
+                <div class="design-item fade-in">
+                    <div class="design-img">
+                        <img src="./All logo/IconElect.png" alt="Icon Elect">
+                        <div class="design-overlay">
+                            <h3>Icon Elect</h3>
+                            <p>Energetic logo design for a fitness brand emphasizing movement and strength</p>
+                            <a href="#" class="design-link view-details" data-project="fitness-logo">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="design-item fade-in">
+                    <div class="design-img">
+                        <img src="./All logo/RavivCasuals.png" alt="Raviv Casuals">
+                        <div class="design-overlay">
+                            <h3>Raviv Casuals</h3>
+                            <p>Energetic logo design for a fitness brand emphasizing movement and strength</p>
+                            <a href="#" class="design-link view-details" data-project="fitness-logo">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="design-item fade-in">
+                    <div class="design-img">
+                        <img src="./All logo/HarrellBCB.png" alt="Harrell BCB">
+                        <div class="design-overlay">
+                            <h3>Harrell ButterCream Biscuits</h3>
+                            <p>Energetic logo design for a fitness brand emphasizing movement and strength</p>
+                            <a href="#" class="design-link view-details" data-project="fitness-logo">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Web Design Projects -->
+            <div class="design-header" id="web-design">
+                <h2>Web Design Projects</h2>
+                <p>Responsive web designs that prioritize user experience and visual appeal.</p>
+            </div>
+            
+            <div class="design-grid">
+                <!-- Web Design Project 1 -->
+                <div class="design-item fade-in">
+                    <div class="design-img">
+                        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="E-commerce Website">
+                        <div class="design-overlay">
+                            <h3>E-commerce Website</h3>
+                            <p>Modern e-commerce platform with intuitive navigation and conversion-focused design</p>
+                            <a href="#" class="design-link view-details" data-project="ecommerce-design">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                    <div class="design-content">
+                        <h3>E-commerce Website</h3>
+                        <p>User-friendly online store design with emphasis on product presentation and easy checkout</p>
+                        <div class="design-tags">
+                            <span class="design-tag">Web Design</span>
+                            <span class="design-tag">E-commerce</span>
+                            <span class="design-tag">UI/UX</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Web Design Project 2 -->
+                <div class="design-item fade-in">
+                    <div class="design-img">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="SaaS Dashboard">
+                        <div class="design-overlay">
+                            <h3>SaaS Dashboard</h3>
+                            <p>Clean and functional dashboard design for a software-as-a-service application</p>
+                            <a href="#" class="design-link view-details" data-project="saas-design">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                    <div class="design-content">
+                        <h3>SaaS Dashboard</h3>
+                        <p>Data visualization and user management interface with intuitive navigation</p>
+                        <div class="design-tags">
+                            <span class="design-tag">Web Design</span>
+                            <span class="design-tag">Dashboard</span>
+                            <span class="design-tag">SaaS</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Web Design Project 3 -->
+                <div class="design-item fade-in">
+                    <div class="design-img">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Portfolio Website">
+                        <div class="design-overlay">
+                            <h3>Portfolio Website</h3>
+                            <p>Creative portfolio design for a photographer showcasing work in an elegant gallery</p>
+                            <a href="#" class="design-link view-details" data-project="portfolio-design">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                    <div class="design-content">
+                        <h3>Portfolio Website</h3>
+                        <p>Minimalist design focusing on visual content with smooth transitions and interactions</p>
+                        <div class="design-tags">
+                            <span class="design-tag">Web Design</span>
+                            <span class="design-tag">Portfolio</span>
+                            <span class="design-tag">Minimalist</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <h3>
+                        <i class="fas fa-code"></i>
+                        IAN ESCALANTE
+                    </h3>
+                    <p>Professional front-end developer and designer specializing in creating modern web applications with clean code and exceptional user experiences.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="index.html#about"><i class="fas fa-chevron-right"></i> About</a></li>
+                        <li><a href="design.html"><i class="fas fa-chevron-right"></i> Design</a></li>
+                        <li><a href="index.html#skills"><i class="fas fa-chevron-right"></i> Skills</a></li>
+                        <li><a href="index.html#portfolio"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="index.html#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="index.html#portfolio"><i class="fas fa-chevron-right"></i> Web Development</a></li>
+                        <li><a href="#logo-design"><i class="fas fa-chevron-right"></i> Logo Design</a></li>
+                        <li><a href="#web-design"><i class="fas fa-chevron-right"></i> Web Design</a></li>
+                        <li><a href="index.html#portfolio"><i class="fas fa-chevron-right"></i> Landing Pages</a></li>
+                        <li><a href="#web-design"><i class="fas fa-chevron-right"></i> UI/UX Design</a></li>
+                        <li><a href="#logo-design"><i class="fas fa-chevron-right"></i> Brand Identity</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 IAN ESCALANTE. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Project Detail Modal -->
+    <div class="project-modal" id="projectModal">
+        <div class="project-modal-content">
+            <div class="close-modal" id="closeModal">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="project-header">
+                <h2 id="projectTitle">Project Title</h2>
+                <p id="projectSubtitle">Project Subtitle</p>
+            </div>
+            <div class="project-content">
+                <div class="project-gallery">
+                    <div class="project-main-image" id="mainImage">
+                        <img src="" alt="Project Image" id="modalMainImage">
+                    </div>
+                    <div class="project-thumbnails" id="projectThumbnails">
+                        <!-- Thumbnails will be dynamically added here -->
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-description">
+                        <h3>Project Description</h3>
+                        <p id="projectDescription">Project description goes here...</p>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-detail-item">
+                            <h4>Client</h4>
+                            <p id="projectClient">Client Name</p>
+                        </div>
+                        <div class="project-detail-item">
+                            <h4>Platform</h4>
+                            <p id="projectPlatform">Web, Mobile</p>
+                        </div>
+                        <div class="project-detail-item">
+                            <h4>Category</h4>
+                            <p id="projectCategory">Branding</p>
+                        </div>
+                        <div class="project-detail-item">
+                            <h4>Date</h4>
+                            <p id="projectDate">January 2023</p>
+                        </div>
+                    </div>
+                    <div class="project-share">
+                        <h4>Share this project</h4>
+                        <div class="share-links">
+                            <a href="#" class="share-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="share-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="share-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="share-link">
+                                <i class="fas fa-link"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" id="lightboxClose">
+                <i class="fas fa-times"></i>
+            </span>
+            <img class="lightbox-img" id="lightboxImage" src="" alt="Project Image">
+            <div class="lightbox-nav">
+                <div class="lightbox-prev" id="lightboxPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="lightbox-next" id="lightboxNext">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="lightbox-counter" id="lightboxCounter">1 / 3</div>
+        </div>
+    </div>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            const backToTop = document.getElementById('backToTop');
+            
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            if (window.scrollY > 500) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+        
+        fadeElements.forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const nav = document.querySelector('nav ul');
+        
+        mobileMenu.addEventListener('click', function() {
+            nav.classList.toggle('active');
+        });
+        
+        // Create particle background
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 10 + 5;
+                const left = Math.random() * 100;
+                const animationDuration = Math.random() * 20 + 10;
+                const animationDelay = Math.random() * 5;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDuration = `${animationDuration}s`;
+                particle.style.animationDelay = `${animationDelay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        createParticles();
+        
+        // Fix for back to top button
+        document.getElementById('backToTop').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Project Detail Modal
+        const projectModal = document.getElementById('projectModal');
+        const closeModal = document.getElementById('closeModal');
+        const viewDetailsBtns = document.querySelectorAll('.view-details');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        const lightboxCounter = document.getElementById('lightboxCounter');
+
+        // Project data
+        const projects = {
+            'tech-logo': {
+                title: 'Tech Startup Logo',
+                subtitle: 'Modern geometric design representing innovation',
+                description: 'Created a distinctive logo for a technology startup focused on AI solutions. The design combines geometric shapes with a forward-moving arrow element to symbolize innovation and progress. The color palette uses shades of blue to convey trust and technology.',
+                client: 'Nexus AI Solutions',
+                platform: 'Adobe Illustrator',
+                category: 'Logo Design, Brand Identity',
+                date: 'March 2024',
+                images: [
+                    'https://images.unsplash.com/photo-1634942537034-2531766767d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1634942536823-cb4267ac6c6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1634942537034-2531766767d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+                ]
+            },
+            'restaurant-logo': {
+                title: 'Restaurant Brand Identity',
+                subtitle: 'Elegant branding for fine dining establishment',
+                description: 'Developed a complete brand identity for a high-end restaurant, including logo, color palette, typography, and application guidelines. The design reflects the restaurant\'s focus on premium ingredients and sophisticated dining experience, using gold accents and elegant serif typography.',
+                client: 'Bistro Elegante',
+                platform: 'Adobe Illustrator, InDesign',
+                category: 'Logo Design, Branding',
+                date: 'January 2024',
+                images: [
+                    'https://images.unsplash.com/photo-1634942536823-cb4267ac6c6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1634942537034-2531766767d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1634942536823-cb4267ac6c6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+                ]
+            },
+            'fitness-logo': {
+                title: 'Fitness Brand Logo',
+                subtitle: 'Energetic design emphasizing movement and strength',
+                description: 'Designed a dynamic logo for a fitness brand that needed to communicate energy, movement, and strength. The abstract mark combines elements representing motion and human form, while the bold typography conveys strength and stability. The color scheme uses vibrant oranges and deep blues to create contrast and energy.',
+                client: 'ActiveLife Fitness',
+                platform: 'Adobe Illustrator',
+                category: 'Logo Design, Brand Identity',
+                date: 'February 2024',
+                images: [
+                    'https://images.unsplash.com/photo-1622495504751-7eaf6d55d6a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1634942537034-2531766767d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1622495504751-7eaf6d55d6a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+                ]
+            },
+            'ecommerce-design': {
+                title: 'E-commerce Website Design',
+                subtitle: 'Modern online store with intuitive user experience',
+                description: 'Designed and developed a responsive e-commerce website for a fashion retailer. The design focuses on clean product presentation, intuitive navigation, and a streamlined checkout process. Implemented custom filtering options and product comparison features to enhance the shopping experience.',
+                client: 'StyleHub Fashion',
+                platform: 'Figma, HTML/CSS, JavaScript',
+                category: 'Web Design, E-commerce',
+                date: 'February 2024',
+                images: [
+                    'https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+                ]
+            },
+            'saas-design': {
+                title: 'SaaS Dashboard Design',
+                subtitle: 'Clean and functional interface for data management',
+                description: 'Designed a comprehensive dashboard for a SaaS application focused on data analytics. Created an intuitive navigation system, clear data visualization components, and user management features. The design prioritizes usability while maintaining a professional aesthetic.',
+                client: 'DataInsight Pro',
+                platform: 'Figma, Adobe XD',
+                category: 'Web Design, UI/UX',
+                date: 'December 2023',
+                images: [
+                    'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+                ]
+            },
+            'portfolio-design': {
+                title: 'Portfolio Website Design',
+                subtitle: 'Creative showcase for visual content',
+                description: 'Designed a minimalist portfolio website for a photographer that puts the focus entirely on the visual work. Implemented a clean grid layout with smooth transitions between project views. The design uses ample white space and subtle animations to create an elegant browsing experience that doesn\'t distract from the photography.',
+                client: 'LensCraft Photography',
+                platform: 'Figma, HTML/CSS, JavaScript',
+                category: 'Web Design, Portfolio',
+                date: 'November 2023',
+                images: [
+                    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+                ]
+            }
+        };
+
+        let currentProject = null;
+        let currentImageIndex = 0;
+
+        // Open project modal
+        viewDetailsBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const projectId = this.getAttribute('data-project');
+                openProjectModal(projectId);
+            });
+        });
+
+        // Close project modal
+        closeModal.addEventListener('click', function() {
+            projectModal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        projectModal.addEventListener('click', function(e) {
+            if (e.target === projectModal) {
+                projectModal.classList.remove('active');
+            }
+        });
+
+        // Open project modal function
+        function openProjectModal(projectId) {
+            const project = projects[projectId];
+            if (!project) return;
+
+            currentProject = projectId;
+
+            // Set modal content
+            document.getElementById('projectTitle').textContent = project.title;
+            document.getElementById('projectSubtitle').textContent = project.subtitle;
+            document.getElementById('projectDescription').textContent = project.description;
+            document.getElementById('projectClient').textContent = project.client;
+            document.getElementById('projectPlatform').textContent = project.platform;
+            document.getElementById('projectCategory').textContent = project.category;
+            document.getElementById('projectDate').textContent = project.date;
+
+            // Set main image
+            const modalMainImage = document.getElementById('modalMainImage');
+            modalMainImage.src = project.images[0];
+            modalMainImage.alt = project.title;
+
+            // Create thumbnails
+            const thumbnailsContainer = document.getElementById('projectThumbnails');
+            thumbnailsContainer.innerHTML = '';
+
+            project.images.forEach((image, index) => {
+                const thumbnail = document.createElement('div');
+                thumbnail.className = 'project-thumbnail' + (index === 0 ? ' active' : '');
+                thumbnail.innerHTML = `<img src="${image}" alt="${project.title} - Image ${index + 1}">`;
+                
+                thumbnail.addEventListener('click', function() {
+                    // Update main image
+                    modalMainImage.src = image;
+                    
+                    // Update active thumbnail
+                    document.querySelectorAll('.project-thumbnail').forEach(thumb => {
+                        thumb.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Update current image index for lightbox
+                    currentImageIndex = index;
+                });
+                
+                thumbnailsContainer.appendChild(thumbnail);
+            });
+
+            // Show modal
+            projectModal.classList.add('active');
+        }
+
+        // Lightbox functionality
+        const mainImage = document.getElementById('mainImage');
+        mainImage.addEventListener('click', function() {
+            if (!currentProject) return;
+            
+            const project = projects[currentProject];
+            openLightbox(project.images, currentImageIndex);
+        });
+
+        function openLightbox(images, startIndex) {
+            currentImageIndex = startIndex;
+            updateLightboxImage(images, currentImageIndex);
+            lightbox.classList.add('active');
+        }
+
+        function updateLightboxImage(images, index) {
+            lightboxImage.src = images[index];
+            lightboxCounter.textContent = `${index + 1} / ${images.length}`;
+        }
+
+        lightboxClose.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+        });
+
+        lightboxPrev.addEventListener('click', function() {
+            if (!currentProject) return;
+            
+            const project = projects[currentProject];
+            currentImageIndex = (currentImageIndex - 1 + project.images.length) % project.images.length;
+            updateLightboxImage(project.images, currentImageIndex);
+        });
+
+        lightboxNext.addEventListener('click', function() {
+            if (!currentProject) return;
+            
+            const project = projects[currentProject];
+            currentImageIndex = (currentImageIndex + 1) % project.images.length;
+            updateLightboxImage(project.images, currentImageIndex);
+        });
+
+        // Close lightbox when clicking outside
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', function(e) {
+            if (!lightbox.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+            } else if (e.key === 'ArrowLeft') {
+                lightboxPrev.click();
+            } else if (e.key === 'ArrowRight') {
+                lightboxNext.click();
+            }
+        });
+    </script>
+</body>
+</html>
