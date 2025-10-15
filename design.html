@@ -7,10 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* All the CSS from the main page goes here */
-        /* For brevity, I'm including the same CSS as the main page */
-        /* In a real implementation, you would use a shared CSS file */
-        
+        /* CSS variables and base styles */
         :root {
             --primary: #2563EB;
             --primary-dark: #1D4ED8;
@@ -311,10 +308,156 @@
             flex-wrap: wrap;
         }
         
+        /* Logo Design Projects - Horizontal Scroll */
+        .logo-design-container {
+            position: relative;
+            margin: 40px 0;
+            overflow: hidden;
+        }
+        
+        .logo-scroll-track {
+            display: flex;
+            animation: scrollLogos 30s linear infinite;
+            padding: 20px 0;
+            gap: 30px;
+        }
+        
+        .logo-design-container:hover .logo-scroll-track {
+            animation-play-state: paused;
+        }
+        
+        @keyframes scrollLogos {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-100% - 30px));
+            }
+        }
+        
+        .logo-item {
+            flex: 0 0 auto;
+            width: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .logo-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: white;
+            padding: 20px;
+            transition: transform 0.5s ease;
+        }
+        
+        .logo-item:hover .logo-img img {
+            transform: scale(1.05);
+        }
+        
+        .logo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .logo-item:hover .logo-overlay {
+            opacity: 1;
+        }
+        
+        .logo-overlay h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .logo-overlay p {
+            color: #e2e8f0;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .design-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .design-link:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .logo-content {
+            padding: 25px;
+        }
+        
+        .logo-content h3 {
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .logo-content p {
+            margin-bottom: 20px;
+        }
+        
+        .logo-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .logo-tag {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
         /* Web Design Section */
         div#web-design {
             margin-top: 60px;
         }
+        
         /* Design Section */
         .design {
             background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
@@ -333,36 +476,6 @@
         .design-header p {
             max-width: 600px;
             margin: 0 auto;
-        }
-        
-        .design-category {
-            background: var(--glass);
-            border-radius: 15px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-        }
-        
-        .design-category:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .design-category i {
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .design-category h3 {
-            color: white;
-            margin-bottom: 15px;
-        }
-        
-        .design-category p {
-            margin-bottom: 25px;
         }
         
         .design-grid {
@@ -435,54 +548,6 @@
             color: #e2e8f0;
             margin-bottom: 20px;
             font-size: 0.95rem;
-        }
-        
-        .design-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-        
-        .design-link:hover {
-            background: white;
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .design-content {
-            padding: 25px;
-        }
-        
-        .design-content h3 {
-            margin-bottom: 10px;
-            color: white;
-        }
-        
-        .design-content p {
-            margin-bottom: 20px;
-        }
-        
-        .design-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .design-tag {
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
         }
         
         /* Footer */
@@ -662,6 +727,10 @@
             
             .mobile-menu {
                 display: block;
+            }
+            
+            .logo-item {
+                width: 300px;
             }
             
             .design-grid {
@@ -1387,7 +1456,6 @@
     </div>
 </section>
 
-
     <!-- Design Categories -->
     <section class="design" id="design">
         <div class="container">
@@ -1397,80 +1465,167 @@
                 <p>A selection of brand identity projects showcasing different styles and industries.</p>
             </div>
             
-            <div class="design-grid">
-                <!-- Logo Design Project 1 -->
-                <div class="design-item fade-in" >
-                    <div class="design-img">
+            <div class="logo-design-container">
+                <div class="logo-scroll-track">
+                    <!-- Logo Design Project 1 -->
+                    <div class="logo-item fade-in">
+                        <div class="logo-img">
                         <img src="./All logo/LLHarrell.png" alt="LLHarrell">
                         <div class="design-overlay">
                             <h3>LLHarrell</h3>
-                            <p>Modern logo design for a technology startup focusing on innovation and simplicity</p>
-                            <a href="#" class="design-link view-details" data-project="tech-logo">
-                                <i class="fas fa-eye"></i>
-                                View Details
-                            </a>
+                                <p>Modern logo design for a technology startup focusing on innovation and simplicity</p>
+                                <a href="#" class="design-link view-details" data-project="tech-logo">
+                                    <i class="fas fa-eye"></i>
+                                    View Details
+                                </a>
+                            </div>
                         </div>
+
+                    </div>
+                    
+                    <!-- Logo Design Project 2 -->
+                    <div class="logo-item fade-in">
+                        <div class="logo-img">
+                            <img src="./All logo/TBL.png" alt="Taxhaus Business Logics">
+                            <div class="logo-overlay">
+                                <h3>Taxhaus Business Logics</h3>
+                                <p>Complete branding package for a fine dining restaurant including logo and visual identity</p>
+                                <a href="#" class="design-link view-details" data-project="restaurant-logo">
+                                    <i class="fas fa-eye"></i>
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <!-- Logo Design Project 3 -->
+                    <div class="logo-item fade-in">
+                        <div class="logo-img">
+                            <img src="./All logo/IconElect.png" alt="Icon Elect">
+                            <div class="logo-overlay">
+                                <h3>Icon Elect</h3>
+                                <p>Energetic logo design for a fitness brand emphasizing movement and strength</p>
+                                <a href="#" class="design-link view-details" data-project="fitness-logo">
+                                    <i class="fas fa-eye"></i>
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
 
-                </div>
-                
-                <!-- Logo Design Project 2 -->
-                <div class="design-item fade-in">
-                    <div class="design-img">
-                        <img src="./All logo/TBL.png" alt="Taxhaus Business Logics">
-                        <div class="design-overlay">
-                            <h3>Taxhaus Business Logics</h3>
-                            <p>Complete branding package for a fine dining restaurant including logo and visual identity</p>
-                            <a href="#" class="design-link view-details" data-project="restaurant-logo">
-                                <i class="fas fa-eye"></i>
-                                View Details
-                            </a>
+                    <!-- Logo Design Project 4 -->
+                    <div class="logo-item fade-in">
+                        <div class="logo-img">
+                            <img src="./All logo/RavivCasuals.png" alt="Raviv Casuals">
+                            <div class="logo-overlay">
+                                <h3>Raviv Casuals</h3>
+                                <p>Energetic logo design for a fitness brand emphasizing movement and strength</p>
+                                <a href="#" class="design-link view-details" data-project="fitness-logo">
+                                    <i class="fas fa-eye"></i>
+                                    View Details
+                                </a>
+                            </div>
                         </div>
+
                     </div>
 
-                </div>
-                
-                <!-- Logo Design Project 3 -->
-                <div class="design-item fade-in">
-                    <div class="design-img">
-                        <img src="./All logo/IconElect.png" alt="Icon Elect">
-                        <div class="design-overlay">
-                            <h3>Icon Elect</h3>
-                            <p>Energetic logo design for a fitness brand emphasizing movement and strength</p>
-                            <a href="#" class="design-link view-details" data-project="fitness-logo">
-                                <i class="fas fa-eye"></i>
-                                View Details
-                            </a>
+                    <!-- Logo Design Project 5 -->
+                    <div class="logo-item fade-in">
+                        <div class="logo-img">
+                            <img src="./All logo/HarrellBCB.png" alt="Harrell BCB">
+                            <div class="logo-overlay">
+                                <h3>Harrell ButterCream Biscuits</h3>
+                                <p>Energetic logo design for a fitness brand emphasizing movement and strength</p>
+                                <a href="#" class="design-link view-details" data-project="fitness-logo">
+                                    <i class="fas fa-eye"></i>
+                                    View Details
+                                </a>
+                            </div>
                         </div>
+
+                    </div>
+                    
+                    <!-- Duplicate items for seamless loop -->
+                    <!-- Logo Design Project 1 -->
+                    <div class="logo-item fade-in">
+                        <div class="logo-img">
+                        <img src="./All logo/LLHarrell.png" alt="LLHarrell">
+                        <div class="design-overlay">
+                            <h3>LLHarrell</h3>
+                                <p>Modern logo design for a technology startup focusing on innovation and simplicity</p>
+                                <a href="#" class="design-link view-details" data-project="tech-logo">
+                                    <i class="fas fa-eye"></i>
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <!-- Logo Design Project 2 -->
+                    <div class="logo-item fade-in">
+                        <div class="logo-img">
+                            <img src="./All logo/TBL.png" alt="Taxhaus Business Logics">
+                            <div class="logo-overlay">
+                                <h3>Taxhaus Business Logics</h3>
+                                <p>Complete branding package for a fine dining restaurant including logo and visual identity</p>
+                                <a href="#" class="design-link view-details" data-project="restaurant-logo">
+                                    <i class="fas fa-eye"></i>
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <!-- Logo Design Project 3 -->
+                    <div class="logo-item fade-in">
+                        <div class="logo-img">
+                            <img src="./All logo/IconElect.png" alt="Icon Elect">
+                            <div class="logo-overlay">
+                                <h3>Icon Elect</h3>
+                                <p>Energetic logo design for a fitness brand emphasizing movement and strength</p>
+                                <a href="#" class="design-link view-details" data-project="fitness-logo">
+                                    <i class="fas fa-eye"></i>
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
 
-                </div>
-
-                <div class="design-item fade-in">
-                    <div class="design-img">
-                        <img src="./All logo/RavivCasuals.png" alt="Raviv Casuals">
-                        <div class="design-overlay">
-                            <h3>Raviv Casuals</h3>
-                            <p>Energetic logo design for a fitness brand emphasizing movement and strength</p>
-                            <a href="#" class="design-link view-details" data-project="fitness-logo">
-                                <i class="fas fa-eye"></i>
-                                View Details
-                            </a>
+                    <!-- Logo Design Project 4 -->
+                    <div class="logo-item fade-in">
+                        <div class="logo-img">
+                            <img src="./All logo/RavivCasuals.png" alt="Raviv Casuals">
+                            <div class="logo-overlay">
+                                <h3>Raviv Casuals</h3>
+                                <p>Energetic logo design for a fitness brand emphasizing movement and strength</p>
+                                <a href="#" class="design-link view-details" data-project="fitness-logo">
+                                    <i class="fas fa-eye"></i>
+                                    View Details
+                                </a>
+                            </div>
                         </div>
+
                     </div>
-                </div>
 
-                <div class="design-item fade-in">
-                    <div class="design-img">
-                        <img src="./All logo/HarrellBCB.png" alt="Harrell BCB">
-                        <div class="design-overlay">
-                            <h3>Harrell ButterCream Biscuits</h3>
-                            <p>Energetic logo design for a fitness brand emphasizing movement and strength</p>
-                            <a href="#" class="design-link view-details" data-project="fitness-logo">
-                                <i class="fas fa-eye"></i>
-                                View Details
-                            </a>
+                    <!-- Logo Design Project 5 -->
+                    <div class="logo-item fade-in">
+                        <div class="logo-img">
+                            <img src="./All logo/HarrellBCB.png" alt="Harrell BCB">
+                            <div class="logo-overlay">
+                                <h3>Harrell ButterCream Biscuits</h3>
+                                <p>Energetic logo design for a fitness brand emphasizing movement and strength</p>
+                                <a href="#" class="design-link view-details" data-project="fitness-logo">
+                                    <i class="fas fa-eye"></i>
+                                    View Details
+                                </a>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -1800,10 +1955,10 @@
         // Project data
         const projects = {
             'tech-logo': {
-                title: 'Tech Startup Logo',
+                title: 'LLHarrell Logo',
                 subtitle: 'Modern geometric design representing innovation',
                 description: 'Created a distinctive logo for a technology startup focused on AI solutions. The design combines geometric shapes with a forward-moving arrow element to symbolize innovation and progress. The color palette uses shades of blue to convey trust and technology.',
-                client: 'Nexus AI Solutions',
+                client: 'LLHarrell',
                 platform: 'Adobe Illustrator',
                 category: 'Logo Design, Brand Identity',
                 date: 'March 2024',
@@ -1814,10 +1969,10 @@
                 ]
             },
             'restaurant-logo': {
-                title: 'Restaurant Brand Identity',
-                subtitle: 'Elegant branding for fine dining establishment',
-                description: 'Developed a complete brand identity for a high-end restaurant, including logo, color palette, typography, and application guidelines. The design reflects the restaurant\'s focus on premium ingredients and sophisticated dining experience, using gold accents and elegant serif typography.',
-                client: 'Bistro Elegante',
+                title: 'Taxhaus Business Logics',
+                subtitle: 'Professional branding for business solutions',
+                description: 'Developed a complete brand identity for a business solutions company, including logo, color palette, typography, and application guidelines. The design reflects the company\'s focus on precision and reliability, using clean lines and professional color scheme.',
+                client: 'Taxhaus Business Logics',
                 platform: 'Adobe Illustrator, InDesign',
                 category: 'Logo Design, Branding',
                 date: 'January 2024',
@@ -1828,10 +1983,10 @@
                 ]
             },
             'fitness-logo': {
-                title: 'Fitness Brand Logo',
-                subtitle: 'Energetic design emphasizing movement and strength',
-                description: 'Designed a dynamic logo for a fitness brand that needed to communicate energy, movement, and strength. The abstract mark combines elements representing motion and human form, while the bold typography conveys strength and stability. The color scheme uses vibrant oranges and deep blues to create contrast and energy.',
-                client: 'ActiveLife Fitness',
+                title: 'Icon Elect',
+                subtitle: 'Modern electrical services branding',
+                description: 'Designed a dynamic logo for an electrical services company that needed to communicate reliability and modern approach. The abstract mark combines elements representing energy flow and connectivity, while the bold typography conveys strength and stability.',
+                client: 'Icon Elect',
                 platform: 'Adobe Illustrator',
                 category: 'Logo Design, Brand Identity',
                 date: 'February 2024',
