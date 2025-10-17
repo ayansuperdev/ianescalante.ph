@@ -506,20 +506,54 @@
             font-weight: 600;
         }
         
-        .skill-progress {
-            height: 8px;
-            background: var(--glass);
-            border-radius: 4px;
-            overflow: hidden;
-        }
+/* Ensure the progress container only shows the filled portion */
+.skill-progress {
+    height: 8px;
+    background: var(--glass);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Add a shimmer effect for better visual feedback */
+.skill-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.4), 
+        transparent);
+    animation: shimmer 2s infinite;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.skill-progress-bar.animated::after {
+    opacity: 1;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
         
-        .skill-progress-bar {
-            height: 100%;
-            border-radius: 4px;
-            width: 0;
-            transition: width 1.5s ease-in-out;
-            background: linear-gradient(90deg, #ff4d4d, #ffa500, #4CAF50);
-        }
+/* Update the existing .skill-progress-bar styles */
+.skill-progress-bar {
+    height: 100%;
+    border-radius: 4px;
+    width: 0; /* Start at 0 width */
+    transition: width 1.5s ease-in-out;
+    background: linear-gradient(90deg, #ff4d4d, #ffa500, #4CAF50);
+    position: relative;
+}
         
         .skill-icons {
             display: grid;
@@ -2191,49 +2225,107 @@
                 backToTop.classList.remove('active');
             }
         });
+
+// Enhanced skill bar animation with step-by-step loading
+function animateSkillBars() {
+    const skillBars = document.querySelectorAll('.skill-bar');
+    
+    skillBars.forEach((skillBar, index) => {
+        const progressBar = skillBar.querySelector('.skill-progress-bar');
+        const width = progressBar.getAttribute('data-width');
+        const percentage = parseInt(width);
         
-        // Scroll animations
-        const fadeElements = document.querySelectorAll('.fade-in');
+        // Reset to 0
+        progressBar.style.width = '0%';
         
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('appear');
+        // Add loading class for shimmer effect
+        progressBar.classList.add('animated');
+        
+        // Animate with delay for staggered effect
+        setTimeout(() => {
+            progressBar.style.width = width + '%';
+            
+            // Set gradient based on percentage
+            let gradient;
+            if (percentage < 50) {
+                gradient = 'linear-gradient(90deg, #ff4d4d, #ff8533)';
+            } else if (percentage < 80) {
+                gradient = 'linear-gradient(90deg, #ffa500, #ffcc00)';
+            } else {
+                gradient = 'linear-gradient(90deg, #ffff00, #4CAF50)';
+            }
+            
+            progressBar.style.background = gradient;
+            
+            // Remove shimmer after animation completes
+            setTimeout(() => {
+                progressBar.classList.remove('animated');
+            }, 1500);
+        }, index * 200); // Stagger the animations
+    });
+}
+
+// Call this function when skills section comes into view
+const skillsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateSkillBars();
+            skillsObserver.unobserve(entry.target); // Only animate once
+        }
+    });
+}, { threshold: 0.3 });
+
+const skillsSection = document.getElementById('skills');
+if (skillsSection) {
+    skillsObserver.observe(skillsSection);
+}
+        
+// Scroll animations for skill bars
+const fadeElements = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('appear');
+            
+            // Animate skill bars
+            if (entry.target.classList.contains('skill-bar')) {
+                const progressBar = entry.target.querySelector('.skill-progress-bar');
+                const width = progressBar.getAttribute('data-width');
+                
+                // Reset width to 0 before animating
+                progressBar.style.width = '0%';
+                
+                setTimeout(() => {
+                    progressBar.style.width = width + '%';
                     
-                    // Animate skill bars
-                    if (entry.target.classList.contains('skill-bar')) {
-                        const progressBar = entry.target.querySelector('.skill-progress-bar');
-                        const width = progressBar.getAttribute('data-width');
-                        setTimeout(() => {
-                            progressBar.style.width = width + '%';
-                            
-                            // Set gradient based on percentage
-                            const percentage = parseInt(width);
-                            let gradient;
-                            
-                            if (percentage < 50) {
-                                // Red to Orange gradient for low percentages
-                                gradient = 'linear-gradient(90deg, #ff4d4d, #ff8533, #ffa500)';
-                            } else if (percentage < 80) {
-                                // Orange to Yellow gradient for medium percentages
-                                gradient = 'linear-gradient(90deg, #ffa500, #ffcc00, #ffff00)';
-                            } else {
-                                // Yellow to Green gradient for high percentages
-                                gradient = 'linear-gradient(90deg, #ffff00, #aaff00, #4CAF50)';
-                            }
-                            
-                            progressBar.style.background = gradient;
-                        }, 300);
+                    // Set gradient based on percentage
+                    const percentage = parseInt(width);
+                    let gradient;
+                    
+                    if (percentage < 50) {
+                        // Red to Orange gradient for low percentages
+                        gradient = 'linear-gradient(90deg, #ff4d4d, #ff8533)';
+                    } else if (percentage < 80) {
+                        // Orange to Yellow gradient for medium percentages
+                        gradient = 'linear-gradient(90deg, #ffa500, #ffcc00)';
+                    } else {
+                        // Yellow to Green gradient for high percentages
+                        gradient = 'linear-gradient(90deg, #ffff00, #4CAF50)';
                     }
-                }
-            });
-        }, {
-            threshold: 0.15
-        });
-        
-        fadeElements.forEach(el => {
-            observer.observe(el);
-        });
+                    
+                    progressBar.style.background = gradient;
+                }, 300);
+            }
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+fadeElements.forEach(el => {
+    observer.observe(el);
+});
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2294,26 +2386,28 @@
             });
         });
         
-        // Set initial gradient for skill bars
-        document.addEventListener('DOMContentLoaded', function() {
-            const skillBars = document.querySelectorAll('.skill-bar');
-            skillBars.forEach(skillBar => {
-                const progressBar = skillBar.querySelector('.skill-progress-bar');
-                const width = progressBar.getAttribute('data-width');
-                const percentage = parseInt(width);
-                let gradient;
-                
-                if (percentage < 50) {
-                    gradient = 'linear-gradient(90deg, #ff4d4d, #ff8533, #ffa500)';
-                } else if (percentage < 80) {
-                    gradient = 'linear-gradient(90deg, #ffa500, #ffcc00, #ffff00)';
-                } else {
-                    gradient = 'linear-gradient(90deg, #ffff00, #aaff00, #4CAF50)';
-                }
-                
-                progressBar.style.background = gradient;
-            });
-        });
+// Set initial state for skill bars (0 width)
+document.addEventListener('DOMContentLoaded', function() {
+    const skillBars = document.querySelectorAll('.skill-progress-bar');
+    skillBars.forEach(bar => {
+        bar.style.width = '0%';
+        
+        // Set initial gradient based on percentage
+        const width = bar.getAttribute('data-width');
+        const percentage = parseInt(width);
+        let gradient;
+        
+        if (percentage < 50) {
+            gradient = 'linear-gradient(90deg, #ff4d4d, #ff8533)';
+        } else if (percentage < 80) {
+            gradient = 'linear-gradient(90deg, #ffa500, #ffcc00)';
+        } else {
+            gradient = 'linear-gradient(90deg, #ffff00, #4CAF50)';
+        }
+        
+        bar.style.background = gradient;
+    });
+});
 
         // Portfolio Filter Functionality
         document.addEventListener('DOMContentLoaded', function() {
