@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Solutions | IAN ESCALANTE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Keep all the existing CSS styles from webdevelopment.html */
+        /* Only updating the content */
+        
+        :root {
+            --primary: #2563EB;
+            --primary-dark: #1D4ED8;
+            --primary-light: #3B82F6;
+            --secondary: #0F172A;
+            --accent: #F59E0B;
+            --light: #F8FAFC;
+            --gray: #64748B;
+            --dark: #1E293B;
+            --success: #10B981;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #accbf7;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .btn:hover:before {
+            width: 100%;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            background: rgba(15, 23, 42, 0.8);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo span {
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 40px;
+            position: relative;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(15, 23, 42, 0.95);
+            min-width: 200px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu li {
+            margin: 0;
+        }
+        
+        .dropdown-menu a {
+            padding: 12px 20px;
+            display: block;
+            color: var(--light);
+            transition: var(--transition);
+        }
+        
+        .dropdown-menu a:hover {
+            background: rgba(37, 99, 235, 0.2);
+            color: var(--primary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            position: relative;
+            overflow: hidden;
+            padding-top: 120px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .hero h1 span {
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+            justify-content: center;
+        }
+        
+        /* Service Details */
+        .service-details {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+        }
+        
+        .service-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .service-content h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .service-content p {
+            margin-bottom: 25px;
+        }
+        
+        .service-features {
+            margin-top: 40px;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .feature-list i {
+            color: var(--primary);
+            margin-top: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .service-img {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .service-img:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.1"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        }
+        
+        .service-img-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            padding: 40px;
+        }
+        
+        .service-img-content i {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        /* Process Section */
+        .process {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+        }
+        
+        .process-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .process-header h2 {
+            color: white;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .process-step {
+            background: var(--glass);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .process-step:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 25px;
+        }
+        
+        .process-step h3 {
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-about h3 {
+            color: white;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 25px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 25px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+        
+        /* Project Showcase */
+        .project-showcase {
+            margin-top: 60px;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: var(--glass);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .project-image {
+            padding: 200px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .project-image:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-content h4 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .project-content p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        
+        .project-features {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .project-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .project-features i {
+            color: var(--success);
+            font-size: 0.8rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .service-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 23, 42, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                backdrop-filter: blur(10px);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav li {
+                margin: 10px 0;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: transparent;
+                box-shadow: none;
+                padding: 0;
+                margin-top: 10px;
+            }
+            
+            .dropdown-menu li {
+                margin: 5px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-code"></i>
+                Ian<span>Dev</span>
+            </a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#home">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li class="dropdown">
+                        <a href="../design.html">Design <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../logodesign.html">Logo Design</a></li>
+                            <li><a href="../webdesign.html">Web Design</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../index.html#skills">Skills</a></li>
+                    <li><a href="../index.html#portfolio">Portfolio</a></li>
+                    <li><a href="../index.html#experience">Experience</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>E-commerce <span>Solutions</span></h1>
+                <p>Custom WooCommerce stores with Stripe integration, subscription services, and optimized shopping experiences that drive conversions.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        Start Your Store
+                    </a>
+                    <a href="../index.html#portfolio" class="btn btn-outline">
+                        <i class="fas fa-eye"></i>
+                        View My Work
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Details -->
+    <section class="service-details">
+        <div class="container">
+            <div class="service-container">
+                <div class="service-content">
+                    <h2>WooCommerce & E-commerce Development</h2>
+                    <p>I specialize in building powerful e-commerce solutions using WooCommerce with custom functionality, API integrations, and subscription services. With expertise in Stripe payment processing and Payment Links, I create online stores that not only look great but also convert visitors into customers.</p>
+                    <p>My approach combines the flexibility of WooCommerce with custom development to deliver unique shopping experiences tailored to your business model and customer needs.</p>
+                    
+                    <div class="service-features">
+                        <h3>What I Offer</h3>
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>Custom WooCommerce Development</strong>
+                                    <p>Bespoke WooCommerce stores with custom functionality, product variations, and advanced filtering.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>Stripe Payment Integration</strong>
+                                    <p>Seamless Stripe integration for secure payment processing, including one-time payments and subscriptions.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>Subscription & Membership Systems</strong>
+                                    <p>Recurring payment systems for subscription boxes, membership sites, and digital content.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>Payment Links & Quick Checkout</strong>
+                                    <p>Custom Payment Links implementation for fast, frictionless purchases without traditional cart flows.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>Inventory & Order Management</strong>
+                                    <p>Advanced inventory tracking, order management systems, and automated fulfillment workflows.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>E-commerce Optimization</strong>
+                                    <p>Conversion-focused design, abandoned cart recovery, and performance optimization for faster sales.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-img">
+                    <div class="service-img-content">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>E-commerce Solutions</h3>
+                        <p>WooCommerce & Custom Stores</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Showcase -->
+            <div class="project-showcase">
+                <h2>Featured E-commerce Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('https://harrellmelts.com/wp-content/uploads/2025/06/Project-ICON-harrellmelts.png')">
+                            <!-- You can replace this URL with your actual project image -->
+                        </div>
+                        <div class="project-content">
+                            <h4>Harrell Melts</h4>
+                            <p>Good Biscuit must have subscription service with WooCommerce and Stripe integration for recurring payments.</p>
+                            <ul class="project-features">
+                                <li><i class="fas fa-check"></i> WooCommerce with subscription functionality</li>
+                                <li><i class="fas fa-check"></i> Stripe API integration</li>
+                                <li><i class="fas fa-check"></i> Custom product variations</li>
+                                <li><i class="fas fa-check"></i> Automated billing cycles</li>
+                                <li><i class="fas fa-check"></i> Responsive design</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('https://ravivcasuals.com/wp-content/uploads/2025/06/Project-ICON.png')">
+                            <!-- You can replace this URL with your actual project image -->
+                        </div>
+                        <div class="project-content">
+                            <h4>Raviv Casuals</h4>
+                            <p>Fashion e-commerce store with custom sizing guides, product filtering, and Payment Links integration.</p>
+                            <ul class="project-features">
+                                <li><i class="fas fa-check"></i> Custom WooCommerce theme</li>
+                                <li><i class="fas fa-check"></i> Stripe Payment Links</li>
+                                <li><i class="fas fa-check"></i> Advanced product filtering</li>
+                                <li><i class="fas fa-check"></i> Size guide integration</li>
+                                <li><i class="fas fa-check"></i> Inventory management</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <div class="process-header">
+                <h2>My E-commerce Development Process</h2>
+                <p>A structured approach to building high-converting online stores</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Strategy & Planning</h3>
+                    <p>Understanding your products, target audience, and business goals to create a comprehensive e-commerce strategy.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Platform & Integration Setup</h3>
+                    <p>Setting up WooCommerce with necessary plugins, payment gateways (Stripe), and third-party integrations.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Custom Development</h3>
+                    <p>Building custom functionality, product configurations, and unique features tailored to your business needs.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Testing & Launch</h3>
+                    <p>Thorough testing of all functionality, payment processing, and user flows before launching your store.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Ready to Launch Your Online Store?</h2>
+            <p>Let's discuss how I can create a powerful e-commerce solution with WooCommerce and Stripe integration that drives sales and grows your business.</p>
+            <a href="../index.html#contact" class="btn">
+                <i class="fas fa-paper-plane"></i>
+                Get In Touch
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <h3>
+                        <i class="fas fa-code"></i>
+                        IAN ESCALANTE
+                    </h3>
+                    <p>Professional web developer specializing in WordPress development, custom plugins, and creating modern web applications with clean code and exceptional user experiences.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="../index.html#about"><i class="fas fa-chevron-right"></i> About</a></li>
+                        <li><a href="../index.html#skills"><i class="fas fa-chevron-right"></i> Skills</a></li>
+                        <li><a href="../index.html#portfolio"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="../index.html#experience"><i class="fas fa-chevron-right"></i> Experience</a></li>
+                        <li><a href="../index.html#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="../Services/webdevelopment.html"><i class="fas fa-chevron-right"></i> Web Development</a></li>
+                        <li><a href="../design.html#logo-design"><i class="fas fa-chevron-right"></i> Logo Design</a></li>
+                        <li><a href="../design.html#web-design"><i class="fas fa-chevron-right"></i> Web Design</a></li>
+                        <li><a href="../Services/wordpresssolutions.html"><i class="fas fa-chevron-right"></i> WordPress Solutions</a></li>
+                        <li><a href="../Services/e-commerce.html"><i class="fas fa-chevron-right"></i> E-commerce</a></li>
+                        <li><a href="../Services/apiintegration.html"><i class="fas fa-chevron-right"></i> API Integration</a></li>
+                        <li><a href="../Services/seooptimization.html"><i class="fas fa-chevron-right"></i> SEO Optimization</a></li>
+                        <li><a href="../Services/maintenancesupport.html"><i class="fas fa-chevron-right"></i> Maintenance & Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 IAN ESCALANTE. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            const backToTop = document.getElementById('backToTop');
+            
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            if (window.scrollY > 500) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const nav = document.querySelector('nav ul');
+        
+        mobileMenu.addEventListener('click', function() {
+            nav.classList.toggle('active');
+        });
+        
+        // Fix for back to top button
+        document.getElementById('backToTop').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
