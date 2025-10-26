@@ -1569,6 +1569,35 @@
             color: white;
             font-size: 1.1rem;
         }
+
+        /* timeline */
+        .timeline-hidden {
+            display: none;
+        }
+        
+        .view-more-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .view-more-btn {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+        
+        .view-more-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -2008,6 +2037,51 @@
                         <p>Developed a multi-website platform using WordPress builder and plugins, incorporating responsive web design, multimedia content, and effective search engine optimization (SEO)</p>
                     </div>
                 </div>
+
+                    <!-- Add this structure for hidden timeline items -->
+    <div class="timeline-item fade-in timeline-hidden">
+        <div class="timeline-content">
+            <div class="timeline-period">
+                <i class="far fa-calendar"></i>
+                2019 - 2020
+            </div>
+            <h3 class="timeline-company">Tasheel UAQ/MoaamalatUAQ</h3>
+            <div class="timeline-position">System Administrator</div>
+            <p>Responsible for installing and managing LAN/WAN networks, servers, and system components. Configures new servers and applications, ensures data security and system integrity, and performs backups and recovery procedures. Collaborates with the Systems Team on security audits, prepares quarterly reports, and maintains network privacy and protection from cyber threats.</p>
+        </div>
+    </div>
+    
+    <div class="timeline-item fade-in timeline-hidden">
+        <div class="timeline-content">
+            <div class="timeline-period">
+                <i class="far fa-calendar"></i>
+                2014 - 2016
+            </div>
+            <h3 class="timeline-company">COMPULINK/DOTCOM</h3>
+            <div class="timeline-position">IT Support</div>
+            <p>Handles setup of hardware, software, and drivers, ensuring all systems run efficiently. Maintains and repairs equipment and peripherals, keeps detailed records of fixes, and provides timely technical support while guiding users on proper computer use.</p>
+        </div>
+    </div>
+    
+    <div class="timeline-item fade-in timeline-hidden">
+        <div class="timeline-content">
+            <div class="timeline-period">
+                <i class="far fa-calendar"></i>
+                2017
+            </div>
+            <h3 class="timeline-company">FASTTRACK IT ACADEMY(FIT)</h3>
+            <div class="timeline-position">iOS Mobile App Developer(SEMINARS)</div>
+            <p>Conducts seminars and training sessions on iOS mobile app development at FASTTRACK IT ACADEMY (FIT), focusing on practical skills and modern development practices.</p>
+        </div>
+    </div>
+    
+    <!-- Add the View More button container -->
+    <div class="view-more-container">
+        <button class="view-more-btn" id="viewMoreBtn">
+            <i class="fas fa-chevron-down"></i>
+            View More Experience
+        </button>
+    </div>
             </div>
         </div>
     </section>
@@ -2327,6 +2401,49 @@ fadeElements.forEach(el => {
     observer.observe(el);
 });
         
+
+
+    // View More functionality for timeline
+    document.addEventListener('DOMContentLoaded', function() {
+        const viewMoreBtn = document.getElementById('viewMoreBtn');
+        const hiddenItems = document.querySelectorAll('.timeline-hidden');
+        let isExpanded = false;
+        
+        if (viewMoreBtn && hiddenItems.length > 0) {
+            viewMoreBtn.addEventListener('click', function() {
+                if (!isExpanded) {
+                    // Show hidden items
+                    hiddenItems.forEach(item => {
+                        item.classList.remove('timeline-hidden');
+                        item.style.display = 'flex'; // Ensure proper display
+                    });
+                    viewMoreBtn.innerHTML = '<i class="fas fa-chevron-up"></i> View Less';
+                    isExpanded = true;
+                    
+                    // Scroll to the newly revealed content
+                    hiddenItems[0].scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
+                } else {
+                    // Hide items
+                    hiddenItems.forEach(item => {
+                        item.classList.add('timeline-hidden');
+                    });
+                    viewMoreBtn.innerHTML = '<i class="fas fa-chevron-down"></i> View More Experience';
+                    isExpanded = false;
+                    
+                    // Scroll back to the view more button
+                    viewMoreBtn.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
+                }
+            });
+        }
+    });
+
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
