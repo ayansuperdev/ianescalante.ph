@@ -1,0 +1,635 @@
+
+/*
+body {
+    background-color: lightgray !important;
+}
+
+.wrap {
+    padding: 20px;
+    background-color: white !important;
+}
+
+h1 {
+    color: blue !important;
+}
+*/
+#collectedBtn {
+    display: block !important;
+}
+
+.waybill-row[data-status="Undelivered"] #collectedBtn {
+    display: none !important;
+}
+
+#resetBtn{
+    display: block !important;
+}
+
+.waybill-row[data-status="Undelivered"] #resetBtn {
+    display: none !important;
+}
+
+.manifest-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Space between sections and the search form */
+}
+
+
+
+.manifest-details-output {
+    
+    width: 20%; /* Adjust width for the details section */
+}
+ /* to remove */
+.manifest-number-list {
+    width: 80%; /* Adjust width for the list section */
+    border-left: 1px solid #ccc; /* Optional: add a left border for separation */
+    padding-left: 20px; /* Optional: add padding */
+}
+.manifest-number-table{
+    width: 80%; /* Adjust width for the list section */
+    border-left: 1px solid #ccc; /* Optional: add a left border for separation */
+    padding-left: 20px; /* Optional: add padding */
+}
+
+input#date-from, input#date-to {
+    padding: 0px 8px;
+    line-height: 2;
+    min-height: 30px;
+    width: 135px;
+   /* margin-right: -55px; */
+}
+
+button#search-by-date {
+    padding: 0px 8px;
+    line-height: 2;
+    min-height: 30px;
+    width: 100px;
+   /* margin-left: 80px; */
+}
+
+.date-filter {
+    text-align: center;
+}
+
+.manifest-Filter{
+    width: 30%; /* Adjust width for the Filter section */
+}
+
+.manifest-search{
+    width: 150%; /* Adjust width for the search section */
+}
+
+
+
+
+.manifest-number-list ul {
+    list-style-type: none; /* Remove default list style */
+    padding: 0; /* Remove padding */
+}
+
+.manifest-number-list li {
+    margin: 5px 0; /* Spacing between list items */
+}
+
+.pagination {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #0073aa;
+    color: #0073aa;
+    text-decoration: none;
+}
+
+.pagination a.current {
+    background-color: #0073aa;
+    color: white;
+}
+
+.pagination a:hover {
+    background-color: #005177;
+    color: white;
+}
+
+.record-count-pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.record-count {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Color for Delivered & Undelivered */
+    .status-button {
+        padding: 4px 15px !important;
+        border-radius: 5px;
+        background-color: #04AA6D; /* Green */
+        border: none;
+        color: white; /* Text color */
+        
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        line-height: 1.5em;
+        font-size: 13px;
+        margin: 4px;
+        transition-duration: 0.4s;
+        cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+    }
+    .status-delivered {
+        background-color: #43cd7f; /* Delivered background color */
+        color: white;
+        font-family: 'Source Sans Pro', sans-serif;
+        text-align: center;
+        line-height: 1.5em;
+        font-size: 13px;
+        padding: 4px 15px !important;
+        margin-top: 4px;
+        border-radius: 16px;
+        word-spacing: 10px;
+    }
+
+    .status-delivered:hover {
+        background-color: #287b4c; /* Delivered background color */
+        color: white;
+        font-family: 'Source Sans Pro', sans-serif;
+        text-align: center;
+        line-height: 1.5em;
+        font-size: 13px;
+        padding: 4px 15px !important;
+        margin-top: 4px;
+        border-radius: 16px;
+        word-spacing: 10px;
+    }
+
+    .status-undelivered {
+        background-color: #FA8072; /* Undelivered background color */
+        color: white;
+        font-family: 'Source Sans Pro', sans-serif;
+        text-align: center;
+        line-height: 1.5em;
+        font-size: 13px;
+        padding: 4px 15px !important;
+        margin-top: 4px;
+        border-radius: 16px;
+        word-spacing: 10px;
+    }
+
+    .status-undelivered:hover {
+        background-color: #ac463b; /* Undelivered background color */
+        color: white;
+        font-family: 'Source Sans Pro', sans-serif;
+        text-align: center;
+        line-height: 1.5em;
+        font-size: 13px;
+        padding: 4px 15px !important;
+        margin-top: 4px;
+        border-radius: 16px;
+        word-spacing: 10px;
+    }
+
+    .status-collected {
+        background-color: #669999; /* Collected background color */
+        color: white;
+        font-family: 'Source Sans Pro', sans-serif;
+        text-align: center;
+        line-height: 1.5em;
+        font-size: 13px;
+        padding: 4px 15px !important;
+        margin-top: 4px;
+        border-radius: 16px;
+        word-spacing: 10px;
+    }
+
+    .status-collected:hover {
+        background-color: #669999da; /* Collected background color */
+        color: white;
+        font-family: 'Source Sans Pro', sans-serif;
+        text-align: center;
+        line-height: 1.5em;
+        font-size: 13px;
+        padding: 4px 15px !important;
+        margin-top: 4px;
+        border-radius: 16px;
+        word-spacing: 10px;
+    }
+
+    .status-uncollected {
+        background-color: #e82f1a; /* Uncollected background color */
+        color: white;
+        font-family: 'Source Sans Pro', sans-serif;
+        text-align: center;
+        line-height: 1.5em;
+        font-size: 13px;
+        padding: 4px 15px !important;
+        margin-top: 4px;
+        border-radius: 16px;
+        word-spacing: 10px;
+    }
+
+    .status-uncollected:hover {
+        background-color: #e82f1ad0; /* Uncollected background color */
+        color: white;
+        font-family: 'Source Sans Pro', sans-serif;
+        text-align: center;
+        line-height: 1.5em;
+        font-size: 13px;
+        padding: 4px 15px !important;
+        margin-top: 4px;
+        border-radius: 16px;
+        word-spacing: 10px;
+    }
+
+    
+/* Form upload style */
+   
+        .container {
+           /* width: 100%; */
+            clear: both;
+            border-radius: 5px;
+            background-color: #e8e6e6;
+            padding: 20px;
+            margin: 0px 300px 0px 300px;
+            
+          }
+
+        
+/*
+          label {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+          }
+
+          input {
+            display: inline-block;
+            width: 100px;
+            text-align: left;
+          }
+          
+          .container input, label #form {
+            padding: 10px;
+            width: 20%;
+            clear: both;
+            font: 14px Arial;
+          }
+          */
+          input#submit {
+            display: inline-block;
+            width: 168px;
+            background-color: darkslategray;
+            color: white;
+            margin: 10px 10px 10px 10px;
+            padding: 15px 15px 15px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input#submit:hover {
+            background-color: #45a049;
+        }
+/*
+        .wp-core-ui .button-primary:hover {
+            background-color: #45a049;
+          }*/
+
+        p.submit {
+            text-align: center;
+            max-width: 100%;
+            margin-top: 20px;
+            padding-top: 10px;
+        }
+
+        button#save-role {
+            width: 100px;
+            margin: 5px 5px 5px 5px;
+            padding: 5px 5px 5px 5px;
+            background-color: darkslategray;
+            cursor: pointer;
+            color: white;
+            border: none;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+          /*  margin-left: 50px; */
+          }
+          
+        input[type=text], [type=date], [type=currency], [type=file], select {
+            text-align: left;
+            display: inline-block;
+            width: 50%;
+            padding: 10px 15px;
+            margin: 4px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            box-sizing: border-box;
+          }   
+          
+          input#user_name_search {
+            text-align: center;
+            display: inline-block;
+            width: 15%;
+            padding: 10px 15px;
+            margin: 4px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            box-sizing: border-box;
+        }
+/* popup click outside area */
+.editable {
+    cursor: pointer;
+    border-bottom: 1px dashed #888;
+}
+
+.editable[contenteditable="true"] {
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #000;
+}
+
+
+/* waybills reports */
+div#waybills-reports-table_length {
+    margin: 20px 0px 0px 0px;
+    position: absolute;
+    text-wrap-mode: nowrap;
+}
+
+div#waybills-reports-table_filter {
+    margin: 20px 135px 20px 0px;
+    /* position: absolute; */
+    text-wrap-mode: nowrap;
+}
+/* search */
+div#waybills-table_filter {
+    margin: 20px 135px 20px 0px;
+    /* position: absolute; */
+    text-wrap-mode: nowrap;
+}
+
+div#waybills-table_length {
+    margin: 20px 0px 20px 0px;
+    position: absolute;
+    text-wrap-mode: nowrap;
+}
+
+/* General Wrapper Styling */
+.wrap {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Modern Form Styling */
+.waybills-reports-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.waybills-reports-form .form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 200px;
+}
+
+.waybills-reports-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.waybills-reports-form input,
+.waybills-reports-form select {
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.waybills-reports-form button {
+    background-color: #0073aa;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.waybills-reports-form button:hover {
+    background-color: #005177;
+}
+
+/* Table Styling */
+table.widefat {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table.widefat th {
+    background-color: #dcdcde;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+table.widefat td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+table.widefat tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table.widefat tr:hover {
+    background-color: #e6f7ff;
+}
+
+/* Pagination Styling */
+.pagination {
+    display: flex;
+    gap: 5px;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #0073aa;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination a.current,
+.pagination a:hover {
+    background-color: #0073aa;
+    color: #fff;
+    border-color: #0073aa;
+}
+/* billing css */
+button.button.button-secondary {
+    background: #2271b1;
+    border-color: #2271b1;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: none;
+    margin: 4px 0px 0px 0px;
+}
+
+/* revenue css */
+.manifest-container.revenue {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: stretch;
+}
+
+h2.revenuepdf {
+    text-align: center;
+}
+
+input#truck-number {
+    text-align: left;
+    display: inline-block;
+    width: 15%;
+    padding: 10px 15px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+
+button#filter-reports {
+    background: #2271b1;
+    border-color: #2271b1;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: none;
+    margin: 15px 0px 0px 0px;
+}
+
+p.paragrevenue {
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 1em 0;
+    text-align: center;
+}
+
+div#revenue-reports-table_filter {
+    margin: 20px 135px 20px 0px;
+    /* position: absolute; */
+    text-wrap-mode: nowrap;
+}
+
+div#revenue-reports-table_length {
+    margin: 20px 0px 0px 0px;
+    position: absolute;
+    text-wrap-mode: nowrap;
+}
+/* revenue css */
+div#prepaid-table_filter {
+    margin: 20px 135px 20px 0px;
+    /* position: absolute; */
+    text-wrap-mode: nowrap;
+}
+
+div#prepaid-table_length {
+    margin: 20px 0px 0px 0px;
+    position: absolute;
+    text-wrap-mode: nowrap;
+}
+
+input#date_from {
+    max-width: 10rem;
+    padding: 0 15px;
+}
+
+input#date_to {
+    max-width: 10rem;
+    padding: 0 15px;
+}
+
+form#filter-form {
+    text-align-last: center;
+    /* display: flex
+; */
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+/* revenue page style */
+
+form#revenue-filter-form {
+    text-align-last: center;
+    /* display: flex
+; */
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+/* billing page style */
+
+form#billing-filter-form {
+    text-align-last: center;
+    /* display: flex
+; */
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}

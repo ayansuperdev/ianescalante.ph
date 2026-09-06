@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ian Escalante | Senior WordPress Developer & Web Solutions Specialist</title>
+  <meta name="description" content="Senior WordPress Developer specializing in custom plugins, PHP applications, API integrations, dashboards, CRM automations, and responsive web design.">
+  <meta name="keywords" content="WordPress Developer, Custom Plugins, PHP Developer, API Integration, RESO API, GoHighLevel, Airtable, Make Automation, Philippines Web Developer">
+  <meta name="author" content="Ian Escalante">
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Ian Escalante | Senior WordPress Developer">
+  <meta property="og:description" content="Custom WordPress Websites, Custom Plugins, Dashboards & Business Automation Systems.">
+  <meta property="og:type" content="website">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Master CSS (Gold & Dark Obsidian Theme) -->
+  <link rel="stylesheet" href="assets/css/portfolio.css">
+  
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ian Escalante",
+    "jobTitle": "Senior WordPress Developer & Web Solutions Specialist",
+    "email": "mailto:ianfreelancer102@gmail.com",
+    "description": "Senior WordPress Developer with 7+ years of experience building custom plugins, PHP applications, API integrations, dashboards, and automated systems."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Ian Escalante Portfolio Homepage">
+        <div class="logo-icon">ICE</div>
+        <div>Ian <span class="accent">Escalante</span></div>
+      </a>
+      
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav id="primary-navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#casestudies" class="nav-link">Case Studies</a></li>
+          <li class="has-dropdown">
+            <a href="design.html" class="nav-link">Design <i class="fas fa-chevron-down" style="font-size: 0.75rem; margin-left: 4px;"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="design.html" class="dropdown-item">Design Overview</a></li>
+              <li><a href="webdesign.html" class="dropdown-item">Web Design</a></li>
+              <li><a href="logodesign.html" class="dropdown-item">Logo & Brand Design</a></li>
+            </ul>
+          </li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#contact" class="btn btn-primary btn-sm">Contact Me</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION WITH CONNECTED PARTICLES CANVAS -->
+    <section class="hero-section">
+      <canvas id="heroParticlesCanvas"></canvas>
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-eyebrow">
+              <i class="fas fa-code"></i> Senior WordPress Developer • Web Solutions Specialist
+            </div>
+            <h1 class="hero-title">Custom WordPress Solutions Built Around Real Business Needs</h1>
+            <p class="hero-subtitle">
+              I design and develop high-performance WordPress websites, custom plugins, dashboards, API integrations, and automated business systems that solve real operational problems.
+            </p>
+            <div class="hero-actions">
+              <a href="#casestudies" class="btn btn-primary"><i class="fas fa-layer-group"></i> View Case Studies</a>
+              <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Contact Me</a>
+            </div>
+            
+            <div class="compact-stats-row">
+              <div class="stat-item">
+                <span class="stat-val">7+ Years</span>
+                <span class="stat-label">Experience</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-val">WP & PHP</span>
+                <span class="stat-label">Custom Plugins</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-val">APIs & CRMs</span>
+                <span class="stat-label">Automations</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-val">Responsive</span>
+                <span class="stat-label">UI/UX Implementation</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="hero-avatar-wrapper">
+            <!-- Cutout standup photo without border box, surrounded by constellation particles -->
+            <div class="hero-avatar-card">
+              <img src="assets/images/profile/Ian Escalante standup.png" alt="Ian Escalante - Senior WordPress Developer" class="hero-avatar-img">
+              <div class="hero-badge">
+                <span class="status-dot"></span> Available for New Projects
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section-padding" style="background: rgba(26, 27, 31, 0.4);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Professional Profile</span>
+          <h2>About My Expertise</h2>
+        </div>
+        
+        <div class="glass-card" style="margin-bottom: 2.5rem;">
+          <p class="lead">
+            I am a senior web developer with over 7 years of hands-on experience building custom WordPress sites, plugins, portals, and data workflows. My work spans frontend UI development, complex PHP backend logic, API integrations, testing, deployment, and ongoing technical maintenance.
+          </p>
+          <p>
+            Rather than relying solely on off-the-shelf page builders, I engineer custom solutions tailored to business requirements. Whether implementing Bright MLS property feeds for real estate, secure reviewer portals for citizenship applications, Stripe webhook subscriptions, or automated Make and GoHighLevel workflows, I prioritize stability, security, and performance.
+          </p>
+          
+          <h3 style="font-size: 1.15rem; color: var(--accent-primary); margin-top: 2rem; margin-bottom: 1rem;">
+            <i class="fas fa-tools"></i> Technologies & Platforms I Work With
+          </h3>
+          <div class="service-tech-tags" style="gap: 8px;">
+            <span class="skill-pill">WordPress</span>
+            <span class="skill-pill">WooCommerce</span>
+            <span class="skill-pill">PHP</span>
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">HTML5</span>
+            <span class="skill-pill">CSS3</span>
+            <span class="skill-pill">MySQL</span>
+            <span class="skill-pill">REST APIs</span>
+            <span class="skill-pill">Gutenberg & ACF</span>
+            <span class="skill-pill">Elementor Pro</span>
+            <span class="skill-pill">Divi</span>
+            <span class="skill-pill">Stripe Webhooks</span>
+            <span class="skill-pill">Airtable API</span>
+            <span class="skill-pill">Make Automations</span>
+            <span class="skill-pill">GoHighLevel</span>
+            <span class="skill-pill">Follow Up Boss</span>
+            <span class="skill-pill">Eagle CRM</span>
+            <span class="skill-pill">Bright MLS / RESO</span>
+            <span class="skill-pill">Google Maps API</span>
+            <span class="skill-pill">FullCalendar</span>
+            <span class="skill-pill">Rezdy</span>
+            <span class="skill-pill">Mailchimp</span>
+            <span class="skill-pill">Slack Webhooks</span>
+            <span class="skill-pill">Git / GitHub</span>
+            <span class="skill-pill">SiteGround & cPanel</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE SERVICES SECTION -->
+    <section id="services" class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">End-to-End Development</span>
+          <h2>Core Services</h2>
+        </div>
+        
+        <div class="services-grid">
+          <!-- Card 1 -->
+          <div class="glass-card service-card">
+            <div class="service-icon"><i class="fab fa-wordpress"></i></div>
+            <h3>Custom WordPress Development</h3>
+            <p>Tailor-made WordPress architecture using custom themes, Gutenberg blocks, Advanced Custom Fields, and optimized database structures built for high traffic and efficiency.</p>
+            <div class="service-tech-tags">
+              <span class="tech-tag">WordPress</span>
+              <span class="tech-tag">PHP</span>
+              <span class="tech-tag">ACF Blocks</span>
+              <span class="tech-tag">Gutenberg</span>
+            </div>
+          </div>
+          
+          <!-- Card 2 -->
+          <div class="glass-card service-card">
+            <div class="service-icon"><i class="fas fa-plug"></i></div>
+            <h3>Custom Plugin Development</h3>
+            <p>Engineering specialized PHP plugins to extend WordPress functionality, create custom admin dashboards, role permissions, custom post types, and AJAX endpoints.</p>
+            <div class="service-tech-tags">
+              <span class="tech-tag">PHP</span>
+              <span class="tech-tag">WordPress Hooks</span>
+              <span class="tech-tag">AJAX</span>
+              <span class="tech-tag">MySQL</span>
+            </div>
+          </div>
+          
+          <!-- Card 3 -->
+          <div class="glass-card service-card">
+            <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+            <h3>API & CRM Integrations</h3>
+            <p>Connecting web platforms with external services including Bright MLS RESO API, GoHighLevel, Follow Up Boss, Eagle CRM, Mailchimp, and custom REST endpoints.</p>
+            <div class="service-tech-tags">
+              <span class="tech-tag">REST API</span>
+              <span class="tech-tag">GoHighLevel</span>
+              <span class="tech-tag">Follow Up Boss</span>
+              <span class="tech-tag">RESO</span>
+            </div>
+          </div>
+          
+          <!-- Card 4 -->
+          <div class="glass-card service-card">
+            <div class="service-icon"><i class="fas fa-user-shield"></i></div>
+            <h3>Dashboards & Client Portals</h3>
+            <p>Building secure, role-based portals for clients, staff, and reviewers with token authentication, custom control centers, and database write-backs.</p>
+            <div class="service-tech-tags">
+              <span class="tech-tag">Role Management</span>
+              <span class="tech-tag">Secure Tokens</span>
+              <span class="tech-tag">Airtable API</span>
+            </div>
+          </div>
+          
+          <!-- Card 5 -->
+          <div class="glass-card service-card">
+            <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
+            <h3>E-commerce & Payment Systems</h3>
+            <p>WooCommerce implementation, custom Stripe payment integration, subscription webhook handlers, plan-aware thank-you workflows, and receipt delivery.</p>
+            <div class="service-tech-tags">
+              <span class="tech-tag">WooCommerce</span>
+              <span class="tech-tag">Stripe API</span>
+              <span class="tech-tag">Webhooks</span>
+            </div>
+          </div>
+          
+          <!-- Card 6 -->
+          <div class="glass-card service-card">
+            <div class="service-icon"><i class="fas fa-robot"></i></div>
+            <h3>Workflow Automation</h3>
+            <p>Streamlining operational tasks using Make scenarios, Airtable API connections, Slack instant notifications, automated emails, and lead capture routing.</p>
+            <div class="service-tech-tags">
+              <span class="tech-tag">Make</span>
+              <span class="tech-tag">Airtable</span>
+              <span class="tech-tag">Slack Webhooks</span>
+            </div>
+          </div>
+          
+          <!-- Card 7 -->
+          <div class="glass-card service-card">
+            <div class="service-icon"><i class="fas fa-desktop"></i></div>
+            <h3>Responsive Web Design</h3>
+            <p>Converting UI designs into mobile-responsive, accessible web applications using modern HTML5, CSS3, JavaScript, Elementor Pro, and Divi implementations.</p>
+            <div class="service-tech-tags">
+              <span class="tech-tag">HTML5/CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Elementor Pro</span>
+            </div>
+          </div>
+          
+          <!-- Card 8 -->
+          <div class="glass-card service-card">
+            <div class="service-icon"><i class="fas fa-bug"></i></div>
+            <h3>Maintenance & Troubleshooting</h3>
+            <p>Resolving critical PHP bugs, fatal login errors, headers-already-sent issues, UTF-8 BOM encoding problems, security patches, and performance optimizations.</p>
+            <div class="service-tech-tags">
+              <span class="tech-tag">PHP Debugging</span>
+              <span class="tech-tag">SiteGround</span>
+              <span class="tech-tag">cPanel / SFTP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES & PORTFOLIO SECTION -->
+    <section id="casestudies" class="section-padding" style="background: rgba(26, 27, 31, 0.4);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Case Studies & Portfolio Projects</span>
+          <h2>My Work & Case Studies</h2>
+        </div>
+        
+        <!-- Category Filter Buttons -->
+        <div class="filter-container">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="featured">Featured</button>
+          <button class="filter-btn" data-filter="wordpress">WordPress</button>
+          <button class="filter-btn" data-filter="plugins">Custom Plugins</button>
+          <button class="filter-btn" data-filter="api">API Integrations</button>
+          <button class="filter-btn" data-filter="automation">Automation</button>
+          <button class="filter-btn" data-filter="realestate">Real Estate</button>
+          <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+          <button class="filter-btn" data-filter="branding">Branding</button>
+        </div>
+        
+        <div class="projects-grid">
+          <!-- 1. Raviv Casuals -->
+          <article class="glass-card project-card" data-category="featured ecommerce branding plugins">
+            <div class="project-card-image">
+              <img src="https://ravivcasuals.com/wp-content/uploads/2025/06/Project-ICON.png" alt="Raviv Casuals" onerror="this.src='assets/images/logos/RavivCasuals.png'">
+              <span class="project-badge">E-Commerce & Brand</span>
+            </div>
+            <div class="project-card-body">
+              <span class="project-meta">Custom Plugin • PHP • WooCommerce</span>
+              <h3 class="project-card-title">Raviv Casuals</h3>
+              <p class="project-card-desc">Full-featured online store with payment integration, product presentation, inventory management, logo design, and packaging branding.</p>
+              <div class="project-card-footer">
+                <a href="https://ravivcasuals.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fas fa-external-link-alt"></i> Visit Website</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. IconElect -->
+          <article class="glass-card project-card" data-category="featured wordpress api plugins automation">
+            <div class="project-card-image">
+              <img src="https://iconelect.org/wp-content/uploads/2025/06/Project-ICON-iconelect.png" alt="IconElect" onerror="this.src='assets/images/logos/IconElect.png'">
+              <span class="project-badge">Data Analytics & Portal</span>
+            </div>
+            <div class="project-card-body">
+              <span class="project-meta">WordPress • PHP • Airtable API</span>
+              <h3 class="project-card-title">IconElect</h3>
+              <p class="project-card-desc">Data visualization and reviewer portal allowing authorized personnel to evaluate citizenship applications via secure tokens.</p>
+              <div class="project-card-footer">
+                <button class="btn btn-outline btn-sm" data-modal-target="modal-iconelect"><i class="fas fa-eye"></i> Case Study</button>
+                <a href="https://iconelect.org" target="_blank" rel="noopener noreferrer" class="btn btn-sm" style="color: var(--accent-primary);"><i class="fas fa-external-link-alt"></i> Live Site</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. LLHarrell -->
+          <article class="glass-card project-card" data-category="featured realestate wordpress branding">
+            <div class="project-card-image">
+              <img src="https://llharrell.com/wp-content/uploads/2025/06/Project-ICON-llharrell.png" alt="LLHarrell" onerror="this.src='assets/images/logos/LLHarrell.png'">
+              <span class="project-badge">Real Estate Brokerage</span>
+            </div>
+            <div class="project-card-body">
+              <span class="project-meta">PHP • MySQL • IDX Broker</span>
+              <h3 class="project-card-title">LLHarrell Realty</h3>
+              <p class="project-card-desc">Custom content management for real estate & business brokerage, IDX Broker integration, logo modernization, and responsive UI.</p>
+              <div class="project-card-footer">
+                <a href="https://llharrell.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fas fa-external-link-alt"></i> Visit Website</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Harrell Melts -->
+          <article class="glass-card project-card" data-category="featured ecommerce wordpress api">
+            <div class="project-card-image">
+              <img src="https://harrellmelts.com/wp-content/uploads/2025/06/Project-ICON-harrellmelts.png" alt="Harrell Melts" onerror="this.src='assets/images/logos/HarrellBCB.png'">
+              <span class="project-badge">E-Commerce & Food</span>
+            </div>
+            <div class="project-card-body">
+              <span class="project-meta">WordPress • PHP • API • SEO</span>
+              <h3 class="project-card-title">Harrell Melts</h3>
+              <p class="project-card-desc">Product catalog management, packaging label design, promotional signage identity, and responsive website implementation.</p>
+              <div class="project-card-footer">
+                <a href="https://harrellmelts.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fas fa-external-link-alt"></i> Visit Website</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Vaze Realty -->
+          <article class="glass-card project-card" data-category="featured wordpress plugins api realestate">
+            <div class="project-card-image">
+              <img src="assets/images/projects/Admin-Dashboard.png" alt="Vaze Realty Real Estate Platform" onerror="this.style.opacity='0.4'; this.alt='Thumbnail Pending';">
+              <span class="project-badge">Real Estate & MLS</span>
+            </div>
+            <div class="project-card-body">
+              <span class="project-meta">WordPress • RESO API • Custom Plugin</span>
+              <h3 class="project-card-title">Vaze Realty Platform</h3>
+              <p class="project-card-desc">Multi-surface real estate platform with Bright MLS RESO API preparation, map radius/polygon search, client dashboard, agent control center, and CRM lead funnel.</p>
+              <div class="project-card-footer">
+                <button class="btn btn-outline btn-sm" data-modal-target="modal-vaze"><i class="fas fa-eye"></i> View Case Study</button>
+                <a href="https://vazerealty.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm" style="color: var(--accent-primary);"><i class="fas fa-external-link-alt"></i> Live Site</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. SalesCreator -->
+          <article class="glass-card project-card" data-category="featured wordpress api ecommerce realestate">
+            <div class="project-card-image">
+              <img src="assets/images/projects/salescreator-thumbnail.png" alt="SalesCreator Withdrawn Properties" onerror="this.style.opacity='0.4'; this.alt='Thumbnail Pending';">
+              <span class="project-badge">PropTech & Automation</span>
+            </div>
+            <div class="project-card-body">
+              <span class="project-meta">REST API • Stripe • Slack Webhooks</span>
+              <h3 class="project-card-title">SalesCreator / Withdrawn Properties</h3>
+              <p class="project-card-desc">Custom property data widget, pricing sliders, Stripe subscription webhook processing, Slack notification routing, and Eagle CRM listing data synchronization.</p>
+              <div class="project-card-footer">
+                <button class="btn btn-outline btn-sm" data-modal-target="modal-salescreator"><i class="fas fa-eye"></i> View Case Study</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. Clark Partners -->
+          <article class="glass-card project-card" data-category="featured wordpress webdesign realestate">
+            <div class="project-card-image">
+              <img src="assets/images/projects/clarkpartners-thumbnail.png" alt="Clark Partners Real Estate" onerror="this.style.opacity='0.4'; this.alt='Thumbnail Pending';">
+              <span class="project-badge">Gutenberg & ACF</span>
+            </div>
+            <div class="project-card-body">
+              <span class="project-meta">ACF Blocks • Custom Calculators • SFTP</span>
+              <h3 class="project-card-title">Clark Partners Real Estate</h3>
+              <p class="project-card-desc">Programmatic registration of 22 ACF field groups, custom editable Gutenberg blocks, mortgage calculator UI, and resolution of critical UTF-8 BOM login errors.</p>
+              <div class="project-card-footer">
+                <button class="btn btn-outline btn-sm" data-modal-target="modal-clarkpartners"><i class="fas fa-eye"></i> View Case Study</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8. Cruise Brisbane River -->
+          <article class="glass-card project-card" data-category="featured wordpress webdesign">
+            <div class="project-card-image">
+              <img src="assets/images/projects/cruisebrisbane-thumbnail.png" alt="Cruise Brisbane River" onerror="this.style.opacity='0.4'; this.alt='Thumbnail Pending';">
+              <span class="project-badge">Tourism & Booking</span>
+            </div>
+            <div class="project-card-body">
+              <span class="project-meta">Custom Blocks • Rezdy API • UI Layout</span>
+              <h3 class="project-card-title">Cruise Brisbane River</h3>
+              <p class="project-card-desc">Experience & booking platform with custom cbr/cruise-product Gutenberg block, adult/child pricing, sticky booking sidebar, and Rezdy widget integration.</p>
+              <div class="project-card-footer">
+                <button class="btn btn-outline btn-sm" data-modal-target="modal-cruisebrisbane"><i class="fas fa-eye"></i> View Case Study</button>
+                <a href="https://mattheww469.sg-host.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm" style="color: var(--accent-primary);"><i class="fas fa-external-link-alt"></i> Preview URL</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 9. Riverlife -->
+          <article class="glass-card project-card" data-category="featured wordpress automation">
+            <div class="project-card-image">
+              <img src="assets/images/projects/riverlife-thumbnail.png" alt="Riverlife Tourism Platform" onerror="this.style.opacity='0.4'; this.alt='Thumbnail Pending';">
+              <span class="project-badge">Outdoor Tourism</span>
+            </div>
+            <div class="project-card-body">
+              <span class="project-meta">Divi Theme • Mailchimp • Rezdy</span>
+              <h3 class="project-card-title">Riverlife Outdoor Experiences</h3>
+              <p class="project-card-desc">Divi theme customization, Mailchimp subscriber form field mapping, subscription testing, and Rezdy booking engine support.</p>
+              <div class="project-card-footer">
+                <button class="btn btn-outline btn-sm" data-modal-target="modal-riverlife"><i class="fas fa-eye"></i> View Case Study</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 10. Taxhaus Business Logics -->
+          <article class="glass-card project-card" data-category="branding">
+            <div class="project-card-image">
+              <img src="assets/images/logos/TBL.png" alt="Taxhaus Business Logics" onerror="this.style.opacity='0.4'; this.alt='Thumbnail Pending';">
+              <span class="project-badge">Corporate Identity</span>
+            </div>
+            <div class="project-card-body">
+              <span class="project-meta">Brand Identity • Visual System • Logo Design</span>
+              <h3 class="project-card-title">Taxhaus Business Logics</h3>
+              <p class="project-card-desc">Corporate brand design, emblem creation, icon set, and visual guidelines for business logic and tax management services.</p>
+              <div class="project-card-footer">
+                <span class="tech-tag">Corporate Brand</span>
+                <span class="tech-tag">Vector Logo</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL CAPABILITIES SECTION -->
+    <section id="capabilities" class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Categorized Stack</span>
+          <h2>Technical Capabilities</h2>
+        </div>
+        
+        <div class="capabilities-grid">
+          <!-- Group 1 -->
+          <div class="glass-card capability-card">
+            <h3><i class="fab fa-wordpress"></i> WordPress Engineering</h3>
+            <ul class="skill-list">
+              <li class="skill-pill">Custom Plugins</li>
+              <li class="skill-pill">Custom Themes</li>
+              <li class="skill-pill">Hooks & Filters</li>
+              <li class="skill-pill">Gutenberg Blocks</li>
+              <li class="skill-pill">ACF Pro</li>
+              <li class="skill-pill">Elementor Pro</li>
+              <li class="skill-pill">Divi</li>
+              <li class="skill-pill">WooCommerce</li>
+              <li class="skill-pill">Custom Post Types</li>
+              <li class="skill-pill">User Roles & AJAX</li>
+            </ul>
+          </div>
+          
+          <!-- Group 2 -->
+          <div class="glass-card capability-card">
+            <h3><i class="fas fa-server"></i> Backend & Data Layer</h3>
+            <ul class="skill-list">
+              <li class="skill-pill">PHP 7.4 / 8.x</li>
+              <li class="skill-pill">MySQL Database</li>
+              <li class="skill-pill">REST APIs</li>
+              <li class="skill-pill">Webhooks</li>
+              <li class="skill-pill">Secure Tokens</li>
+              <li class="skill-pill">Database Mapping</li>
+              <li class="skill-pill">Role Access Control</li>
+              <li class="skill-pill">Server Validation</li>
+            </ul>
+          </div>
+          
+          <!-- Group 3 -->
+          <div class="glass-card capability-card">
+            <h3><i class="fas fa-code"></i> Frontend & UI Implementation</h3>
+            <ul class="skill-list">
+              <li class="skill-pill">HTML5</li>
+              <li class="skill-pill">CSS3 / Flexbox / Grid</li>
+              <li class="skill-pill">JavaScript ES6+</li>
+              <li class="skill-pill">Responsive Design</li>
+              <li class="skill-pill">WCAG Accessibility</li>
+              <li class="skill-pill">Google Maps API</li>
+              <li class="skill-pill">FullCalendar UI</li>
+            </ul>
+          </div>
+
+          <!-- Group 4 -->
+          <div class="glass-card capability-card">
+            <h3><i class="fas fa-bolt"></i> Integrations & Automations</h3>
+            <ul class="skill-list">
+              <li class="skill-pill">Stripe API</li>
+              <li class="skill-pill">Airtable API</li>
+              <li class="skill-pill">Make (Integromat)</li>
+              <li class="skill-pill">GoHighLevel</li>
+              <li class="skill-pill">Follow Up Boss</li>
+              <li class="skill-pill">Eagle CRM</li>
+              <li class="skill-pill">Bright MLS RESO</li>
+              <li class="skill-pill">Rezdy Booking</li>
+              <li class="skill-pill">Slack Webhooks</li>
+            </ul>
+          </div>
+
+          <!-- Group 5 -->
+          <div class="glass-card capability-card">
+            <h3><i class="fas fa-cloud-upload-alt"></i> Infrastructure & Support</h3>
+            <ul class="skill-list">
+              <li class="skill-pill">SiteGround</li>
+              <li class="skill-pill">10Web</li>
+              <li class="skill-pill">SFTP / cPanel</li>
+              <li class="skill-pill">DNS & SSL Setup</li>
+              <li class="skill-pill">Git / GitHub</li>
+              <li class="skill-pill">Deployment Workflows</li>
+              <li class="skill-pill">Debugging & Audits</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEVELOPMENT WORKFLOW SECTION -->
+    <section id="workflow" class="section-padding" style="background: rgba(26, 27, 31, 0.4);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Structured Process</span>
+          <h2>Development Workflow</h2>
+        </div>
+        
+        <div class="workflow-grid">
+          <div class="glass-card workflow-step">
+            <span class="step-number">01</span>
+            <h3>Discovery & Requirements</h3>
+            <p>Analyzing project specifications, client business goals, integration points, and security constraints.</p>
+          </div>
+          
+          <div class="glass-card workflow-step">
+            <span class="step-number">02</span>
+            <h3>Architecture & Planning</h3>
+            <p>Designing database schemas, plugin hooks, custom post types, API mappings, and token security strategy.</p>
+          </div>
+          
+          <div class="glass-card workflow-step">
+            <span class="step-number">03</span>
+            <h3>UI Implementation</h3>
+            <p>Building responsive frontend templates, custom Gutenberg blocks, and accessible interface components.</p>
+          </div>
+
+          <div class="glass-card workflow-step">
+            <span class="step-number">04</span>
+            <h3>Backend Development</h3>
+            <p>Writing clean, efficient PHP plugins, custom hooks, AJAX endpoints, and custom post type logic.</p>
+          </div>
+
+          <div class="glass-card workflow-step">
+            <span class="step-number">05</span>
+            <h3>Integration & Automation</h3>
+            <p>Connecting webhooks, CRMs, payment gateways, MLS RESO APIs, and Make automation scenarios.</p>
+          </div>
+
+          <div class="glass-card workflow-step">
+            <span class="step-number">06</span>
+            <h3>Testing & Debugging</h3>
+            <p>Conducting cross-browser checks, mobile audit, security review, UTF-8 character fix, and error handling.</p>
+          </div>
+
+          <div class="glass-card workflow-step">
+            <span class="step-number">07</span>
+            <h3>Deployment & Handover</h3>
+            <p>Safely migrating code to live servers, configuring DNS/SSL, and providing clear client documentation.</p>
+          </div>
+
+          <div class="glass-card workflow-step">
+            <span class="step-number">08</span>
+            <h3>Ongoing Support</h3>
+            <p>Monitoring platform stability, applying security updates, and performing routine performance tuning.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK EXPERIENCE SECTION -->
+    <section id="experience" class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Track Record</span>
+          <h2>Work Experience</h2>
+        </div>
+        
+        <div class="experience-timeline">
+          <!-- Role 1 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="glass-card">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Senior Web Developer</h3>
+                <span class="timeline-meta">2025 - Present • TAXHAUS BUSINESS GROUP LLC</span>
+              </div>
+              <p>
+                Lead developer building enterprise web applications, custom plugins, theme customizations, database integrations, and automated workflows.
+              </p>
+            </div>
+          </div>
+
+          <!-- Role 2 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="glass-card">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Web Developer</h3>
+                <span class="timeline-meta">2021 - 2022 • Color Rich</span>
+              </div>
+              <p>
+                Maintained and optimized WordPress applications, resolved technical PHP bugs, implemented Elementor custom page builder layouts, and improved cross-browser performance.
+              </p>
+            </div>
+          </div>
+
+          <!-- Role 3 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="glass-card">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Computer Programmer</h3>
+                <span class="timeline-meta">2020 - 2021 • Tadbeer Quality 2 UAQ</span>
+              </div>
+              <p>
+                Developed a multi-website platform using WordPress builders and plugins, incorporating responsive web design, multimedia content integration, and SEO optimization.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMAIL-ONLY CONTACT SECTION -->
+    <section id="contact" class="section-padding" style="background: rgba(26, 27, 31, 0.4);">
+      <div class="container">
+        <div class="glass-card text-center" style="max-width: 700px; margin: 0 auto; text-align: center; padding: 3.5rem 2rem;">
+          <div class="contact-icon" style="width: 70px; height: 70px; margin: 0 auto 1.5rem auto; font-size: 1.75rem;">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <span class="section-tag">Get In Touch</span>
+          <h2 style="font-size: 2.25rem; margin-bottom: 1rem;">Let's Discuss Your Project</h2>
+          <p style="font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 2rem;">
+            Feel free to reach out to me directly via email. I'm always open to discussing new projects, plugin development, custom integrations, or technical troubleshooting.
+          </p>
+          
+          <div style="display: inline-block; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--accent-primary); padding: 16px 32px; border-radius: var(--radius-pill); margin-bottom: 2rem;">
+            <a href="mailto:ianfreelancer102@gmail.com" style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary);">ianfreelancer102@gmail.com</a>
+          </div>
+          
+          <div>
+            <a href="mailto:ianfreelancer102@gmail.com" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Direct Email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid" style="grid-template-columns: 2fr 1fr 1fr;">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <div class="logo-icon">ICE</div>
+            <div>Ian <span class="accent">Escalante</span></div>
+          </a>
+          <p>Senior WordPress Developer specializing in custom plugins, API integrations, CRM workflows, and high-performance web applications.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#casestudies">Case Studies</a></li>
+            <li><a href="#experience">Experience</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Design Portfolio</h4>
+          <ul>
+            <li><a href="design.html">Design Overview</a></li>
+            <li><a href="webdesign.html">Web Design Showcase</a></li>
+            <li><a href="logodesign.html">Logo & Branding</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Ian Escalante. All Rights Reserved.</div>
+        <div>
+          <a href="mailto:ianfreelancer102@gmail.com" style="color: var(--accent-primary); font-weight: 600;">ianfreelancer102@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       CASE STUDY MODAL WINDOWS
+       ========================================================================== -->
+  
+  <!-- Modal 1: Vaze Realty -->
+  <div id="modal-vaze" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="vaze-modal-title">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 id="vaze-modal-title" class="modal-title">Vaze Realty Platform</h2>
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <span class="project-badge" style="position: static; display: inline-block; margin-bottom: 1rem;">Real Estate & MLS Integration</span>
+        <p class="lead">Multi-surface real estate platform engineered with custom WordPress functionality, property search tools, interactive map drawing, agent administration, and lead capture funnels.</p>
+        
+        <div class="modal-gallery">
+          <img src="assets/images/projects/Admin-Dashboard.png" alt="Vaze Realty Dashboard">
+          <img src="assets/images/projects/User Management.png" alt="Vaze Realty Management">
+        </div>
+
+        <h3 class="modal-section-title">Confirmed Implementation Highlights</h3>
+        <ul class="modal-features-list">
+          <li><strong>Vaze Core Plugin:</strong> Designed custom PHP plugin handling custom post types, property statuses, and dashboard logic.</li>
+          <li><strong>Bright MLS RESO Web API Integration:</strong> Prepared data mapping structures for live MLS feed ingestion and display.</li>
+          <li><strong>Google Maps API Features:</strong> Radius search, custom markers, status indicators, and polygon/rectangle map drawing tools.</li>
+          <li><strong>Role-Based Access Control:</strong> Protected Client Dashboard, Agent Control Center, and Manager Control Suite.</li>
+          <li><strong>GoHighLevel & Follow Up Boss:</strong> Live chat widget embedding, buyer consultation booking, and home-valuation lead capture funnel.</li>
+          <li><strong>Elementor Layouts & Subdomains:</strong> Responsive agent-specific subpages with Equal Housing and IDX compliance presentation.</li>
+        </ul>
+
+        <h3 class="modal-section-title">Technologies Used</h3>
+        <div class="service-tech-tags" style="margin-bottom: 1.5rem;">
+          <span class="skill-pill">WordPress</span>
+          <span class="skill-pill">PHP</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">MySQL</span>
+          <span class="skill-pill">Bright MLS / RESO</span>
+          <span class="skill-pill">Google Maps API</span>
+          <span class="skill-pill">Follow Up Boss</span>
+          <span class="skill-pill">GoHighLevel</span>
+        </div>
+
+        <div style="display: flex; gap: 15px; align-items: center;">
+          <a href="https://vazerealty.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Visit Live Website</a>
+          <a href="mailto:ianfreelancer102@gmail.com" class="btn btn-outline"><i class="fas fa-envelope"></i> Email Ian</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Icon Elect -->
+  <div id="modal-iconelect" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="iconelect-modal-title">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 id="iconelect-modal-title" class="modal-title">Icon Elect Reviewer Portal</h2>
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <span class="project-badge" style="position: static; display: inline-block; margin-bottom: 1rem;">Membership & Secure Workflows</span>
+        <p class="lead">Developed and debugged a secure reviewer portal that allows authorized reviewers to evaluate citizenship applications without exposing direct Airtable database credentials.</p>
+        
+        <div class="modal-gallery">
+          <img src="https://iconelect.org/wp-content/uploads/2025/06/Project-ICON-iconelect.png" alt="Icon Elect Portal" onerror="this.src='assets/images/logos/IconElect.png'">
+          <img src="assets/images/logos/Products/iconelect/IconElect Tumbnails.png" alt="Icon Elect Portal Thumbnails">
+        </div>
+
+        <h3 class="modal-section-title">Confirmed Implementation Highlights</h3>
+        <ul class="modal-features-list">
+          <li><strong>Token Authentication:</strong> Generated unique, time-expiring review tokens for secure application viewing.</li>
+          <li><strong>Review Actions:</strong> Integrated Approve, Needs More Information, and Deny actions with reviewer note capture.</li>
+          <li><strong>Airtable Write-Back:</strong> Mapped field IDs for seamless record updates via custom PHP API calls.</li>
+          <li><strong>Make Automation Scenarios:</strong> Automated reviewer notification emails and post-approval credential generation.</li>
+          <li><strong>Security & Troubleshooting:</strong> Handled expired token cleanup, payment status conditions, and iframe layout corrections.</li>
+        </ul>
+
+        <h3 class="modal-section-title">Technologies Used</h3>
+        <div class="service-tech-tags" style="margin-bottom: 1.5rem;">
+          <span class="skill-pill">WordPress</span>
+          <span class="skill-pill">PHP</span>
+          <span class="skill-pill">Airtable API</span>
+          <span class="skill-pill">Make (Integromat)</span>
+          <span class="skill-pill">Secure Tokens</span>
+          <span class="skill-pill">Email Automation</span>
+        </div>
+
+        <div style="display: flex; gap: 15px; align-items: center;">
+          <a href="https://iconelect.org/" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Visit Live Portal</a>
+          <a href="mailto:ianfreelancer102@gmail.com" class="btn btn-outline"><i class="fas fa-envelope"></i> Email Ian</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: SalesCreator -->
+  <div id="modal-salescreator" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="salescreator-modal-title">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 id="salescreator-modal-title" class="modal-title">SalesCreator / Withdrawn Properties</h2>
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <span class="project-badge" style="position: static; display: inline-block; margin-bottom: 1rem;">PropTech & Stripe Webhooks</span>
+        <p class="lead">Built custom property data widgets, subscription payment handlers, and instant notification systems for an Australian real estate analytics platform.</p>
+
+        <h3 class="modal-section-title">Confirmed Implementation Highlights</h3>
+        <ul class="modal-features-list">
+          <li><strong>Withdrawn Properties Widget:</strong> Custom Property API widget displaying Missed Opportunities, Withdrawn, and Expiring Soon listings with auto-loop scrolling.</li>
+          <li><strong>Stripe Payment Integration:</strong> Redesigned pricing cards, mobile sliders, and plan-aware thank-you pages.</li>
+          <li><strong>Stripe Webhook Processing:</strong> Automated webhook handlers for subscription updates, payment success, failed payments, cancellations, and trial notifications.</li>
+          <li><strong>Slack Notifications:</strong> Instant Slack channel alerts triggered on subscription events.</li>
+          <li><strong>Eagle CRM Integration:</strong> Debugged listing data feeds, image consistency, and duplicate property removal.</li>
+        </ul>
+
+        <h3 class="modal-section-title">Technologies Used</h3>
+        <div class="service-tech-tags" style="margin-bottom: 1.5rem;">
+          <span class="skill-pill">WordPress</span>
+          <span class="skill-pill">PHP</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">Stripe Webhooks</span>
+          <span class="skill-pill">Slack API</span>
+          <span class="skill-pill">Eagle CRM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Clark Partners -->
+  <div id="modal-clarkpartners" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="clark-modal-title">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 id="clark-modal-title" class="modal-title">Clark Partners Real Estate</h2>
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <span class="project-badge" style="position: static; display: inline-block; margin-bottom: 1rem;">Gutenberg & ACF Development</span>
+        <p class="lead">Implemented a responsive real estate website using custom editable Gutenberg blocks, mortgage calculators, and resolved critical backend PHP character issues.</p>
+        
+        <h3 class="modal-section-title">Confirmed Implementation Highlights</h3>
+        <ul class="modal-features-list">
+          <li><strong>22 ACF Field Groups:</strong> Programmatically registered custom fields powering backend editing controls for Buy, Rent, Recently Sold, Testimonials, and Agents pages.</li>
+          <li><strong>Mortgage & Finance Calculators:</strong> Built responsive custom calculator interfaces and third-party iframe integrations.</li>
+          <li><strong>Troubleshooting UTF-8 BOM:</strong> Diagnosed and resolved "headers already sent" login errors caused by UTF-8 BOM characters in PHP source files.</li>
+          <li><strong>SiteGround Deployment:</strong> Configured SFTP workflows and deployment environments.</li>
+        </ul>
+
+        <h3 class="modal-section-title">Technologies Used</h3>
+        <div class="service-tech-tags" style="margin-bottom: 1.5rem;">
+          <span class="skill-pill">WordPress</span>
+          <span class="skill-pill">PHP</span>
+          <span class="skill-pill">ACF Blocks</span>
+          <span class="skill-pill">Gutenberg</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">SiteGround SFTP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5: Cruise Brisbane River -->
+  <div id="modal-cruisebrisbane" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="cruise-modal-title">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 id="cruise-modal-title" class="modal-title">Cruise Brisbane River</h2>
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <span class="project-badge" style="position: static; display: inline-block; margin-bottom: 1rem;">Tourism & Booking Systems</span>
+        <p class="lead">Developed tour product pages with custom Gutenberg blocks, category filtering, and Rezdy calendar widget integration.</p>
+        
+        <h3 class="modal-section-title">Confirmed Implementation Highlights</h3>
+        <ul class="modal-features-list">
+          <li><strong>cbr/cruise-product Block:</strong> Custom Gutenberg block with editable ACF fields for adult/child pricing, vessel specs, and timeline itineraries.</li>
+          <li><strong>Experience Filter Tabs:</strong> Filterable tab layout for Sunset Sails, Food & Drink, Culture, and Private Charters.</li>
+          <li><strong>Rezdy Booking Integration:</strong> Embedded calendar booking sidebar and responsive detail cards.</li>
+        </ul>
+
+        <h3 class="modal-section-title">Technologies Used</h3>
+        <div class="service-tech-tags" style="margin-bottom: 1.5rem;">
+          <span class="skill-pill">WordPress</span>
+          <span class="skill-pill">PHP</span>
+          <span class="skill-pill">Gutenberg</span>
+          <span class="skill-pill">ACF</span>
+          <span class="skill-pill">Rezdy API</span>
+        </div>
+
+        <div style="display: flex; gap: 15px; align-items: center;">
+          <a href="https://mattheww469.sg-host.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Preview Staging URL</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 6: Riverlife -->
+  <div id="modal-riverlife" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="riverlife-modal-title">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 id="riverlife-modal-title" class="modal-title">Riverlife Outdoor Experiences</h2>
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <span class="project-badge" style="position: static; display: inline-block; margin-bottom: 1rem;">Marketing & Integration</span>
+        <p class="lead">Divi theme customization, Mailchimp integration, and Rezdy booking engine support for an outdoor adventure company.</p>
+        
+        <h3 class="modal-section-title">Confirmed Implementation Highlights</h3>
+        <ul class="modal-features-list">
+          <li><strong>Divi Form Integration:</strong> Configured field mapping and automated subscriber list syncing with Mailchimp.</li>
+          <li><strong>Booking Widget Support:</strong> Troubleshot responsive iframe layouts for Rezdy tour bookings.</li>
+        </ul>
+
+        <h3 class="modal-section-title">Technologies Used</h3>
+        <div class="service-tech-tags" style="margin-bottom: 1.5rem;">
+          <span class="skill-pill">WordPress</span>
+          <span class="skill-pill">Divi</span>
+          <span class="skill-pill">Mailchimp</span>
+          <span class="skill-pill">Rezdy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Master JavaScript -->
+  <script src="assets/js/portfolio.js"></script>
+</body>
+</html>

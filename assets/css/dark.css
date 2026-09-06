@@ -1,0 +1,36 @@
+/* assets/css/dark.css */
+body {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+}
+
+.card,
+.users-table,
+.profile-form,
+.settings-form,
+.welcome-message {
+    background-color: #2d2d2d;
+    color: #f0f0f0;
+}
+
+.sidebar {
+    background-color: #222;
+}
+
+.sidebar-nav a {
+    color: #ddd;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    background-color: #333;
+    color: white;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background-color: #3d3d3d;
+    color: white;
+    border-color: #444;
+}

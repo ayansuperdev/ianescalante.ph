@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Overview | Ian Escalante - Web & Brand Design</title>
+  <meta name="description" content="Design overview showcasing UI/UX web design and logo/brand identity projects by Ian Escalante.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="assets/css/portfolio.css">
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Ian Escalante Portfolio Homepage">
+        <div class="logo-icon">ICE</div>
+        <div>Ian <span class="accent">Escalante</span></div>
+      </a>
+      
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav id="primary-navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#services" class="nav-link">Services</a></li>
+          <li><a href="index.html#casestudies" class="nav-link">Case Studies</a></li>
+          <li class="has-dropdown">
+            <a href="design.html" class="nav-link active">Design <i class="fas fa-chevron-down" style="font-size: 0.75rem; margin-left: 4px;"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="design.html" class="dropdown-item active">Design Overview</a></li>
+              <li><a href="webdesign.html" class="dropdown-item">Web Design</a></li>
+              <li><a href="logodesign.html" class="dropdown-item">Logo & Brand Design</a></li>
+            </ul>
+          </li>
+          <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+          <li><a href="index.html#contact" class="btn btn-primary btn-sm">Contact Me</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <span class="section-tag">Visual & Interface Design</span>
+          <h1>Design Overview</h1>
+          <p class="hero-subtitle">
+            I craft clean, high-conversion user interfaces for WordPress applications, property dashboards, e-commerce stores, and corporate brand identities.
+          </p>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+          <a href="webdesign.html" class="btn btn-primary"><i class="fas fa-laptop-code"></i> Explore Web Design</a>
+          <a href="logodesign.html" class="btn btn-outline"><i class="fas fa-palette"></i> Explore Logo & Brand Design</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: WEB & UI DESIGN OVERVIEW -->
+    <section class="section-padding" style="background: rgba(15, 23, 42, 0.4);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Digital Interfaces</span>
+          <h2>Web & UI Design Work</h2>
+          <p>My web design approach balances visual hierarchy, accessibility, and backend usability. I design responsive layouts that translate seamlessly into functional WordPress code.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Item 1 -->
+          <article class="glass-card project-card">
+            <div class="project-card-image">
+              <img src="assets/images/projects/Admin-Dashboard.png" alt="Vaze Realty UI">
+              <span class="project-badge">Real Estate UI</span>
+            </div>
+            <div class="project-card-body">
+              <h3 class="project-card-title">Vaze Realty Map & Portal Interface</h3>
+              <p class="project-card-desc">Interactive property search layouts, custom Google Maps drawing interface, agent dashboard, and buyer funnels.</p>
+              <div class="project-card-footer">
+                <a href="webdesign.html" class="btn btn-outline btn-sm">Read Web Design Details <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="glass-card project-card">
+            <div class="project-card-image">
+              <img src="assets/images/projects/Active plugin.png" alt="SalesCreator UI">
+              <span class="project-badge">Widget & Mobile UI</span>
+            </div>
+            <div class="project-card-body">
+              <h3 class="project-card-title">SalesCreator PropTech Dashboard</h3>
+              <p class="project-card-desc">Withdrawn property data display widget, responsive mobile pricing sliders, and plan selection workflow UI.</p>
+              <div class="project-card-footer">
+                <a href="webdesign.html" class="btn btn-outline btn-sm">Read Web Design Details <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: LOGO & BRAND IDENTITY OVERVIEW -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Brand Strategy</span>
+          <h2>Logo & Brand Identity</h2>
+          <p>Designing memorable logo marks, corporate identity packages, packaging labels, and visual brand guidelines.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Logo 1 -->
+          <article class="glass-card project-card">
+            <div class="project-card-image">
+              <img src="assets/images/logos/Products/iconelect/3D-ICONELECT-icon-v2.png" alt="Icon Elect 3D Logo">
+              <span class="project-badge">3D Brand Identity</span>
+            </div>
+            <div class="project-card-body">
+              <h3 class="project-card-title">ICON Elect Visual Identity</h3>
+              <p class="project-card-desc">3D icon emblem design, vector logo marks, and animated visual assets for citizenship & membership portals.</p>
+              <div class="project-card-footer">
+                <a href="logodesign.html" class="btn btn-outline btn-sm">View Logo Gallery <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Logo 2 -->
+          <article class="glass-card project-card">
+            <div class="project-card-image">
+              <img src="assets/images/logos/Products/ravivcasuals/Box design raviv logo.png" alt="Raviv Casuals Packaging">
+              <span class="project-badge">Footwear & Packaging</span>
+            </div>
+            <div class="project-card-body">
+              <h3 class="project-card-title">Raviv Casuals Leather Goods</h3>
+              <p class="project-card-desc">Minimalist logo design, shoe box mockups, dust bag prints, and e-commerce packaging identity.</p>
+              <div class="project-card-footer">
+                <a href="logodesign.html" class="btn btn-outline btn-sm">View Logo Gallery <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <div class="logo-icon">IE</div>
+            <div>Ian <span class="accent">Escalante</span></div>
+          </a>
+          <p>Senior WordPress Developer & Web Solutions Specialist.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#casestudies">Case Studies</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Design Portfolio</h4>
+          <ul>
+            <li><a href="design.html">Design Overview</a></li>
+            <li><a href="webdesign.html">Web Design Showcase</a></li>
+            <li><a href="logodesign.html">Logo & Branding</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Ian Escalante. All Rights Reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/portfolio.js"></script>
+</body>
+</html>

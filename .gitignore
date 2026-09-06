@@ -1,0 +1,7 @@
+# Git Ignore for Portfolio
+temp/
+testedcode/
+uploads/avatars/
+*.log
+.DS_Store
+Thumbs.db

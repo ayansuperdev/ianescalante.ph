@@ -1,0 +1,67 @@
+.truck-manifest-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f44336;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.truck-manifest-popup.show {
+    opacity: 1;
+}
+
+.truck-manifest-popup.success {
+    background-color: #4CAF50;
+}
+
+.truck-manifest-popup.error {
+    background-color: #f44336;
+}
+
+/* Modal Popup Styling */
+#waybill-details-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    z-index: 1000;
+    display: none; /* Hidden by default */
+}
+
+#waybill-details-popup .close-button {
+    background: #d9534f;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    font-size: 14px;
+}
+
+#waybill-details-popup .close-button:hover {
+    background: #c9302c;
+}
+
+/* Background Overlay */
+#popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
