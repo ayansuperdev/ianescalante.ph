@@ -50,7 +50,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  scroll-padding-top: 90px;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -121,16 +121,24 @@ a:hover {
   padding-bottom: 5.5rem;
 }
 
-/* Header & Navigation */
+/* ==========================================================================
+   Header & Animated Sticky Navigation (ICE Logo & Left/Right Separation)
+   ========================================================================== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(11, 11, 12, 0.9);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(11, 11, 12, 0.85);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--border-color);
-  transition: background var(--transition-fast), padding var(--transition-fast);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.site-header.scrolled {
+  background: rgba(11, 11, 12, 0.97);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.15);
 }
 
 .header-inner {
@@ -138,86 +146,120 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   height: 80px;
+  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.site-header.scrolled .header-inner {
+  height: 64px;
+}
+
+/* Single ICE Logo Badge (No Text) */
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.03em;
+  text-decoration: none;
 }
 
-/* ICE Logo Icon */
 .brand-logo .logo-icon {
-  min-width: 48px;
-  height: 42px;
-  padding: 0 10px;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-dark));
+  min-width: 54px;
+  height: 44px;
+  padding: 0 14px;
+  background: linear-gradient(135deg, #F5E6C8 0%, var(--accent-primary) 50%, var(--accent-dark) 100%);
   color: #0B0B0C;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 900;
-  font-size: 0.95rem;
-  letter-spacing: 0.08em;
-  box-shadow: 0 0 18px rgba(212, 175, 55, 0.45);
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  box-shadow: 0 0 22px rgba(212, 175, 55, 0.5);
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease;
 }
 
-.brand-logo span.accent {
-  color: var(--accent-primary);
+.site-header.scrolled .brand-logo .logo-icon {
+  min-width: 48px;
+  height: 38px;
+  font-size: 1.05rem;
 }
 
+.brand-logo:hover .logo-icon {
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 0 32px rgba(212, 175, 55, 0.8);
+}
+
+/* Navigation Menu Animations */
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   list-style: none;
 }
 
 .nav-link {
+  position: relative;
   color: var(--text-secondary);
   font-weight: 500;
   font-size: 0.95rem;
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
-  transition: all var(--transition-fast);
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
 }
 
-.nav-link:hover,
-.nav-link.active {
+/* Underline Glow Line Animation */
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+  transform: translateX(-50%);
+  transition: width 0.35s ease;
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+  width: 75%;
+}
+
+.nav-link:hover {
   color: var(--text-primary);
   background: rgba(212, 175, 55, 0.12);
+  transform: translateY(-2px);
 }
 
 .nav-link.active {
-  border-bottom: 2px solid var(--accent-primary);
+  color: var(--text-primary);
+  background: rgba(212, 175, 55, 0.18);
+  font-weight: 600;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
 }
 
-/* Dropdown Menu */
+/* 3D Perspective Dropdown Menu Animation */
 .has-dropdown {
   position: relative;
 }
 
 .dropdown-menu {
   position: absolute;
-  top: 100%;
-  left: 0;
+  top: calc(100% + 8px);
+  right: 0;
   min-width: 220px;
   background: rgba(26, 27, 31, 0.98);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border-color);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-active);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-lg), 0 0 25px rgba(212, 175, 55, 0.15);
   padding: 10px 0;
   list-style: none;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: all var(--transition-base);
+  transform: perspective(600px) rotateX(-12deg) translateY(12px);
+  transform-origin: top center;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1100;
 }
 
@@ -226,7 +268,7 @@ a:hover {
 .dropdown-menu.show {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: perspective(600px) rotateX(0deg) translateY(0);
 }
 
 .dropdown-item {
@@ -234,13 +276,14 @@ a:hover {
   padding: 10px 20px;
   color: var(--text-secondary);
   font-size: 0.9rem;
-  transition: background var(--transition-fast), color var(--transition-fast);
+  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
 }
 
 .dropdown-item:hover,
 .dropdown-item:focus {
   background: rgba(212, 175, 55, 0.2);
   color: var(--text-primary);
+  transform: translateX(4px);
 }
 
 /* Mobile Toggle */
@@ -277,11 +320,21 @@ a:hover {
   color: #0B0B0C;
   font-weight: 700;
   box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35);
+  animation: btnPulseGlow 3.5s infinite ease-in-out;
+}
+
+@keyframes btnPulseGlow {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
+  }
+  50% {
+    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.65);
+  }
 }
 
 .btn-primary:hover {
   background: linear-gradient(135deg, #E5C158 0%, var(--accent-primary) 100%);
-  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.7);
   transform: translateY(-3px);
   color: #0B0B0C;
 }
@@ -319,10 +372,10 @@ a:hover {
 
 @keyframes floatBadge {
   0%, 100% {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateX(-50%) translateY(-8px);
   }
 }
 

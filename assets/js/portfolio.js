@@ -1,15 +1,35 @@
 /**
  * Ian Escalante Portfolio - Interactive Script
- * Logo ICE, Constellation Hero Particles Canvas, WCAG Modals, Navigation, & Filtering
+ * Logo ICE, Constellation Hero Particles Canvas, Animated Header Scroll, WCAG Modals, Navigation, & Filtering
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initHeroParticles();
+  initHeaderScroll();
   initNavigation();
   initPortfolioFilters();
   initCaseStudyModals();
   highlightActiveNav();
 });
+
+/* ==========================================================================
+   Header Scroll Animation (.scrolled state)
+   ========================================================================== */
+function initHeaderScroll() {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+
+  function checkScroll() {
+    if (window.scrollY > 40) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', checkScroll, { passive: true });
+  checkScroll();
+}
 
 /* ==========================================================================
    Hero Constellation Particle Canvas (Connected Lines)
@@ -38,7 +58,6 @@ function initHeroParticles() {
 
   function createParticles() {
     particles = [];
-    // Adjust density based on screen area
     const particleCount = Math.floor((width * height) / 12000);
     const count = Math.min(Math.max(particleCount, 40), 90);
 
@@ -71,18 +90,15 @@ function initHeroParticles() {
   function animate() {
     ctx.clearRect(0, 0, width, height);
 
-    // Update and draw particles
     for (let i = 0; i < particles.length; i++) {
       let p = particles[i];
 
       p.x += p.vx;
       p.y += p.vy;
 
-      // Bounce off boundaries
       if (p.x < 0 || p.x > width) p.vx *= -1;
       if (p.y < 0 || p.y > height) p.vy *= -1;
 
-      // Draw particle dot
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(212, 175, 55, ${p.alpha})`;
@@ -90,7 +106,6 @@ function initHeroParticles() {
       ctx.shadowColor = '#D4AF37';
       ctx.fill();
 
-      // Connect nearby particles
       for (let j = i + 1; j < particles.length; j++) {
         let p2 = particles[j];
         let dx = p.x - p2.x;
@@ -109,7 +124,6 @@ function initHeroParticles() {
         }
       }
 
-      // Connect to mouse cursor
       if (mouse.x !== null && mouse.y !== null) {
         let mdx = p.x - mouse.x;
         let mdy = p.y - mouse.y;
@@ -258,7 +272,6 @@ function openModal(modalElement, triggerElement) {
   modalElement.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 
-  // Focus trapping
   const focusableElements = modalElement.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
   if (focusableElements.length) {
     focusableElements[0].focus();
