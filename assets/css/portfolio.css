@@ -165,16 +165,16 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 85px;
+  height: 95px;
   position: relative;
   transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .site-header.scrolled .header-inner {
-  height: 70px;
+  height: 75px;
 }
 
-/* Centered IC Logo */
+/* Enlarged Centered IC Logo */
 .brand-logo {
   display: flex;
   align-items: center;
@@ -187,20 +187,20 @@ a:hover {
 }
 
 .brand-logo-img {
-  height: 52px;
+  height: 68px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.5));
+  filter: drop-shadow(0 0 16px rgba(212, 175, 55, 0.55));
   transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.35s ease, height 0.35s ease;
 }
 
 .site-header.scrolled .brand-logo-img {
-  height: 44px;
+  height: 52px;
 }
 
 .brand-logo:hover .brand-logo-img {
   transform: scale(1.08) rotate(-1deg);
-  filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.85));
+  filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.9));
 }
 
 /* Navigation Layout split around centered logo */
@@ -211,12 +211,24 @@ a:hover {
   width: 100%;
 }
 
+/* Menu items hidden on initial load, smoothly revealed on hover, scroll, or mouse movement */
 .nav-menu {
   display: flex;
   align-items: center;
   gap: 1.25rem;
   list-style: none;
-  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px) scale(0.96);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-header.scrolled .nav-menu,
+.site-header.nav-visible .nav-menu,
+.site-header:hover .nav-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
 }
 
 .nav-left {

@@ -18,20 +18,23 @@
   <!-- Sticky Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand-logo" aria-label="Ian Escalante Portfolio Homepage">
-        <img src="assets/images/profile/IC-logo.png" alt="ICE Logo" class="brand-logo-img">
-      </a>
-      
       <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
         <i class="fas fa-bars"></i>
       </button>
       
-      <nav id="primary-navigation">
-        <ul class="nav-menu">
+      <nav id="primary-navigation" class="nav-container">
+        <ul class="nav-menu nav-left">
           <li><a href="index.html" class="nav-link">Home</a></li>
           <li><a href="index.html#about" class="nav-link">About</a></li>
           <li><a href="index.html#services" class="nav-link">Services</a></li>
-          <li><a href="index.html#casestudies" class="nav-link">Case Studies</a></li>
+          <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+        </ul>
+
+        <a href="index.html" class="brand-logo" aria-label="Ian Escalante Portfolio Homepage">
+          <img src="assets/images/profile/IC-logo.png" alt="ICE Logo" class="brand-logo-img">
+        </a>
+
+        <ul class="nav-menu nav-right">
           <li class="has-dropdown">
             <a href="design.html" class="nav-link active">Design <i class="fas fa-chevron-down" style="font-size: 0.75rem; margin-left: 4px;"></i></a>
             <ul class="dropdown-menu">
