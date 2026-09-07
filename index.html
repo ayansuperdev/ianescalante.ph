@@ -126,50 +126,172 @@
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="section-padding" style="background: rgba(26, 27, 31, 0.4);">
+    <section id="about" class="section-padding" style="background: rgba(15, 15, 17, 0.6); position: relative;">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Professional Profile</span>
+          <span class="section-tag"><i class="fas fa-user-check"></i> Professional Profile</span>
           <h2>About My Expertise</h2>
+          <p class="section-subtitle" style="color: var(--text-secondary); max-width: 680px; margin: 0.75rem auto 0; font-size: 1rem;">
+            Over 7+ years of engineering custom WordPress engines, complex PHP backends, automated data pipelines, and responsive web applications.
+          </p>
         </div>
         
-        <div class="glass-card" style="margin-bottom: 2.5rem;">
-          <p class="lead">
-            I am a senior web developer with over 7 years of hands-on experience building custom WordPress sites, plugins, portals, and data workflows. My work spans frontend UI development, complex PHP backend logic, API integrations, testing, deployment, and ongoing technical maintenance.
-          </p>
-          <p>
-            Rather than relying solely on off-the-shelf page builders, I engineer custom solutions tailored to business requirements. Whether implementing Bright MLS property feeds for real estate, secure reviewer portals for citizenship applications, Stripe webhook subscriptions, or automated Make and GoHighLevel workflows, I prioritize stability, security, and performance.
-          </p>
+        <!-- TOP ROW: 2-COLUMN SPLIT (PROFILE BIO vs VALUE PROPOSITION) -->
+        <div class="about-hero-grid">
+          <!-- LEFT CARD: PROFILE BIO -->
+          <div class="about-bio-card">
+            <div class="card-accent-tag"><i class="fas fa-code-branch"></i> Custom Engineering Focus</div>
+            <h3>Full-Stack Solutions Built Beyond Off-the-Shelf Page Builders</h3>
+            <p class="lead" style="color: var(--text-primary); font-weight: 500;">
+              I am a senior web developer specializing in custom WordPress architecture, bespoke PHP plugin development, reviewer portals, and automated business workflows.
+            </p>
+            <p>
+              Rather than relying solely on bloated plugins or template stacks, I craft tailored web applications engineered for operational efficiency, bulletproof security, and high performance.
+            </p>
+            
+            <div class="about-pillars">
+              <div class="pillar-item">
+                <div class="pillar-icon"><i class="fas fa-cogs"></i></div>
+                <div class="pillar-content">
+                  <h4>Bespoke PHP & Plugins</h4>
+                  <p>Custom plugin architecture, database query tuning, and ACF/Gutenberg native blocks.</p>
+                </div>
+              </div>
+              <div class="pillar-item">
+                <div class="pillar-icon"><i class="fas fa-network-wired"></i></div>
+                <div class="pillar-content">
+                  <h4>APIs & Data Automations</h4>
+                  <p>Real-time RESO/MLS property feeds, Stripe webhooks, Make/Zapier, and CRM syncs.</p>
+                </div>
+              </div>
+              <div class="pillar-item">
+                <div class="pillar-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="pillar-content">
+                  <h4>Speed & Security Standards</h4>
+                  <p>PageSpeed optimization, cPanel infrastructure hardening, and WCAG accessibility compliance.</p>
+                </div>
+              </div>
+            </div>
+          </div>
           
-          <h3 style="font-size: 1.15rem; color: var(--accent-primary); margin-top: 2rem; margin-bottom: 1rem;">
-            <i class="fas fa-tools"></i> Technologies & Platforms I Work With
-          </h3>
-          <div class="service-tech-tags" style="gap: 8px;">
-            <span class="skill-pill">WordPress</span>
-            <span class="skill-pill">WooCommerce</span>
-            <span class="skill-pill">PHP</span>
-            <span class="skill-pill">JavaScript</span>
-            <span class="skill-pill">HTML5</span>
-            <span class="skill-pill">CSS3</span>
-            <span class="skill-pill">MySQL</span>
-            <span class="skill-pill">REST APIs</span>
-            <span class="skill-pill">Gutenberg & ACF</span>
-            <span class="skill-pill">Elementor Pro</span>
-            <span class="skill-pill">Divi</span>
-            <span class="skill-pill">Stripe Webhooks</span>
-            <span class="skill-pill">Airtable API</span>
-            <span class="skill-pill">Make Automations</span>
-            <span class="skill-pill">GoHighLevel</span>
-            <span class="skill-pill">Follow Up Boss</span>
-            <span class="skill-pill">Eagle CRM</span>
-            <span class="skill-pill">Bright MLS / RESO</span>
-            <span class="skill-pill">Google Maps API</span>
-            <span class="skill-pill">FullCalendar</span>
-            <span class="skill-pill">Rezdy</span>
-            <span class="skill-pill">Mailchimp</span>
-            <span class="skill-pill">Slack Webhooks</span>
-            <span class="skill-pill">Git / GitHub</span>
-            <span class="skill-pill">SiteGround & cPanel</span>
+          <!-- RIGHT CARD: WHY WORK WITH ME / IMPACT HIGHLIGHTS -->
+          <div class="about-impact-card">
+            <div class="card-accent-tag"><i class="fas fa-star"></i> Development Standards</div>
+            <h3>Why Agencies & Businesses Partner With ICE</h3>
+            
+            <div class="impact-features-grid">
+              <div class="impact-box">
+                <div class="impact-icon"><i class="fas fa-bolt"></i></div>
+                <div>
+                  <h4>Zero Code Bloat</h4>
+                  <p>Lean, clean PHP & JS codebase without unnecessary plugin dependencies.</p>
+                </div>
+              </div>
+              
+              <div class="impact-box">
+                <div class="impact-icon"><i class="fas fa-sync-alt"></i></div>
+                <div>
+                  <h4>Seamless CRM Integration</h4>
+                  <p>Direct sync with GoHighLevel, Follow Up Boss, Eagle CRM & Airtable.</p>
+                </div>
+              </div>
+              
+              <div class="impact-box">
+                <div class="impact-icon"><i class="fas fa-mobile-alt"></i></div>
+                <div>
+                  <h4>Pixel-Perfect UI/UX</h4>
+                  <p>Flawless execution across mobile, tablet, and desktop viewports.</p>
+                </div>
+              </div>
+              
+              <div class="impact-box">
+                <div class="impact-icon"><i class="fas fa-headset"></i></div>
+                <div>
+                  <h4>End-to-End Reliability</h4>
+                  <p>From initial scope to staging testing, production launch, and maintenance.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-cta-bar">
+              <div class="cta-bar-text">
+                <strong>Have a custom WordPress or API challenge?</strong>
+                <span>Let's architect the ideal solution.</span>
+              </div>
+              <a href="#contact" class="btn btn-primary btn-sm"><i class="fas fa-paper-plane"></i> Discuss Project</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTTOM ROW: CATEGORIZED TECH STACK GRID WITH BRAND ICONS -->
+        <div class="tech-stack-wrapper">
+          <div class="tech-stack-header">
+            <h3><i class="fas fa-layer-group"></i> Categorized Tech Stack & Integration Ecosystem</h3>
+            <p>Tools, frameworks, APIs, and platforms I utilize daily to engineer custom web solutions.</p>
+          </div>
+
+          <div class="tech-category-grid">
+            <!-- CATEGORY 1: CMS & BACKEND CORE -->
+            <div class="tech-category-card">
+              <div class="category-title">
+                <i class="fas fa-database"></i> CMS & Backend Core
+              </div>
+              <div class="tech-badge-list">
+                <span class="tech-badge"><i class="fab fa-wordpress"></i> WordPress</span>
+                <span class="tech-badge"><i class="fas fa-shopping-cart"></i> WooCommerce</span>
+                <span class="tech-badge"><i class="fab fa-php"></i> Custom PHP</span>
+                <span class="tech-badge"><i class="fab fa-js"></i> JavaScript / ES6</span>
+                <span class="tech-badge"><i class="fas fa-server"></i> MySQL Database</span>
+                <span class="tech-badge"><i class="fas fa-network-wired"></i> REST APIs</span>
+                <span class="tech-badge"><i class="fas fa-cubes"></i> ACF & Gutenberg</span>
+              </div>
+            </div>
+
+            <!-- CATEGORY 2: VISUAL BUILDERS & FRONTEND UI -->
+            <div class="tech-category-card">
+              <div class="category-title">
+                <i class="fas fa-laptop-code"></i> Visual Builders & Frontend UI
+              </div>
+              <div class="tech-badge-list">
+                <span class="tech-badge"><i class="fas fa-drafting-compass"></i> Elementor Pro</span>
+                <span class="tech-badge"><i class="fas fa-paint-brush"></i> Divi Theme</span>
+                <span class="tech-badge"><i class="fab fa-html5"></i> HTML5</span>
+                <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3 & Flex/Grid</span>
+                <span class="tech-badge"><i class="fas fa-universal-access"></i> WCAG Accessibility</span>
+                <span class="tech-badge"><i class="fas fa-mobile-alt"></i> Responsive Design</span>
+              </div>
+            </div>
+
+            <!-- CATEGORY 3: CRM & WORKFLOW AUTOMATION -->
+            <div class="tech-category-card">
+              <div class="category-title">
+                <i class="fas fa-robot"></i> CRM & Workflow Automations
+              </div>
+              <div class="tech-badge-list">
+                <span class="tech-badge"><i class="fas fa-rocket"></i> GoHighLevel</span>
+                <span class="tech-badge"><i class="fas fa-user-tie"></i> Follow Up Boss</span>
+                <span class="tech-badge"><i class="fas fa-building"></i> Eagle CRM</span>
+                <span class="tech-badge"><i class="fas fa-cogs"></i> Make (Integromat)</span>
+                <span class="tech-badge"><i class="fas fa-table"></i> Airtable API</span>
+                <span class="tech-badge"><i class="fas fa-bolt"></i> Zapier / Webhooks</span>
+              </div>
+            </div>
+
+            <!-- CATEGORY 4: INTEGRATIONS & INFRASTRUCTURE -->
+            <div class="tech-category-card">
+              <div class="category-title">
+                <i class="fas fa-plug"></i> APIs & Infrastructure
+              </div>
+              <div class="tech-badge-list">
+                <span class="tech-badge"><i class="fas fa-home"></i> Bright MLS / RESO</span>
+                <span class="tech-badge"><i class="fab fa-stripe"></i> Stripe Webhooks</span>
+                <span class="tech-badge"><i class="fas fa-map-marked-alt"></i> Google Maps API</span>
+                <span class="tech-badge"><i class="far fa-calendar-alt"></i> FullCalendar & Rezdy</span>
+                <span class="tech-badge"><i class="fab fa-mailchimp"></i> Mailchimp / Slack</span>
+                <span class="tech-badge"><i class="fab fa-github"></i> Git & GitHub</span>
+                <span class="tech-badge"><i class="fas fa-hdd"></i> SiteGround & cPanel</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
