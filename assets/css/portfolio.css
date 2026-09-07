@@ -493,6 +493,62 @@ a:hover {
   letter-spacing: 0.05em;
 }
 
+/* Minimal Stats Banner Section After Hero */
+.stats-banner-section {
+  padding: 1rem 0 3.5rem 0;
+  position: relative;
+  z-index: 10;
+  margin-top: -1rem;
+}
+
+.stats-banner-card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  background: rgba(26, 27, 31, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45), 0 0 25px rgba(212, 175, 55, 0.1);
+  padding: 1.6rem 1rem;
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.stats-banner-card:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), 0 0 35px rgba(212, 175, 55, 0.2);
+  transform: translateY(-2px);
+}
+
+.stat-banner-item {
+  text-align: center;
+  padding: 0.5rem 1.25rem;
+  border-right: 1px solid rgba(212, 175, 55, 0.18);
+}
+
+.stat-banner-item:last-child {
+  border-right: none;
+}
+
+.stat-banner-val {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent-primary);
+  display: block;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.3rem;
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.35);
+}
+
+.stat-banner-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: block;
+}
+
 .hero-avatar-wrapper {
   position: relative;
   text-align: center;
@@ -1175,6 +1231,22 @@ a:hover {
   }
   .stat-item:nth-child(2) {
     border-right: none;
+  }
+  .stats-banner-card {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 0;
+  }
+  .stat-banner-item:nth-child(2) {
+    border-right: none;
+  }
+  .stat-banner-item {
+    border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+    padding-bottom: 1rem;
+  }
+  .stat-banner-item:nth-child(3),
+  .stat-banner-item:nth-child(4) {
+    border-bottom: none;
+    padding-bottom: 0;
   }
   .contact-wrapper {
     grid-template-columns: 1fr;
