@@ -39,20 +39,23 @@
   <!-- Sticky Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand-logo" aria-label="Ian Escalante Portfolio Homepage">
-        <div class="logo-icon">ICE</div>
-      </a>
-      
       <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
         <i class="fas fa-bars"></i>
       </button>
       
-      <nav id="primary-navigation">
-        <ul class="nav-menu">
+      <nav id="primary-navigation" class="nav-container">
+        <ul class="nav-menu nav-left">
           <li><a href="index.html" class="nav-link active">Home</a></li>
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#services" class="nav-link">Services</a></li>
           <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        </ul>
+
+        <a href="index.html" class="brand-logo" aria-label="Ian Escalante Portfolio Homepage">
+          <img src="assets/images/profile/IC-logo.png" alt="ICE Logo" class="brand-logo-img">
+        </a>
+
+        <ul class="nav-menu nav-right">
           <li class="has-dropdown">
             <a href="design.html" class="nav-link">Design <i class="fas fa-chevron-down" style="font-size: 0.75rem; margin-left: 4px;"></i></a>
             <ul class="dropdown-menu">
@@ -70,33 +73,37 @@
 
   <main>
     <!-- HERO SECTION WITH CONNECTED PARTICLES CANVAS -->
-    <section class="hero-section">
+    <section class="hero-section hero-centered">
       <canvas id="heroParticlesCanvas"></canvas>
       <div class="container">
-        <div class="hero-grid">
-          <div class="hero-content">
-            <div class="hero-eyebrow">
-              <i class="fas fa-code"></i> Senior WordPress Developer & Web Solutions Specialist
-            </div>
-            <h1 class="hero-title">Custom WordPress Solutions Built for Real Business Needs</h1>
-            <p class="hero-subtitle">
-              I build professional websites, custom plugins, dashboards, API integrations, and automated systems that help businesses work more efficiently.
-            </p>
-            <div class="hero-actions">
-              <a href="#portfolio" class="btn btn-primary"><i class="fas fa-layer-group"></i> View My Work</a>
-              <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Let’s Talk</a>
-            </div>
-          </div>
+        <div class="hero-centered-layout">
           
-          <div class="hero-avatar-wrapper">
-            <!-- Cutout standup photo without border box, surrounded by constellation particles -->
-            <div class="hero-avatar-card">
-              <img src="assets/images/profile/Ian Escalante standup.png" alt="Ian Escalante - Senior WordPress Developer" class="hero-avatar-img">
+          <div class="hero-eyebrow animate-fade-down">
+            <i class="fas fa-code"></i> Senior WordPress Developer & Web Solutions Specialist
+          </div>
+
+          <div class="centered-avatar-wrapper animate-scale-up">
+            <div class="centered-avatar-card">
+              <img src="assets/images/profile/Upper body.png" alt="Ian Escalante - Senior WordPress Developer" class="upper-body-img">
               <div class="hero-badge">
                 <span class="status-dot"></span> Available for New Projects
               </div>
             </div>
           </div>
+
+          <h1 class="hero-title animate-fade-up">
+            Custom WordPress Solutions Built for <span class="hero-title-highlight" id="heroDynamicText">Real Business Needs</span><span class="hero-title-cursor"></span>
+          </h1>
+
+          <p class="hero-subtitle animate-fade-up">
+            I build professional websites, custom plugins, dashboards, API integrations, and automated systems that help businesses work more efficiently.
+          </p>
+
+          <div class="hero-actions animate-fade-up">
+            <a href="#portfolio" class="btn btn-primary"><i class="fas fa-layer-group"></i> View My Work</a>
+            <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Let’s Talk</a>
+          </div>
+
         </div>
       </div>
     </section>

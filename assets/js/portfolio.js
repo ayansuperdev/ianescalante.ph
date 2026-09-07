@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initHeroParticles();
   initHeaderScroll();
+  initHeroTextAnimation();
   initNavigation();
   initPortfolioFilters();
   initCaseStudyModals();
@@ -13,22 +14,83 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   Header Scroll Animation (.scrolled state)
+   Header Scroll & Mouse-Move Animation (.scrolled & .nav-visible states)
    ========================================================================== */
 function initHeaderScroll() {
   const header = document.querySelector('.site-header');
   if (!header) return;
 
-  function checkScroll() {
-    if (window.scrollY > 40) {
-      header.classList.add('scrolled');
+  let mouseNearTop = false;
+
+  function checkState() {
+    const isScrolled = window.scrollY > 30;
+    if (isScrolled || mouseNearTop) {
+      header.classList.add('scrolled', 'nav-visible');
     } else {
-      header.classList.remove('scrolled');
+      header.classList.remove('scrolled', 'nav-visible');
     }
   }
 
-  window.addEventListener('scroll', checkScroll, { passive: true });
-  checkScroll();
+  window.addEventListener('scroll', checkState, { passive: true });
+
+  document.addEventListener('mousemove', (e) => {
+    if (e.clientY < 110) {
+      mouseNearTop = true;
+    } else {
+      mouseNearTop = false;
+    }
+    checkState();
+  });
+
+  checkState();
+}
+
+/* ==========================================================================
+   Interactive Hero Typewriter Text Animation
+   ========================================================================== */
+function initHeroTextAnimation() {
+  const dynamicText = document.getElementById('heroDynamicText');
+  if (!dynamicText) return;
+
+  const words = [
+    'Real Business Needs',
+    'High Performance',
+    'Custom WP Plugins',
+    'API & CRM Automations',
+    'Scalable Growth'
+  ];
+
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typeSpeed = 100;
+
+  function type() {
+    const currentWord = words[wordIndex];
+
+    if (isDeleting) {
+      dynamicText.textContent = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+      typeSpeed = 45;
+    } else {
+      dynamicText.textContent = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+      typeSpeed = 85;
+    }
+
+    if (!isDeleting && charIndex === currentWord.length) {
+      typeSpeed = 2200; // Pause at end of word
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      typeSpeed = 400; // Pause before next word
+    }
+
+    setTimeout(type, typeSpeed);
+  }
+
+  setTimeout(type, 1000);
 }
 
 /* ==========================================================================
