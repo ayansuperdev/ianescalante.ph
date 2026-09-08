@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPortfolioFilters();
   initCaseStudyModals();
   highlightActiveNav();
+  initLoadMoreExperience();
 });
 
 /* ==========================================================================
@@ -371,3 +372,31 @@ function trapFocus(modalElement, focusableElements) {
     }
   });
 }
+
+/* ==========================================================================
+   Load More Work Experience Toggle
+   ========================================================================== */
+function initLoadMoreExperience() {
+  const loadBtn = document.getElementById('loadMoreExperienceBtn');
+  const hiddenContainer = document.getElementById('experienceHiddenRoles');
+
+  if (!loadBtn || !hiddenContainer) return;
+
+  loadBtn.addEventListener('click', () => {
+    const isHidden = hiddenContainer.style.display === 'none' || hiddenContainer.style.display === '';
+
+    if (isHidden) {
+      hiddenContainer.style.display = 'block';
+      loadBtn.innerHTML = '<i class="fas fa-chevron-up" style="margin-right: 8px;"></i> Show Less Work Experience';
+    } else {
+      hiddenContainer.style.display = 'none';
+      loadBtn.innerHTML = '<i class="fas fa-chevron-down" style="margin-right: 8px;"></i> Load More Work Experience';
+      
+      const expSection = document.getElementById('experience');
+      if (expSection) {
+        expSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+}
+
