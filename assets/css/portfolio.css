@@ -1255,6 +1255,23 @@ a:hover {
   margin-bottom: 0.5rem;
 }
 
+.company-tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.75rem;
+}
+
+.company-tag i {
+  color: var(--accent-primary);
+  margin-right: 4px;
+}
+
 .project-card-title {
   font-size: 1.3rem;
   margin-bottom: 0.75rem;
@@ -1662,10 +1679,31 @@ a:hover {
   margin-bottom: 3rem;
 }
 
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-brand .footer-logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.footer-brand .footer-logo-img {
+  height: 54px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.45));
+}
+
 .footer-brand p {
   color: var(--text-muted);
   max-width: 400px;
-  margin-top: 1rem;
+  margin-top: 0.25rem;
+  line-height: 1.6;
 }
 
 .footer-links h4 {
