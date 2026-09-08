@@ -1499,6 +1499,11 @@ a:hover {
   box-shadow: 0 0 10px var(--accent-primary);
 }
 
+.timeline-dot.active-dot {
+  background: #10B981;
+  box-shadow: 0 0 12px #10B981;
+}
+
 .timeline-header {
   margin-bottom: 1rem;
 }
@@ -1507,6 +1512,46 @@ a:hover {
   font-size: 1.25rem;
   color: var(--text-primary);
   margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  vertical-align: middle;
+}
+
+.role-badge.active-badge {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+.role-badge.core-badge {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--accent-primary);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+.timeline-item.active-engagement .glass-card {
+  border-color: rgba(212, 175, 55, 0.25);
+  background: rgba(26, 27, 31, 0.75);
+}
+
+.timeline-item.active-engagement .glass-card:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.15);
 }
 
 .timeline-meta {
