@@ -12,7 +12,56 @@ document.addEventListener('DOMContentLoaded', () => {
   initCaseStudyModals();
   highlightActiveNav();
   initLoadMoreExperience();
+  initPortraitPopup();
 });
+
+function initPortraitPopup() {
+  const popup = document.querySelector('.portrait-popup');
+  const about = document.getElementById('about');
+  if (!popup || !about) return;
+
+  const cloudText = popup.querySelector('.portrait-cloud-text');
+  const messages = {
+    about: 'I build WordPress solutions around your business.',
+    services: 'Need a website, custom plugin, or automation? I can help!',
+    portfolio: 'Take a look at the projects I have brought to life.',
+    capabilities: 'These are the tools I use to turn ideas into working solutions.',
+    workflow: 'From discovery to launch, here is how I bring your project to life.',
+    experience: 'Explore the experience behind my work.',
+    contact: 'Have a project in mind? Let\'s talk!'
+  };
+  const sections = Array.from(document.querySelectorAll('section[id]'))
+    .filter(section => messages[section.id]);
+  let activeSection = '';
+  let dismissed = false;
+  const update = () => {
+    const visible = !dismissed && about.getBoundingClientRect().top <= window.innerHeight * 0.75;
+    popup.classList.toggle('is-visible', visible);
+    popup.setAttribute('aria-hidden', String(!visible));
+    popup.inert = !visible;
+    if (!visible || !cloudText) return;
+
+    let current = about.id;
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= window.innerHeight * 0.5) {
+        current = section.id;
+      }
+    }
+    if (current !== activeSection) {
+      cloudText.textContent = messages[current];
+      activeSection = current;
+    }
+  };
+
+  popup.querySelector('.portrait-popup-close').addEventListener('click', () => {
+    dismissed = true;
+    update();
+  });
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  window.addEventListener('pageshow', update);
+  update();
+}
 
 /* ==========================================================================
    Header Scroll & Mouse-Move Animation (.scrolled & .nav-visible states)
@@ -399,4 +448,3 @@ function initLoadMoreExperience() {
     }
   });
 }
-
