@@ -266,27 +266,46 @@ function initHeroParticles() {
    Navigation & Dropdowns
    ========================================================================== */
 function initNavigation() {
-  const toggleBtn = document.querySelector('.mobile-nav-toggle');
-  const navMenu = document.querySelector('.nav-menu');
-  const dropdownTrigger = document.querySelector('.has-dropdown > a');
-  const dropdownParent = document.querySelector('.has-dropdown');
-
-  if (toggleBtn && navMenu) {
-    toggleBtn.addEventListener('click', () => {
-      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-      toggleBtn.setAttribute('aria-expanded', !isExpanded);
-      navMenu.classList.toggle('show');
-    });
+  const header = document.querySelector('.site-header');
+  const toggle = header?.querySelector('.mobile-nav-toggle');
+  const nav = header?.querySelector('.nav-container');
+  if (!toggle || !nav) return;
+  const compact = window.matchMedia('(max-width: 1100px)');
+  const dropdown = nav.querySelector('.has-dropdown');
+  const trigger = dropdown?.querySelector('a');
+  if (trigger) trigger.setAttribute('aria-expanded', 'false');
+  function setOpen(open, restoreFocus = false) {
+    toggle.setAttribute('aria-expanded', String(open));
+    header.classList.toggle('menu-open', open);
+    nav.inert = compact.matches && !open;
+    if (!open && dropdown) {
+      dropdown.classList.remove('active');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+    if (restoreFocus) toggle.focus();
   }
-
-  if (dropdownTrigger && dropdownParent) {
-    dropdownTrigger.addEventListener('click', (e) => {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        dropdownParent.classList.toggle('active');
-      }
-    });
-  }
+  toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+  trigger?.addEventListener('click', event => {
+    if (!compact.matches) return;
+    event.preventDefault();
+    const open = dropdown.classList.toggle('active');
+    trigger.setAttribute('aria-expanded', String(open));
+  });
+  nav.addEventListener('click', event => {
+    const link = event.target.closest('a');
+    if (link && link !== trigger && compact.matches) setOpen(false);
+  });
+  document.addEventListener('click', event => {
+    if (!header.contains(event.target)) setOpen(false);
+  });
+  header.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { setOpen(false, true); }
+  });
+  header.addEventListener('focusout', event => {
+    if (event.relatedTarget && !header.contains(event.relatedTarget)) setOpen(false);
+  });
+  compact.addEventListener('change', () => setOpen(false));
+  setOpen(false);
 }
 
 function highlightActiveNav() {
