@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroParticles();
   initHeaderScroll();
   initHeroTextAnimation();
+  initFramerMotionHeroParallax();
   initNavigation();
   initPortfolioFilters();
   initFeaturedWork();
@@ -144,6 +145,62 @@ function initHeroTextAnimation() {
   }
 
   setTimeout(type, 1000);
+}
+
+/* ==========================================================================
+   Framer Motion-Style Interactive 3D Parallax & Spring Physics (Hero)
+   ========================================================================== */
+function initFramerMotionHeroParallax() {
+  const heroSection = document.querySelector('.hero-section');
+  const avatarCard = document.querySelector('.centered-avatar-card');
+  const eyebrow = document.querySelector('.hero-eyebrow');
+  const badge = document.querySelector('.hero-badge');
+  if (!heroSection || !avatarCard) return;
+
+  let currentX = 0, currentY = 0;
+  let targetX = 0, targetY = 0;
+  let animationFrameId = null;
+
+  function onMouseMove(e) {
+    const rect = heroSection.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    targetX = (e.clientX - centerX) / (rect.width / 2);
+    targetY = (e.clientY - centerY) / (rect.height / 2);
+  }
+
+  function updateSpringPhysics() {
+    // Smooth damp spring physics interpolation
+    currentX += (targetX - currentX) * 0.08;
+    currentY += (targetY - currentY) * 0.08;
+
+    const tiltX = (currentY * -12).toFixed(2);
+    const tiltY = (currentX * 12).toFixed(2);
+    const floatX = (currentX * 18).toFixed(2);
+    const floatY = (currentY * 18).toFixed(2);
+
+    avatarCard.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(20px)`;
+
+    if (badge) {
+      badge.style.transform = `translateX(-50%) translate3d(${floatX * 0.8}px, ${floatY * 0.8}px, 35px)`;
+    }
+
+    if (eyebrow) {
+      eyebrow.style.transform = `translate3d(${-floatX * 0.4}px, ${-floatY * 0.4}px, 0)`;
+    }
+
+    animationFrameId = requestAnimationFrame(updateSpringPhysics);
+  }
+
+  heroSection.addEventListener('mousemove', onMouseMove);
+
+  heroSection.addEventListener('mouseleave', () => {
+    targetX = 0;
+    targetY = 0;
+  });
+
+  updateSpringPhysics();
 }
 
 /* ==========================================================================
