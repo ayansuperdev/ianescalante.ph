@@ -978,9 +978,10 @@ function initAboutSection() {
    ========================================================================== */
 function initCustomProjectsLoader() {
   const container = document.getElementById('customProjectsContainer');
-  if (!container) return;
+  const webContainer = document.getElementById('webDesignOverviewContainer');
+  const logoContainer = document.getElementById('logoDesignOverviewContainer');
 
-  const currentPage = window.location.pathname.includes('logodesign') ? 'logodesign' : 'webdesign';
+  if (!container && !webContainer && !logoContainer) return;
 
   fetch('data/custom-projects.json')
     .then(response => {
@@ -989,48 +990,101 @@ function initCustomProjectsLoader() {
     })
     .then(projects => {
       if (!Array.isArray(projects)) return;
-      const filtered = projects.filter(p => p.page === currentPage);
-      if (filtered.length === 0) return;
 
-      filtered.forEach(p => {
-        const article = document.createElement('div');
-        article.className = 'glass-card';
-        article.style.marginBottom = '2rem';
-
-        if (currentPage === 'webdesign') {
-          const tagsHtml = (p.tags || '').split(',').map(t => `<span class="tech-tag">${t.trim()}</span>`).join('');
-          article.innerHTML = `
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
-              <div>
-                <span class="project-badge" style="position: static; display: inline-block; margin-bottom: 1rem;">${p.badge || 'Web UI'}</span>
-                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">${p.title}</h3>
-                <p><strong>Challenge:</strong> ${p.challenge || 'Design and user workflow optimization.'}</p>
-                <p><strong>Solution:</strong> ${p.solution || 'Implemented responsive layout and interactive components.'}</p>
-                <div class="service-tech-tags" style="margin-top: 1rem;">${tagsHtml}</div>
+      // Handle design.html overview Containers if present
+      if (webContainer || logoContainer) {
+        if (webContainer) {
+          webContainer.innerHTML = '';
+          const webProjects = projects.filter(p => p.page === 'webdesign');
+          webProjects.forEach(p => {
+            const article = document.createElement('article');
+            article.className = 'glass-card project-card';
+            article.innerHTML = `
+              <div class="project-card-image">
+                <img src="${p.image}" alt="${p.title}">
+                <span class="project-badge">${p.badge || 'Web UI'}</span>
               </div>
-              <div>
-                <img src="${p.image}" alt="${p.title}" style="width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-              </div>
-            </div>`;
-        } else {
-          article.className = 'glass-card project-card';
-          article.innerHTML = `
-            <div class="project-card-image">
-              <img src="${p.image}" alt="${p.title}">
-              <span class="project-badge">${p.badge || 'Logo Design'}</span>
-            </div>
-            <div class="project-card-body">
-              <span class="project-meta">${p.badge || 'Brand Identity'}</span>
-              <h3 class="project-card-title">${p.title}</h3>
-              <p class="project-card-desc">${p.solution || p.challenge || ''}</p>
-              <div class="project-card-footer">
-                <span class="tech-tag">${p.badge || 'Vector Logo'}</span>
-              </div>
-            </div>`;
+              <div class="project-card-body">
+                <h3 class="project-card-title">${p.title}</h3>
+                <p class="project-card-desc">${p.challenge || p.solution || ''}</p>
+                <div class="project-card-footer">
+                  <a href="webdesign.html" class="btn btn-outline btn-sm">Read Web Design Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </div>`;
+            webContainer.appendChild(article);
+          });
         }
 
-        container.appendChild(article);
-      });
+        if (logoContainer) {
+          logoContainer.innerHTML = '';
+          const logoProjects = projects.filter(p => p.page === 'logodesign');
+          logoProjects.forEach(p => {
+            const article = document.createElement('article');
+            article.className = 'glass-card project-card';
+            article.innerHTML = `
+              <div class="project-card-image">
+                <img src="${p.image}" alt="${p.title}">
+                <span class="project-badge">${p.badge || 'Logo Design'}</span>
+              </div>
+              <div class="project-card-body">
+                <h3 class="project-card-title">${p.title}</h3>
+                <p class="project-card-desc">${p.solution || p.challenge || ''}</p>
+                <div class="project-card-footer">
+                  <a href="logodesign.html" class="btn btn-outline btn-sm">View Logo Gallery <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </div>`;
+            logoContainer.appendChild(article);
+          });
+        }
+        return;
+      }
+
+      // Handle webdesign.html and logodesign.html single containers
+      if (container) {
+        container.innerHTML = '';
+        const currentPage = window.location.pathname.includes('logodesign') ? 'logodesign' : 'webdesign';
+        const filtered = projects.filter(p => p.page === currentPage);
+        
+        filtered.forEach(p => {
+          const article = document.createElement('div');
+          article.className = 'glass-card';
+          article.style.marginBottom = '2rem';
+
+          if (currentPage === 'webdesign') {
+            const tagsHtml = (p.tags || '').split(',').map(t => `<span class="tech-tag">${t.trim()}</span>`).join('');
+            article.innerHTML = `
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+                <div>
+                  <span class="project-badge" style="position: static; display: inline-block; margin-bottom: 1rem;">${p.badge || 'Web UI'}</span>
+                  <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">${p.title}</h3>
+                  <p><strong>Challenge:</strong> ${p.challenge || 'Design and user workflow optimization.'}</p>
+                  <p><strong>Solution:</strong> ${p.solution || 'Implemented responsive layout and interactive components.'}</p>
+                  <div class="service-tech-tags" style="margin-top: 1rem;">${tagsHtml}</div>
+                </div>
+                <div>
+                  <img src="${p.image}" alt="${p.title}" style="width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                </div>
+              </div>`;
+          } else {
+            article.className = 'glass-card project-card';
+            article.innerHTML = `
+              <div class="project-card-image">
+                <img src="${p.image}" alt="${p.title}">
+                <span class="project-badge">${p.badge || 'Logo Design'}</span>
+              </div>
+              <div class="project-card-body">
+                <span class="project-meta">${p.badge || 'Brand Identity'}</span>
+                <h3 class="project-card-title">${p.title}</h3>
+                <p class="project-card-desc">${p.solution || p.challenge || ''}</p>
+                <div class="project-card-footer">
+                  <span class="tech-tag">${p.badge || 'Vector Logo'}</span>
+                </div>
+              </div>`;
+          }
+
+          container.appendChild(article);
+        });
+      }
     })
     .catch(err => console.log('Custom projects loader:', err));
 }
