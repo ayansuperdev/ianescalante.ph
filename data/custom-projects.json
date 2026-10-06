@@ -1,72 +1,72 @@
 [
-  {
-    "id": "web_001",
-    "page": "webdesign",
-    "title": "Vaze Realty Map & Portal Interface",
-    "badge": "Real Estate Search UI",
-    "image": "assets/images/Search Map.png",
-    "challenge": "Presenting interactive map property search, radius tools, status indicators, and client listing views in a clean, high-performance UI.",
-    "solution": "Designed custom floating map filter controls, responsive property card grids, and protected dashboard views for agents and clients.",
-    "tags": "Google Maps API, Interactive Map UI, Responsive Grid"
-  },
-  {
-    "id": "web_002",
-    "page": "webdesign",
-    "title": "Landways Cargo Logistics Dashboard",
-    "badge": "Cargo & Tracking UI",
-    "image": "assets/images/projects/Active plugin.png",
-    "challenge": "Managing waybills manifests, shipment aging statuses, consignee data, and date-range filters across complex freight operations.",
-    "solution": "Developed a responsive admin portal with quick manifest search, color-coded shipment status tags, revenue tracking, and pagination.",
-    "tags": "Logistics Dashboard, Waybills Tracking, Filter System"
-  },
-  {
-    "id": "logo_001",
-    "page": "logodesign",
-    "title": "ICON Elect Visual Identity",
-    "badge": "3D & Emblem",
-    "image": "assets/images/logos/Products/iconelect/3D-ICONELECT-icon-v2.png",
-    "challenge": "Security, citizenship, and digital review portal branding.",
-    "solution": "Designed a modern 3D icon emblem and animated asset suite symbolizing security, citizenship, and digital review processes.",
-    "tags": "3D Emblem, Animated Asset"
-  },
-  {
-    "id": "logo_002",
-    "page": "logodesign",
-    "title": "Raviv Casuals Footwear Brand",
-    "badge": "Packaging & Fashion",
-    "image": "assets/images/logos/Products/ravivcasuals/Box design raviv logo.png",
-    "challenge": "Luxury footwear presentation and custom packaging graphics.",
-    "solution": "Developed luxury footwear branding including shoe box graphics, tote bag prints, dust bag labels, and product presentation.",
-    "tags": "Luxury Packaging, Fashion Logo"
-  },
-  {
-    "id": "logo_003",
-    "page": "logodesign",
-    "title": "Harrell's ButterCream Biscuits",
-    "badge": "Food Packaging Label",
-    "image": "assets/images/logos/Products/harrell-bcb/front view label.png",
-    "challenge": "Retail product packaging and promotional A-frame identity.",
-    "solution": "Crafted product packaging labels, front and side view label mockups, and promotional A-frame signage identity for 'A Good Biscuit'.",
-    "tags": "Label Design, Signage"
-  },
-  {
-    "id": "logo_004",
-    "page": "logodesign",
-    "title": "L.L. Harrell Realty & Brokerage",
-    "badge": "Realty Logo Modernization",
-    "image": "assets/images/logos/Products/llharrell/HarrellLogo.png",
-    "challenge": "Corporate real estate visual identity modernization.",
-    "solution": "Modernized corporate real estate visual identity, vector logo icon design, and digital asset branding for business brokerage.",
-    "tags": "Realty Logo, Vector Mark"
-  },
-  {
-    "id": "logo_005",
-    "page": "logodesign",
-    "title": "Taxhaus Business Logics",
-    "badge": "Corporate Identity",
-    "image": "assets/images/logos/Products/tbl/Taxhaus.png",
-    "challenge": "Corporate emblem system for financial software consulting.",
-    "solution": "Designed corporate logo mark, vector emblems, and visual identity guidelines for tax logic and financial software consulting.",
-    "tags": "Corporate Brand, Emblem"
-  }
+    {
+        "id": "web_001",
+        "page": "webdesign",
+        "title": "Vaze Realty Map & Portal Interface",
+        "badge": "Real Estate Search UI",
+        "image": "assets\/images\/projects\/Search Map.png",
+        "challenge": "Presenting interactive map property search, radius tools, status indicators, and client listing views in a clean, high-performance UI.",
+        "solution": "Designed custom floating map filter controls, responsive property card grids, and protected dashboard views for agents and clients.",
+        "tags": "Google Maps API, Interactive Map UI, Responsive Grid"
+    },
+    {
+        "id": "web_002",
+        "page": "webdesign",
+        "title": "Landways Cargo Logistics Dashboard",
+        "badge": "Cargo & Tracking UI",
+        "image": "assets\/images\/projects\/Active plugin.png",
+        "challenge": "Managing waybills manifests, shipment aging statuses, consignee data, and date-range filters across complex freight operations.",
+        "solution": "Developed a responsive admin portal with quick manifest search, color-coded shipment status tags, revenue tracking, and pagination.",
+        "tags": "Logistics Dashboard, Waybills Tracking, Filter System"
+    },
+    {
+        "id": "logo_001",
+        "page": "logodesign",
+        "title": "ICON Elect Visual Identity",
+        "badge": "3D & Emblem",
+        "image": "assets\/images\/logos\/Products\/iconelect\/3D-ICONELECT-icon-v2.png",
+        "challenge": "Security, citizenship, and digital review portal branding.",
+        "solution": "Designed a modern 3D icon emblem and animated asset suite symbolizing security, citizenship, and digital review processes.",
+        "tags": "3D Emblem, Animated Asset"
+    },
+    {
+        "id": "logo_002",
+        "page": "logodesign",
+        "title": "Raviv Casuals Footwear Brand",
+        "badge": "Packaging & Fashion",
+        "image": "assets\/images\/logos\/Products\/ravivcasuals\/Box design raviv logo.png",
+        "challenge": "Luxury footwear presentation and custom packaging graphics.",
+        "solution": "Developed luxury footwear branding including shoe box graphics, tote bag prints, dust bag labels, and product presentation.",
+        "tags": "Luxury Packaging, Fashion Logo"
+    },
+    {
+        "id": "logo_003",
+        "page": "logodesign",
+        "title": "Harrell's ButterCream Biscuits",
+        "badge": "Food Packaging Label",
+        "image": "assets\/images\/logos\/Products\/harrell-bcb\/front view label.png",
+        "challenge": "Retail product packaging and promotional A-frame identity.",
+        "solution": "Crafted product packaging labels, front and side view label mockups, and promotional A-frame signage identity for 'A Good Biscuit'.",
+        "tags": "Label Design, Signage"
+    },
+    {
+        "id": "logo_004",
+        "page": "logodesign",
+        "title": "L.L. Harrell Realty & Brokerage",
+        "badge": "Realty Logo Modernization",
+        "image": "assets\/images\/logos\/Products\/llharrell\/HarrellLogo.png",
+        "challenge": "Corporate real estate visual identity modernization.",
+        "solution": "Modernized corporate real estate visual identity, vector logo icon design, and digital asset branding for business brokerage.",
+        "tags": "Realty Logo, Vector Mark"
+    },
+    {
+        "id": "logo_005",
+        "page": "logodesign",
+        "title": "Taxhaus Business Logics",
+        "badge": "Corporate Identity",
+        "image": "assets\/images\/logos\/Products\/tbl\/Taxhaus.png",
+        "challenge": "Corporate emblem system for financial software consulting.",
+        "solution": "Designed corporate logo mark, vector emblems, and visual identity guidelines for tax logic and financial software consulting.",
+        "tags": "Corporate Brand, Emblem"
+    }
 ]

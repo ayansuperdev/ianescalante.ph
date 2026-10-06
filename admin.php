@@ -44,7 +44,7 @@ if (file_exists($data_file)) {
 if ($is_logged_in && isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])) {
     $delete_id = $_GET['id'];
     $projects = array_filter($projects, fn($p) => $p['id'] !== $delete_id);
-    file_put_contents($data_file, json_encode(array_values($projects), JSON_PRETTY_PRINT));
+    file_put_contents($data_file, json_encode(array_values($projects), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
     header('Location: admin.php?status=deleted');
     exit;
 }
@@ -68,20 +68,26 @@ if ($is_logged_in && $_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($project_data['title'] && $project_data['image']) {
             if ($edit_id) {
                 // Update existing project
-                foreach ($projects as &$p) {
-                    if ($p['id'] === $edit_id) {
-                        $p = $project_data;
+                $found = false;
+                for ($i = 0; $i < count($projects); $i++) {
+                    if ($projects[$i]['id'] === $edit_id) {
+                        $projects[$i] = $project_data;
+                        $found = true;
                         break;
                     }
                 }
-                unset($p);
-                $status_msg = 'Project updated successfully!';
+                if ($found) {
+                    $status_msg = 'Project updated successfully!';
+                } else {
+                    array_unshift($projects, $project_data);
+                    $status_msg = 'Project saved as new entry!';
+                }
             } else {
                 // Add new project
                 array_unshift($projects, $project_data);
                 $status_msg = 'Project added successfully and live on frontend!';
             }
-            file_put_contents($data_file, json_encode(array_values($projects), JSON_PRETTY_PRINT));
+            file_put_contents($data_file, json_encode(array_values($projects), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
         }
     }
 }
