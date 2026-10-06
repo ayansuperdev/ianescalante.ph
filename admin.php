@@ -49,24 +49,52 @@ if ($is_logged_in && isset($_GET['action']) && $_GET['action'] === 'delete' && i
     exit;
 }
 
-// Handle Add New Project
+// Handle Add / Edit Project
 $status_msg = '';
-if ($is_logged_in && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_project'])) {
-    $new_project = [
-        'id' => 'proj_' . time() . '_' . rand(100, 999),
-        'page' => trim($_POST['page'] ?? 'webdesign'),
-        'title' => trim($_POST['title'] ?? ''),
-        'badge' => trim($_POST['badge'] ?? ''),
-        'image' => trim($_POST['image'] ?? ''),
-        'challenge' => trim($_POST['challenge'] ?? ''),
-        'solution' => trim($_POST['solution'] ?? ''),
-        'tags' => trim($_POST['tags'] ?? '')
-    ];
-    
-    if ($new_project['title'] && $new_project['image']) {
-        array_unshift($projects, $new_project);
-        file_put_contents($data_file, json_encode($projects, JSON_PRETTY_PRINT));
-        $status_msg = 'Project added successfully and live on frontend!';
+if ($is_logged_in && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['save_project'])) {
+        $edit_id = trim($_POST['id'] ?? '');
+        $project_data = [
+            'id' => $edit_id ?: ('proj_' . time() . '_' . rand(100, 999)),
+            'page' => trim($_POST['page'] ?? 'webdesign'),
+            'title' => trim($_POST['title'] ?? ''),
+            'badge' => trim($_POST['badge'] ?? ''),
+            'image' => trim($_POST['image'] ?? ''),
+            'challenge' => trim($_POST['challenge'] ?? ''),
+            'solution' => trim($_POST['solution'] ?? ''),
+            'tags' => trim($_POST['tags'] ?? '')
+        ];
+        
+        if ($project_data['title'] && $project_data['image']) {
+            if ($edit_id) {
+                // Update existing project
+                foreach ($projects as &$p) {
+                    if ($p['id'] === $edit_id) {
+                        $p = $project_data;
+                        break;
+                    }
+                }
+                unset($p);
+                $status_msg = 'Project updated successfully!';
+            } else {
+                // Add new project
+                array_unshift($projects, $project_data);
+                $status_msg = 'Project added successfully and live on frontend!';
+            }
+            file_put_contents($data_file, json_encode(array_values($projects), JSON_PRETTY_PRINT));
+        }
+    }
+}
+
+// Fetch single project for Editing if edit_id passed
+$edit_project = null;
+if ($is_logged_in && isset($_GET['action']) && $_GET['action'] === 'edit' && isset($_GET['id'])) {
+    $target_id = $_GET['id'];
+    foreach ($projects as $p) {
+        if ($p['id'] === $target_id) {
+            $edit_project = $p;
+            break;
+        }
     }
 }
 ?>
@@ -80,7 +108,7 @@ if ($is_logged_in && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body { background: #0B0B0C; color: #E2E8F0; font-family: 'Inter', sans-serif; padding: 2rem 1rem; }
-    .admin-card { max-width: 900px; margin: 0 auto 2.5rem auto; background: rgba(26, 27, 31, 0.95); border: 1px solid var(--accent-primary); border-radius: 12px; padding: 2.25rem; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
+    .admin-card { max-width: 950px; margin: 0 auto 2.5rem auto; background: rgba(26, 27, 31, 0.95); border: 1px solid var(--accent-primary); border-radius: 12px; padding: 2.25rem; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
     .form-group { margin-bottom: 1.25rem; }
     .form-group label { display: block; margin-bottom: 0.4rem; color: #F5E6C8; font-weight: 600; font-size: 0.95rem; }
     .form-control { width: 100%; padding: 12px 14px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(212, 175, 55, 0.3); color: #FFF; border-radius: 6px; font-size: 0.95rem; }
@@ -89,6 +117,8 @@ if ($is_logged_in && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_
     .project-table th, .project-table td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
     .project-table th { color: var(--accent-primary); font-weight: 700; background: rgba(255,255,255,0.02); }
     .badge-tag { padding: 3px 8px; border-radius: 4px; background: rgba(212,175,55,0.2); color: var(--accent-primary); font-size: 0.8rem; font-weight: 600; }
+    .btn-edit { color: var(--accent-primary); text-decoration: none; font-weight: 600; border: 1px solid var(--accent-primary); padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-right: 6px; }
+    .btn-edit:hover { background: var(--accent-primary); color: #000; }
     .btn-delete { color: #FF4D4D; text-decoration: none; font-weight: 600; border: 1px solid #FF4D4D; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; }
     .btn-delete:hover { background: #FF4D4D; color: #FFF; }
   </style>
@@ -142,56 +172,68 @@ if ($is_logged_in && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_
         </div>
       <?php endif; ?>
 
-      <!-- ADD PROJECT FORM -->
-      <h3 style="font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-plus-circle"></i> Add New Portfolio Project</h3>
-      <form method="POST">
+      <!-- ADD / EDIT PROJECT FORM -->
+      <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--accent-primary);">
+        <i class="fas <?= $edit_project ? 'fa-edit' : 'fa-plus-circle' ?>"></i>
+        <?= $edit_project ? 'Edit Existing Project: ' . htmlspecialchars($edit_project['title']) : 'Add New Portfolio Project' ?>
+      </h3>
+      <form method="POST" action="admin.php">
+        <input type="hidden" name="id" value="<?= htmlspecialchars($edit_project['id'] ?? '') ?>">
+
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
           <div class="form-group">
             <label>Target Page</label>
             <select name="page" class="form-control">
-              <option value="webdesign">Web Design Page (webdesign.html)</option>
-              <option value="logodesign">Logo & Brand Page (logodesign.html)</option>
+              <option value="webdesign" <?= ($edit_project['page'] ?? '') === 'webdesign' ? 'selected' : '' ?>>Web Design Page (webdesign.html)</option>
+              <option value="logodesign" <?= ($edit_project['page'] ?? '') === 'logodesign' ? 'selected' : '' ?>>Logo & Brand Page (logodesign.html)</option>
             </select>
           </div>
           <div class="form-group">
             <label>Project Title</label>
-            <input type="text" name="title" class="form-control" placeholder="e.g. Landways Cargo Logistics" required>
+            <input type="text" name="title" class="form-control" value="<?= htmlspecialchars($edit_project['title'] ?? '') ?>" placeholder="e.g. Landways Cargo Logistics" required>
           </div>
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
           <div class="form-group">
             <label>Badge / Category</label>
-            <input type="text" name="badge" class="form-control" placeholder="e.g. Cargo & Tracking UI" required>
+            <input type="text" name="badge" class="form-control" value="<?= htmlspecialchars($edit_project['badge'] ?? '') ?>" placeholder="e.g. Cargo & Tracking UI" required>
           </div>
           <div class="form-group">
             <label>Image Path / URL</label>
-            <input type="text" name="image" class="form-control" placeholder="assets/images/projects/your-image.png" required>
+            <input type="text" name="image" class="form-control" value="<?= htmlspecialchars($edit_project['image'] ?? '') ?>" placeholder="assets/images/projects/your-image.png" required>
           </div>
         </div>
 
         <div class="form-group">
           <label>Challenge Description</label>
-          <input type="text" name="challenge" class="form-control" placeholder="e.g. Managing waybills manifests and freight aging statuses..." required>
+          <input type="text" name="challenge" class="form-control" value="<?= htmlspecialchars($edit_project['challenge'] ?? '') ?>" placeholder="e.g. Managing waybills manifests and freight aging statuses..." required>
         </div>
 
         <div class="form-group">
           <label>Solution Description</label>
-          <input type="text" name="solution" class="form-control" placeholder="e.g. Developed responsive admin portal with color-coded status tags..." required>
+          <input type="text" name="solution" class="form-control" value="<?= htmlspecialchars($edit_project['solution'] ?? '') ?>" placeholder="e.g. Developed responsive admin portal with color-coded status tags..." required>
         </div>
 
         <div class="form-group">
           <label>Tech Tags (Comma Separated)</label>
-          <input type="text" name="tags" class="form-control" placeholder="Logistics UI, Waybills Tracking, Filter System">
+          <input type="text" name="tags" class="form-control" value="<?= htmlspecialchars($edit_project['tags'] ?? '') ?>" placeholder="Logistics UI, Waybills Tracking, Filter System">
         </div>
 
-        <button type="submit" name="add_project" class="btn btn-primary"><i class="fas fa-save"></i> Publish Project Live</button>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <button type="submit" name="save_project" class="btn btn-primary">
+            <i class="fas fa-save"></i> <?= $edit_project ? 'Update & Save Project' : 'Publish Project Live' ?>
+          </button>
+          <?php if ($edit_project): ?>
+            <a href="admin.php" class="btn btn-outline" style="padding: 10px 16px;"><i class="fas fa-times"></i> Cancel Edit</a>
+          <?php endif; ?>
+        </div>
       </form>
 
       <!-- EXISTING PROJECTS LIST -->
-      <h3 style="font-size: 1.2rem; margin-top: 2.5rem; margin-bottom: 1rem;"><i class="fas fa-list"></i> Custom Managed Projects (<?= count($projects) ?>)</h3>
+      <h3 style="font-size: 1.2rem; margin-top: 2.5rem; margin-bottom: 1rem;"><i class="fas fa-list"></i> Portfolio Projects Managed (<?= count($projects) ?>)</h3>
       <?php if (empty($projects)): ?>
-        <p style="color: #94A3B8;">No custom projects added yet.</p>
+        <p style="color: #94A3B8;">No projects found.</p>
       <?php else: ?>
         <table class="project-table">
           <thead>
@@ -200,17 +242,20 @@ if ($is_logged_in && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_
               <th>Title</th>
               <th>Page</th>
               <th>Badge</th>
-              <th>Action</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             <?php foreach ($projects as $p): ?>
               <tr>
-                <td><img src="<?= htmlspecialchars($p['image']) ?>" style="width: 50px; height: 35px; object-fit: cover; border-radius: 4px;"></td>
+                <td><img src="<?= htmlspecialchars($p['image']) ?>" style="width: 50px; height: 35px; object-fit: cover; border-radius: 4px;" alt="Thumbnail"></td>
                 <td><strong><?= htmlspecialchars($p['title']) ?></strong></td>
                 <td><span class="badge-tag"><?= htmlspecialchars($p['page']) ?></span></td>
                 <td><?= htmlspecialchars($p['badge']) ?></td>
                 <td>
+                  <a href="admin.php?action=edit&id=<?= urlencode($p['id']) ?>" class="btn-edit">
+                    <i class="fas fa-edit"></i> Edit
+                  </a>
                   <a href="admin.php?action=delete&id=<?= urlencode($p['id']) ?>" class="btn-delete" onclick="return confirm('Delete this project?');">
                     <i class="fas fa-trash"></i> Delete
                   </a>
@@ -226,3 +271,4 @@ if ($is_logged_in && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_
 
 </body>
 </html>
+
