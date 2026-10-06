@@ -1,0 +1,12 @@
+[
+  {
+    "id": "proj_1728200000001",
+    "page": "webdesign",
+    "title": "Custom E-Commerce Storefront",
+    "badge": "WooCommerce & UI",
+    "image": "assets/images/projects/Active plugin.png",
+    "challenge": "Optimizing mobile checkout flow for high-volume retail buyers.",
+    "solution": "Built custom single-page checkout templates, sticky Add-to-Cart drawer, and instant coupon verification.",
+    "tags": "WooCommerce, Stripe UI, Responsive"
+  }
+]
