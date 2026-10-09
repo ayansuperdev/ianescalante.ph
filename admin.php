@@ -321,6 +321,8 @@ $active_tab = $_GET['tab'] ?? ($edit_article ? 'articles' : 'projects');
             <tr>
               <th>Cover</th>
               <th>Title / Project</th>
+              <th>Type</th>
+              <th>Work Experience</th>
               <th>Category</th>
               <th>Status</th>
               <th>Review Flag</th>
@@ -334,6 +336,20 @@ $active_tab = $_GET['tab'] ?? ($edit_article ? 'articles' : 'projects');
                 <td>
                   <strong><?= htmlspecialchars($art['title']) ?></strong><br>
                   <small style="color: #94A3B8;">Project ID: <?= htmlspecialchars($art['project_id']) ?></small>
+                </td>
+                <td>
+                  <span class="badge-tag" style="background: rgba(255,255,255,0.08); color: #FFF;">
+                    <?= htmlspecialchars(ucwords(str_replace('_', ' ', $art['article_type'] ?? 'Story'))) ?>
+                  </span>
+                </td>
+                <td>
+                  <?php if (!empty($art['experience_id'])): ?>
+                    <span class="badge-tag" style="background: rgba(212,175,55,0.15); color: var(--accent-primary);">
+                      <?= htmlspecialchars($art['experience_id']) ?>
+                    </span>
+                  <?php else: ?>
+                    <span style="color: #64748B; font-size: 0.8rem;">Independent</span>
+                  <?php endif; ?>
                 </td>
                 <td><span class="badge-tag"><?= htmlspecialchars($art['category']) ?></span></td>
                 <td>

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "exp_vaze",
+    "role": "Senior Web Developer",
+    "organization": "Vaze Realty",
+    "engagement_type": "Active Retainer",
+    "period": "Feb 08, 2026 - Present",
+    "is_current": true,
+    "responsibilities": "Developing a custom real-estate platform with RESO Web API data mapping, interactive map radius and polygon search tools, role-based client & agent dashboards, and lead capture funnels.",
+    "project_ids": ["vaze_realty"]
+  },
+  {
+    "id": "exp_salescreators",
+    "role": "WordPress Developer",
+    "organization": "SalesCreators",
+    "engagement_type": "Active Retainer",
+    "period": "Mar 6, 2026 - Present",
+    "is_current": true,
+    "responsibilities": "Building property data widgets, pricing calculators, automated Stripe webhook subscription handlers, Slack notification alerts, and Eagle CRM data feeds.",
+    "project_ids": ["salescreator", "cruise_brisbane", "clark_partners", "fresh_collective", "riverlife"]
+  },
+  {
+    "id": "exp_taxhaus",
+    "role": "Senior Web Developer",
+    "organization": "TAXHAUS BUSINESS GROUP LLC",
+    "engagement_type": "Core Engagement",
+    "period": "April 10, 2022 - Present",
+    "is_current": true,
+    "responsibilities": "Leading web development, custom plugin creation, theme customization, database integrations, and automated business workflows.",
+    "project_ids": ["taxhaus"]
+  },
+  {
+    "id": "exp_color_rich",
+    "role": "Web Developer",
+    "organization": "Color Rich",
+    "engagement_type": "Previous Employment",
+    "period": "2021 - 2022",
+    "is_current": false,
+    "responsibilities": "Maintained WordPress websites, resolved PHP issues, built Elementor layouts, and optimized browser performance.",
+    "project_ids": []
+  },
+  {
+    "id": "exp_tadbeer",
+    "role": "Computer Programmer",
+    "organization": "Tadbeer Quality 2 UAQ",
+    "engagement_type": "Previous Employment",
+    "period": "2020 - 2021",
+    "is_current": false,
+    "responsibilities": "Developed multi-website WordPress solutions featuring responsive design, media integration, and SEO optimization.",
+    "project_ids": []
+  },
+  {
+    "id": "exp_tasheel",
+    "role": "System Administrator",
+    "organization": "Tasheel UAQ / Moaamalat UAQ",
+    "engagement_type": "Previous Employment",
+    "period": "2019 - 2020",
+    "is_current": false,
+    "responsibilities": "Installed and managed LAN/WAN networks, servers, and system components. Configured new servers and applications, ensured data security and system integrity, performed backups and recovery procedures.",
+    "project_ids": []
+  },
+  {
+    "id": "exp_fasttrack",
+    "role": "iOS Mobile App Developer (SEMINARS)",
+    "organization": "FASTTRACK IT ACADEMY (FIT)",
+    "engagement_type": "Seminars & Training",
+    "period": "2017",
+    "is_current": false,
+    "responsibilities": "Conducted seminars and training sessions on iOS mobile app development at FASTTRACK IT ACADEMY (FIT), focusing on practical skills and modern development practices.",
+    "project_ids": []
+  },
+  {
+    "id": "exp_compulink",
+    "role": "IT Support",
+    "organization": "COMPULINK / DOTCOM",
+    "engagement_type": "Previous Employment",
+    "period": "2014 - 2016",
+    "is_current": false,
+    "responsibilities": "Handled setup of hardware, software, and drivers, ensuring all systems run efficiently. Maintained and repaired equipment and peripherals, kept detailed records of fixes, and provided timely technical support.",
+    "project_ids": []
+  }
+]

@@ -11,9 +11,20 @@ session_start();
 $is_admin = !empty($_SESSION['admin_logged_in']);
 
 $articles_file = __DIR__ . '/data/articles.json';
+$experiences_file = __DIR__ . '/data/experiences.json';
+
 $articles = [];
 if (file_exists($articles_file)) {
     $articles = json_decode(file_get_contents($articles_file), true) ?: [];
+}
+
+$experiences = [];
+if (file_exists($experiences_file)) {
+    $experiences = json_decode(file_get_contents($experiences_file), true) ?: [];
+}
+$exp_map = [];
+foreach ($experiences as $e) {
+    $exp_map[$e['id']] = $e;
 }
 
 // Extract slug parameter
@@ -21,7 +32,6 @@ $requested_slug = trim($_GET['slug'] ?? '');
 if (empty($requested_slug) && isset($_SERVER['REQUEST_URI'])) {
     $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $parts = array_filter(explode('/', $path));
-    // Check if URL ends with blog/some-slug or blog.php/some-slug
     $last = end($parts);
     if ($last && $last !== 'blog' && $last !== 'blog.php' && strpos($last, '.php') === false) {
         $requested_slug = urldecode($last);
@@ -45,15 +55,14 @@ if (!empty($requested_slug)) {
         exit;
     }
 
-    // Draft Preview Protection Rule:
-    // Only published articles appear publicly. Drafts require logged in admin session.
+    // Draft Preview Protection: Only published articles are public
     if ($target_article['status'] !== 'published' && !$is_admin) {
         http_response_code(403);
         render_draft_restricted();
         exit;
     }
 
-    render_article_page($target_article, $articles, $is_admin);
+    render_article_page($target_article, $articles, $exp_map, $is_admin);
     exit;
 }
 
@@ -101,7 +110,6 @@ function render_listing_page($articles, $is_admin) {
         return $matches_search && $matches_cat;
     }));
 
-    // Pagination math
     $total_items = count($filtered_articles);
     $total_pages = max(1, ceil($total_items / $per_page));
     $page = min($page, $total_pages);
@@ -346,14 +354,17 @@ function render_listing_page($articles, $is_admin) {
     <?php
 }
 
-function render_article_page($art, $all_articles, $is_admin) {
+function render_article_page($art, $all_articles, $exp_map, $is_admin) {
     // Find related articles (same category or shared tags, excluding current)
     $related = array_values(array_filter($all_articles, function($a) use ($art, $is_admin) {
         if ($a['id'] === $art['id']) return false;
         if ($a['status'] !== 'published' && !$is_admin) return false;
-        return ($a['category'] === $art['category']);
+        return ($a['category'] === $art['category'] || $a['project_id'] === $art['project_id']);
     }));
     $related = array_slice($related, 0, 3);
+
+    // Associated Experience
+    $exp = !empty($art['experience_id']) ? ($exp_map[$art['experience_id']] ?? null) : null;
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -412,7 +423,9 @@ function render_article_page($art, $all_articles, $is_admin) {
     .article-figure { margin: 2rem 0; text-align: center; }
     .article-img { width: 100%; max-height: 480px; object-fit: cover; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-md); }
     figcaption { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.6rem; font-style: italic; }
+    .article-context-banner { background: rgba(212,175,55,0.08); border-left: 3px solid var(--accent-primary); padding: 12px 18px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 2rem; font-size: 0.95rem; }
     .article-footer-cta { margin-top: 4rem; padding: 2.5rem; background: rgba(26,27,31,0.95); border: 1px solid var(--accent-primary); border-radius: var(--radius-md); text-align: center; }
+    .article-connections-panel { background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; margin-top: 3rem; }
   </style>
 </head>
 <body>
@@ -469,7 +482,7 @@ function render_article_page($art, $all_articles, $is_admin) {
       <?php endif; ?>
 
       <header class="article-header">
-        <span class="section-tag"><?= htmlspecialchars($art['category']) ?></span>
+        <span class="section-tag"><?= htmlspecialchars($art['category']) ?> &bull; <?= htmlspecialchars(ucwords(str_replace('_', ' ', $art['article_type'] ?? 'Story'))) ?></span>
         <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); margin-top: 0.5rem; line-height: 1.25;"><?= htmlspecialchars($art['title']) ?></h1>
 
         <div class="article-meta-bar">
@@ -497,17 +510,27 @@ function render_article_page($art, $all_articles, $is_admin) {
         <?= $art['body'] ?>
       </div>
 
-      <!-- PROJECT ACTION BUTTONS -->
-      <div style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-        <?php if (!empty($art['live_url'])): ?>
-          <a href="<?= htmlspecialchars($art['live_url']) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Visit Live Project Website</a>
-        <?php endif; ?>
-        <a href="index.html#portfolio" class="btn btn-outline"><i class="fas fa-layer-group"></i> View Portfolio Work</a>
+      <!-- EXPLICIT RELATIONSHIPS & CONNECTIONS PANEL -->
+      <div class="article-connections-panel">
+        <h3 style="font-size: 1.15rem; color: var(--accent-primary); margin-bottom: 0.75rem;"><i class="fas fa-link"></i> Project &amp; Track Record Connections</h3>
+        <p style="font-size: 0.95rem; margin-bottom: 1rem;">This technical article relates directly to the following verified portfolio components:</p>
+        
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="index.html#portfolio" class="btn btn-outline btn-sm"><i class="fas fa-layer-group"></i> Featured Portfolio Project</a>
+          <?php if (!empty($exp)): ?>
+            <a href="index.html#experience" class="btn btn-outline btn-sm"><i class="fas fa-briefcase"></i> Work Experience: <?= htmlspecialchars($exp['organization']) ?></a>
+          <?php else: ?>
+            <span style="font-size: 0.85rem; color: var(--text-muted); align-self: center;"><i class="fas fa-check"></i> Independent Client Engagement</span>
+          <?php endif; ?>
+          <?php if (!empty($art['live_url'])): ?>
+            <a href="<?= htmlspecialchars($art['live_url']) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fas fa-external-link-alt"></i> Visit Live Website</a>
+          <?php endif; ?>
+        </div>
       </div>
 
       <!-- RELATED ARTICLES -->
       <?php if (!empty($related)): ?>
-        <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+        <div style="margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
           <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--accent-primary);"><i class="fas fa-bookmark"></i> Related Project Articles</h3>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
             <?php foreach ($related as $rel): ?>
