@@ -109,6 +109,7 @@ function initHeroTextAnimation() {
 
   const words = [
     'Real Business Needs',
+    'AI-Accelerated Workflows',
     'High Performance',
     'Custom WP Plugins',
     'API & CRM Automations',
