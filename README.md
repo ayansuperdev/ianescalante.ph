@@ -8,10 +8,10 @@ This repository contains the source code for Ian Escalante's professional portfo
 - **GitHub Repository**: `ayansuperdev/ianescalante.ph`
 - **Main Stack**: HTML5, CSS3 (Gold & Dark Obsidian Theme), JavaScript ES6, Custom SVG/PNG Assets, FontAwesome.
 
-## 🚀 Active Retainers & Client Roles
-1. **Vaze Realty** — *Senior Web Developer* (`Feb 08, 2026 - Present`) — [Active Retainer]
-2. **SalesCreators** — *WordPress Developer* (`Mar 06, 2026 - Present`) — [Active Retainer]
-3. **TAXHAUS BUSINESS GROUP LLC** — *Senior Web Developer* (`April 10, 2022 - Present`) — [Core Engagement]
+## 🚀 Work Engagements & Client Roles
+1. **SalesCreators** — *WordPress Developer* (`Mar 06, 2026 - Present`) — [Active Retainer]
+2. **TAXHAUS BUSINESS GROUP LLC** — *Senior Web Developer* (`April 10, 2022 - Present`) — [Core Engagement]
+3. **Vaze Realty** — *Senior Web Developer* (`Feb 08, 2026 - November 6, 2026`) — [Completed]
 
 ## 📁 Repository Structure
 - `index.html` — Homepage with Hero, About, Services, Featured Work, Experience, and Contact sections.
