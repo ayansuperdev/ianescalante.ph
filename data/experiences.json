@@ -1,15 +1,5 @@
 [
   {
-    "id": "exp_vaze",
-    "role": "Senior Web Developer",
-    "organization": "Vaze Realty",
-    "engagement_type": "Completed Engagement",
-    "period": "Feb 08, 2026 - November 6, 2026",
-    "is_current": false,
-    "responsibilities": "Developing a custom real-estate platform with RESO Web API data mapping, interactive map radius and polygon search tools, role-based client & agent dashboards, and lead capture funnels.",
-    "project_ids": ["vaze_realty"]
-  },
-  {
     "id": "exp_salescreators",
     "role": "WordPress Developer",
     "organization": "SalesCreators",
@@ -28,6 +18,16 @@
     "is_current": true,
     "responsibilities": "Leading web development, custom plugin creation, theme customization, database integrations, and automated business workflows.",
     "project_ids": ["taxhaus"]
+  },
+  {
+    "id": "exp_vaze",
+    "role": "Senior Web Developer",
+    "organization": "Vaze Realty",
+    "engagement_type": "Completed Engagement",
+    "period": "Feb 08, 2026 - November 6, 2026",
+    "is_current": false,
+    "responsibilities": "Developing a custom real-estate platform with RESO Web API data mapping, interactive map radius and polygon search tools, role-based client & agent dashboards, and lead capture funnels.",
+    "project_ids": ["vaze_realty"]
   },
   {
     "id": "exp_color_rich",
